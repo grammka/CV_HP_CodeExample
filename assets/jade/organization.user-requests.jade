@@ -1,0 +1,36 @@
+table.table-list(ng-if="model.users && model.users.length")
+	thead
+		th
+		th.t-text_left Name
+		th.t-text_left Role
+		th
+	tbody
+		tr(ng-repeat="item in model.users")
+			td.t-w1p
+				a.table-list__item__avatar(
+					ui-sref="ws.profile.principal({userId: item.profile.id})"
+					ui-sref-opts="{reload: true}"
+				)
+					avatar(data="item")
+			td
+				a.t-link(
+					ui-sref="ws.profile.principal({userId: item.profile.id})"
+					ui-sref-opts="{reload: true}"
+					ng-bind="item.profile.full_name"
+				)
+			td(ng-bind="item.profile.role.label")
+			td
+				.btns
+					.vp_5
+					.btn.btn_26.btn_green(
+						ng-click="accept(item.profile.id, $index)"
+						ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+					)
+					.btn.btn_26.btn_red(
+						ng-click="decline(item.profile.id, $index)"
+						ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+					)
+						
+.p_10(ng-if="model.users && !model.users.length")
+	.t-max-w600
+		.notifier.info(ng-bind-html="'MY_COMPANY.USER_REQUESTS.NO_ITEMS_DESC' | translate")

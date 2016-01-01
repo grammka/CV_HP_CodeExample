@@ -1,0 +1,49 @@
+.hack-pack__content__scroll__container
+	width: 100%
+	height: 100%
+	absolute top 0 left 0
+	z-index: 20
+
+.hack-pack__content__scroll
+	height: 100%
+	height: calc(100% - 54px)
+	padding-top: 140px
+
+.hack-pack__content__overflow
+	height: 140px
+	absolute top 0 left -10px right -10px
+	z-index: 10
+	opacity: 0
+	box-shadow rgba(0,0,0, 0.4) 0 0 13px inset
+
+
+
+.hack-pack__not-confirmed-desc
+	height: $header-height
+	background-color: $color_red
+	padding 12px $padding
+	absolute top 0 left 0 right 0
+	z-index: 200
+	cursor: default
+	overflow: hidden
+	font-size: 13px
+	color #fff
+	box-sizing border-box
+	.t-link
+		color #68CDFF !important
+	&:before
+		content ''
+		display: block
+		width: 100%
+		height: 20px
+		absolute bottom -20px left 0
+		z-index: 10
+		box-shadow $color_red 0 0 20px 15px
+	&:hover
+		height: auto
+		&:before
+			display: none
+
+.hack-pack__content-with-not-confirmed-desc
+	width: 100%
+	absolute top $header-height left 0 bottom 0

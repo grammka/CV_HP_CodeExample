@@ -1,0 +1,80 @@
+div(ng-if="model.editing")
+	.p_10
+
+		.btn.btn_32.btn_red.btn_inline(
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+			ng-click="cancel()"
+		)
+
+		.vp_20
+
+		input.input.input_32.t-w300(
+			ng-model="model.searchForHackPackMemberQuery"
+			placeholder="{{ 'MY_COMPANY.USERS.FORM.FIND_HP_MEMBER_PLACEHOLDER' | translate }}"
+			ng-change="searchForHackPackMember()"
+		)
+
+		table.table-list(ng-if="model.searchHackPackMembersResult && model.searchHackPackMembersResult.length")
+			thead
+				th
+				th.t-text_left Name
+				th.t-text_left Role
+				th
+			tbody
+				tr(ng-repeat="item in model.searchHackPackMembersResult track by item.id")
+					td.t-w1p
+						a.table-list__item__avatar(
+							ui-sref="ws.profile.principal({userId: item.id})"
+							target="_blank"
+						)
+							avatar(data="item")
+					td
+						a.t-link(
+							ui-sref="ws.profile.principal({userId: item.id})"
+							target="_blank"
+							ng-bind="item.full_name"
+						)
+					td(ng-bind="item.role.label")
+					td
+						.btn.btn_26.btn_green.btn_inline(
+							ng-click="inviteHackPackMember(item)"
+							ng-bind="'COMMON.ADD_BUTTON' | translate"
+						)
+
+
+	.hr-line
+		.hr-line__text(ng-bind="'COMMON.OR' | translate")
+
+	.p_10
+		.inline-elems
+			input.input.input_32.t-w200(
+				type="email"
+				ng-model="model.form.email"
+				placeholder="E-mail"
+			)
+			.btn.btn_32.btn_green(
+				ng-click="inviteMemberViaEmail()"
+				ng-bind="'COMMON.INVITE_BUTTON' | translate"
+			)
+
+	.hr-line
+		.hr-line__text(ng-bind="'MY_COMPANY.USERS.FORM.CREATE_EXPERT.OR_HR' | translate")
+
+	.p_10
+		.inline-elems
+			input.input.input_32.t-w200(
+				type="text"
+				ng-model="model.form.first_name"
+				placeholder="{{ 'MY_COMPANY.USERS.FORM.CREATE_EXPERT.FIRST_NAME' | translate }}"
+			)
+			input.input.input_32.t-w200(
+				type="text"
+				ng-model="model.form.last_name"
+				placeholder="{{ 'MY_COMPANY.USERS.FORM.CREATE_EXPERT.LAST_NAME' | translate }}"
+			)
+			.btn.btn_32.btn_green(
+				ng-click="createNewExpertProfile()"
+				ng-bind="'MY_COMPANY.USERS.FORM.CREATE_EXPERT.SUBMIT_BUTTON' | translate"
+			)
+
+	.hr-line

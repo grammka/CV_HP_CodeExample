@@ -1,0 +1,27 @@
+.title__container
+	.title(ng-bind="'MY_COMPANY.CREATE.COMPANY_EXIST.ASSOCIATED_WITH' | translate")
+
+.p_20
+	.members-grid
+		a.members-grid__member(
+			ui-sref="ws.organization.principal({organizationId: model.form.id})"
+			target="_blank"
+		)
+			.members-grid__member__avatar
+				avatar(data="model.form")
+			b.members-grid__member__name(ng-bind="model.form.name")
+			.members-grid__member__role(ng-bind="model.form.website")
+
+	.vp_20
+	b(ng-bind="'MY_COMPANY.CREATE.COMPANY_EXIST.PLZ_CONFIRM' | translate")
+	.vp_20
+
+	.btns
+		.btn.btn_32.btn_green(
+			ng-click="confirmSelectedCompany()"
+			ng-bind="'MY_COMPANY.CREATE.COMPANY_EXIST.CONFIRM_BUTTON' | translate"
+		)
+		.btn.btn_32.btn_red(
+			ng-click="declineSelectedCompany()"
+			ng-bind="'MY_COMPANY.CREATE.COMPANY_EXIST.DECLINE_BUTTON' | translate"
+		)

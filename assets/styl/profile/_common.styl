@@ -1,0 +1,107 @@
+.profile__navig
+	display: none
+	background-color: $dark-bg-color
+	.btn
+		background-color: #a5a8af
+		color #555
+		//corner-right-bottom-right(#a5a8af)
+		&:hover
+			background-color: #969AA5
+			//corner-right-bottom-right(#969AA5)
+		&.active
+			background-color: #d1d4db
+			z-index: 20
+			color #000
+			//corner-right-bottom-right(#d1d4db)
+
+.profile__location-defined
+	background-color: #2B3742
+	padding 10px $padding
+	cursor: default
+	color #fff
+
+
+.profile__danger-lvl__info-list__item
+.profile__danger-lvl__editing
+	&:hover
+		.info-list__item__title
+			background-color: $color_red
+			padding-left: 10px
+			color #fff
+		.info-list__item__content
+			background-color: #DBD8DD
+		.profile__danger-lvl__info__desc
+			display: block
+
+.profile__danger-lvl
+	height-lineheight(39px)
+	margin-top: -3px
+	padding 5px 10px 10px
+	position: relative
+	text-transform: uppercase
+	no-select()
+
+.profile__danger-lvl__icon
+	rotated-sq(28px, $color_red)
+	line-height: 23px
+	position: relative
+	text-align: center
+	font-size: 17px
+	color #fff
+	display-inline-block()
+	&:before
+		position: relative
+		z-index: 10
+
+.profile__danger-lvl__info__navig
+	height-lineheight(20px)
+	absolute right -5px top 50%
+	margin-top: -12px
+	font-size: 0
+	.hsl
+		font-size: 13px
+
+.profile__danger-lvl__info__navig__item
+	padding 0 10px
+	cursor: pointer
+	font-size: 13px
+	text-transform: none
+	color #444
+	display-inline-block()
+	&:hover
+		color #000
+		.profile__danger-lvl__info__navig__item__icon
+			color #000
+	&.disabled
+		cursor: default !important
+		color #ccc
+		.profile__danger-lvl__info__navig__item__icon
+			color #a9a9a9 !important
+
+.profile__danger-lvl__info__navig__item__icon
+	padding 0 10px
+	font-size: 9px
+	color #444
+
+.profile__danger-lvl__info__desc
+	display: none
+	background-color: #E6EAF0
+	padding 10px 12px
+	font-size: 12px
+	text-align: justify
+
+
+
+.profile__languages
+	display: block
+
+.profile__language
+	display: block
+	font-size: 12px
+
+.profile__language__name
+	padding-right: 8px
+	color $text-color
+
+.profile__language__level
+	color $light-text-color

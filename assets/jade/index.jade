@@ -1,0 +1,75 @@
+doctype html
+html(ng-app="HPApp", ng-attr-class="{{ userAgentClass }}")
+	head
+		// {%COMPILE_DATE%}
+		title  HackPack
+		base(href="/")
+		meta(charset="utf-8")
+		meta(http-equiv="expires" content="0")
+		meta(name="fragment" content="!")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+		include _partials/_header-opengraph
+
+		link(rel="icon" type="image/png" href="/data/img/favicon-32x32.jpg?v2" sizes="32x32")
+		link(rel="icon" type="image/png" href="/data/img/favicon-16x16.jpg?v2" sizes="16x16")
+		//link(rel="shortcut icon" href="/data/img/favicon.ico" type="image/x-icon")
+		//link(rel="icon" href="/data/img/favicon.ico" type="image/x-icon")
+
+		link(href='//fonts.googleapis.com/css?family=Open+Sans:600,400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+		// build:css /data/css/vendor.css
+		link(href="/data/css/vendor.css" rel="stylesheet")
+		// endbuild
+		// build:css /data/css/app.css
+		link(href="/data/css/app.css" rel="stylesheet")
+		// endbuild
+
+		script(src="https://www.youtube.com/iframe_api")
+
+	body(ng-attr-class="{{ pathClass + (sidebarLocked ? ' sidebar_locked' : ' sidebar_unlocked') }}")
+
+		.pre-loader#preLoader
+			.center-block-parent
+				.center-block
+					.pre-loader__logo__wrapper
+						img.pre-loader__logo(src="data/img/logo_inverted.svg")
+						.pre-loader__logo__background
+
+		.wrapper(ui-view)
+
+
+		// Audio ----------------------------------------------------------------------- /
+
+		audio(id="incomingMessage")
+			source(src="/data/sounds/incoming-message.ogg" type="audio/ogg")
+			source(src="/data/sounds/incoming-message.mp3" type="audio/mpeg")
+			source(src="/data/sounds/incoming-message.wav" type="audio/wav")
+
+
+		// Mixpanel Badge -------------------------------------------------------------- /
+
+		//.landing__content.landing__footer.landing__abs-footer
+		//	a(href="https://mixpanel.com/f/partner")
+		//		img(src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics")
+
+
+		// Analytics ------------------------------------------------------------------ /
+
+		include _partials/_google-tag-manager
+		include _partials/_mixpanel
+
+
+		// Scripts -------------------------------------------------------------------- /
+
+		// build:js /data/js/vendor.js
+		script(src="/data/js/vendor.js")
+		// endbuild
+		// build:js /data/js/app.js
+		script(src="/data/js/app.js")
+		// endbuild
+		// build:js /data/js/ext.js
+		script(src="/data/js/ext.js")
+		// endbuild
+		// build:js /data/js/templates.js
+		script(src="/data/js/templates.js")
+		// endbuild

@@ -1,0 +1,44 @@
+$search-sidebar-footer-height = 10px + 32px + 10px
+
+
+.search__sidebar
+	width: 340px
+
+.search__sidebar__header__found-count
+	padding-right: $padding
+	text-transform: uppercase
+	font-size: 17px
+	color: #929BAD
+	b
+		color: #fff
+
+.search__sidebar__content
+	bottom $search-sidebar-footer-height
+
+.search__sidebar__form
+	padding $padding
+
+.search__sidebar__form__title
+	line-height: 18px
+	padding-bottom: 6px
+	text-transform: uppercase
+	font-size: 12px
+	&:first-child
+		margin-top: 0
+
+.search__sidebar__not-confirmed__container
+	position: relative
+
+.search__sidebar__not-confirmed__hint
+	width: 100%
+	height: 100%
+	absolute top 0 left 0
+	z-index: 80
+
+.search__sidebar__footer
+	width: 100%
+	height: $search-sidebar-footer-height
+	padding 10px $padding
+	border-top 1px solid #D1D4DD
+	absolute bottom 0 left 0
+	box-sizing border-box

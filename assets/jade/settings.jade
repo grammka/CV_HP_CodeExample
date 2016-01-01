@@ -1,0 +1,130 @@
+.nano(nano-scroll)
+	.nano-content
+		.title__container
+			.title(ng-bind="'SETTINGS.COMMON.TITLE' | translate")
+			.sub-title
+		.content
+			.content__title(ng-bind="'SETTINGS.COMMON.SELECT_TITLE' | translate")
+			.select.select_32.t-w200
+				select(
+					ng-model="model.user.interface_language"
+					ng-options="language.value as language.label for language in model.interfaceLanguageOptions"
+					ng-class="{ 'default' : !model.user.interface_language }"
+					ng-change="switchInterfaceLanguage()"
+				)
+					option(ng-bind="'SETTINGS.COMMON.SELECT_PLACEHOLDER' | translate" value="" disabled)
+
+		.vp_20
+
+		//.title__container
+		//	.title(ng-bind="'SETTINGS.SITE_NOTIFICATIONS.TITLE' | translate }}
+		//	.sub-title
+		//.content
+		//	label.checkbox__wrap.t-display-block(ng-repeat-start="(key, item) in model.notifications")
+		//		checkbox(
+		//			model="item.value"
+		//			ng-change="toggleNotification(key)"
+		//		)
+		//		| {{ item.label | translate }}
+		//	.vp_10(ng-repeat-end="item in model.notifications", ng-if="!$last")
+
+		.title__container
+			.title(ng-bind="'SETTINGS.EMAIL_NOTIFICATIONS.TITLE' | translate")
+			.sub-title
+		.content
+			label.checkbox__wrap(ng-repeat-start="(key, item) in model.notifications")
+				checkbox(
+					model="item.value"
+					ng-change="toggleNotification(key)"
+				)
+				span(ng-bind="item.label | translate")
+			.vp_10(ng-repeat-end="item in model.notifications", ng-if="!$last")
+
+		.vp_20
+
+		.title__container
+			.title(ng-bind="'SETTINGS.PASSWORD.TITLE' | translate")
+			.sub-title(ng-bind="'SETTINGS.PASSWORD.SUB_TITLE' | translate:{length: 8}")
+		.content
+			form.t-validate-highlight.t-max-w300(
+				name="ChangePassForm"
+				ng-submit="model.changePassForm.new_password == model.changePassForm.repeat_new_password && ChangePassForm.$valid && ChangePassForm.$dirty && submitChangePass()"
+				novalidate
+			)
+				input.input.input_32(
+					type="password"
+					ng-model="model.changePassForm.old_password"
+					placeholder="{{ 'SETTINGS.PASSWORD.CURR_PASSWORD_PLACEHOLDER' | translate }}"
+					autocomplete="off"
+					required
+				)
+				.vp_10
+				input.input.input_32(
+					type="password"
+					name="newPassword"
+					ng-model="model.changePassForm.new_password"
+					placeholder="{{ 'SETTINGS.PASSWORD.NEW_PASSWORD_PLACEHOLDER' | translate }}"
+					ng-minlength="8"
+					autocomplete="off"
+					required
+				)
+				.vp_10
+				input.input.input_32(
+					type="password"
+					name="confirmPassword"
+					ng-model="model.changePassForm.repeat_new_password"
+					placeholder="{{ 'SETTINGS.PASSWORD.REPEAT_NEW_PASSWORD_PLACEHOLDER' | translate }}"
+					ng-minlength="8"
+					model-values-compare="model.changePassForm.new_password"
+					autocomplete="off"
+					required
+				)
+				.vp_10
+				.t-text_error(ng-show="ChangePassForm.confirmPassword.$error.modelValuesCompare")
+					span(ng-bind="'SETTINGS.PASSWORD.DONT_MATCH' | translate")
+					.vp_10
+				.btns
+					label.btn.btn_32.btn_green.t-text_center(
+						style="width: 100px;"
+						ng-class="{ 'disabled': model.changePassForm.new_password != model.changePassForm.repeat_new_password || ChangePassForm.$invalid || !ChangePassForm.$dirty }"
+					)
+						span(ng-bind="'COMMON.SAVE_BUTTON' | translate")
+						input(type="submit")
+					.btn.btn_32.btn_red.t-float_right(
+						ng-bind="'SETTINGS.PASSWORD.RESET_BUTTON' | translate"
+						confirm-click="resetPassword()"
+					)
+
+		.vp_20
+
+		.title__container
+			.title(ng-bind="'SETTINGS.EMAIL.TITLE' | translate")
+			.sub-title
+		.content
+			form.t-validate-highlight.t-max-w300(
+				name="ChangeEmailForm"
+				ng-submit="ChangeEmailForm.$valid && ChangeEmailForm.$dirty && submitChangeEmail()"
+				novalidate
+			)
+				input.input.input_32(
+					type="email"
+					ng-model="model.changeEmailForm.email"
+					placeholder="E-mail"
+					required
+				)
+				.vp_10
+				input.input.input_32(
+					type="password"
+					ng-model="model.changeEmailForm.password"
+					placeholder="{{ 'COMMON.PASSWORD' | translate }}"
+					required
+				)
+				.vp_10
+				label.btn.btn_32.btn_green.t-text_center(
+					style="width: 100px;"
+					ng-class="{ 'disabled' : ChangeEmailForm.$invalid || !ChangeEmailForm.$dirty }"
+				)
+					span(ng-bind="'COMMON.SAVE_BUTTON' | translate")
+					input(type="submit")
+
+		.vp_50

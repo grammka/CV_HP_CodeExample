@@ -1,0 +1,155 @@
+.landing__header
+	.landing__center
+		.landing__header__name HackPack
+		.landing__menu
+			a.landing__menu__item(
+				href="/about/"
+				target="_blank"
+				ng-bind="'LANDING.NAVIG.ABOUT' | translate"
+			)
+			a.landing__menu__item(
+				href="https://hackpack.press/blog/"
+				target="_blank"
+				ng-bind="'LANDING.NAVIG.BLOG' | translate"
+			)
+			//a.landing__menu__item(
+			//	href="/prices/"
+			//	target="_blank"
+			//	ng-bind="'LANDING.NAVIG.PRICES' | translate"
+			//)
+		.landing__navig
+			.btn.btn_26.btn_white.btn_inline.btn_wb(
+				ng-click="switchLanguage()"
+				ng-bind="'LANDING.NAVIG.SWITCH_LANGUAGE' | translate"
+			)
+			span.hp_10
+			a.btn.btn_26.btn_white.btn_inline(
+				ui-sref="signIn"
+				ng-bind="'LANDING.NAVIG.SIGNIN' | translate"
+			)
+			span.hp_10
+			a.btn.btn_26.btn_green.btn_inline(
+				ui-sref="signIn({section: 'signup'})"
+				ng-bind="'LANDING.NAVIG.REGISTRATE' | translate"
+			)
+
+.vp_50
+
+.landing__even-section
+	.vp_50
+	.landing__center
+		.landing__hero
+			img.landing__hero__logo(src="data/img/logo.svg")
+			.landing__hero__title(ng-bind="'LANDING.TITLE' | translate")
+			.vp_20
+			.landing__hero__sub-title(ng-bind-html="'LANDING.SLOGAN' | translate")
+		.vp_30
+		.t-text_center
+			a.btn.btn_40.btn_green.btn_inline(
+				ui-sref="signIn({section: 'signup'})"
+				ng-bind="'LANDING.JOIN_BUTTON' | translate"
+			)
+		.vp_50
+
+.landing__section
+	.landing__center
+		.vp_30
+		.fs_30.t-text_center(ng-bind="'LANDING.SNAPS.TITLE' | translate")
+		.vp_10
+		.fs_16.t-text_light.t-text_center(ng-bind="'LANDING.SNAPS.DESC' | translate")
+		.vp_30
+		.snaps
+			.snap(ng-repeat="snap in model.snaps track by $index")
+				div(ng-if="snap.snap_type == 'idea'")
+					.snap__header__icon.sl-icon(ng-class="'snap__header__icon_' + snap.snap_type")
+					.snap__idea-content.t-link(ng-bind-html="snap.teaser")
+
+				div(ng-if="snap.snap_type != 'idea'")
+					.snap__header.clearfix
+						.snap__header__icon.sl-icon(ng-class="'snap__header__icon_' + snap.snap_type")
+						.snap__header__info(ng-if="snap.snap_type == 'job' && snap.reward_value")
+							span(ng-if="snap.reward_range")
+								span.t-text_light(ng-bind="snap.reward_range")
+								span.hp_5
+							b(ng-bind="snap.reward_value")
+							span.hp_5
+							b(ng-bind="snap.reward_currency_symbol")
+						.snap__header__info(ng-if="snap.snap_type == 'event' && (snap.event_start || snap.event_finish)")
+							b(ng-if="snap.event_start" ng-bind="snap.event_start | amDateFormat:'MMM DD'")
+							span(ng-if="snap.event_start && snap.event_finish")
+								span.hp_8
+								span.t-text_light &ndash;
+								span.hp_8
+							b(ng-if="snap.event_finish" ng-bind="snap.event_finish | amDateFormat:'MMM DD'")
+						.snap__title(
+							ng-if="snap.title"
+							ng-bind="snap.title"
+						)
+					.snap__content
+						.snap__teaser(ng-bind-html="snap.teaser || snap.description")
+
+				.snap__footer
+					span(ng-if="snap.affiliation")
+						span.snap__author-name(ng-bind="snap.affiliation")
+					span.snap__author-name(
+						ng-if="!snap.affiliation"
+						ng-bind="snap.author.full_name"
+					)
+					span.hp_8
+					span.snap__posted-date(am-time-ago="snap.created_at")
+	.vp_30
+
+
+.landing__even-section
+	.landing__even-section__in
+
+		.vp_30
+		.fs_30.t-text_white.t-text_center(ng-bind="'LANDING.PROFESSIONALS_AROUND_THE_WORLD.TITLE' | translate")
+		.vp_30
+		.landing__map__wrapper
+			.landing__map#landingMap(landing-map, data="model.mapData")
+
+		//.landing__center
+		//	.vp_30
+		//	.fs_30.t-text_white.t-text_center(ng-bind="'LANDING.ALREADY_REGISTERED.TITLE' | translate")
+		//	.vp_30
+		//	.landing__users-by-roles__wrapper
+		//		landing-roles-chars(data="model.charsData")
+		//	.vp_30
+
+		.landing__center
+			.vp_30
+			.fs_30.t-text_white.t-text_center(ng-bind="'LANDING.WHAT_USERS_SAY.TITLE' | translate")
+			.vp_30
+			.landing__quotes
+				.landing__quotes__item__wrapper(ng-repeat="item in model.quotes")
+					.landing__quotes__item
+						a.landing__quotes__item__name(
+							ng-href="{{ item.link }}"
+							target="_blank"
+							ng-bind="item.name | translate"
+						)
+						.landing__quotes__item__role(ng-bind="item.role | translate")
+						.landing__quotes__item__quote(ng-bind="item.quote| translate")
+		.vp_30
+
+.landing__footer
+	.vp_50
+	.landing__footer__developers
+		span(ng-bind="'LANDING.FOOTER.CREATORS' | translate")
+		|  #[a.t-link(href="https://twitter.com/JustinVarilek", target="_blank") @justin]
+		| , #[a.t-link(href="https://www.facebook.com/profile.php?id=100001637377352", target="_blank") @alexander]
+	.landing__footer__navig
+		a.t-link(href="/about/", target="_blank", ng-bind="'LANDING.NAVIG.ABOUT' | translate")
+		span.hsl /
+		a.t-link(href="https://hackpack.press/blog/", target="_blank", ng-bind="'LANDING.NAVIG.BLOG' | translate")
+		span.hsl /
+		a.t-link(href="https://www.facebook.com/HackPackPress", target="_blank") Facebook
+		span.hsl /
+		a.t-link(href="https://twitter.com/HackPackHQ", target="_blank") Twitter
+		span.hsl /
+		a.t-link(href="/terms-of-use/", target="_blank", ng-bind="'LANDING.FOOTER.TERMS_OF_USE' | translate")
+		span.hsl /
+		a.t-link(href="/privacy-policy/", target="_blank", ng-bind="'LANDING.FOOTER.PRIVACY_POLICY' | translate")
+	.vp_50
+

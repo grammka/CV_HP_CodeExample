@@ -1,0 +1,27 @@
+.p_10(ng-if="model.currUserId != model.user.id && !model.editing")
+	.t-max-w700
+
+		.notifier.info(
+			ng-if="model.user.colleague_status != 'accepted'"
+			ng-bind-html="'PROFILE.FEEDBACK.NOT_COLLEAGUES' | translate"
+		)
+
+		.btn.btn_32.btn_white.btn_inline(
+			ng-if="model.categories && model.categories.length && model.user.colleague_status == 'accepted'"
+			ng-bind="'PROFILE.FEEDBACK.EDIT_BUTTON' | translate"
+			ng-click="edit()"
+		)
+
+		.vp_10
+
+		div
+			.feedback__post(ng-repeat="item in model.posts track by $index")
+				.feedback__post__header
+					.t-inline-container
+						.t-inline-block
+							.fs_14(ng-bind="item.category")
+						span.hp_15
+						.t-inline-block
+							.rating
+								.rating__bar(style="width: {{ item.rating * 10 }}%")
+				.feedback__post__text(ng-bind-html="item.comment")

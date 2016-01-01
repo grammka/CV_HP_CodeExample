@@ -1,0 +1,37 @@
+div(ng-if="!model.requestSent")
+	include organization/_company-website
+
+	.config__section(ng-if="model.searchCompanyExist == false")
+		include organization/_company-name
+
+	.config__section(ng-if="model.company && model.searchCompanyExist")
+		include organization/_company-exist
+
+.p_10(ng-if="model.requestSent")
+	.t-max-w700
+		.notifier.info(ng-bind="'MY_COMPANY.CREATE.REQUEST_SENT' | translate")
+
+.title__container
+	.title(ng-bind="'MY_COMPANY.CREATE.COMPANY_INVITED_YOU' | translate")
+
+.p_20
+	.members-grid
+		a.members-grid__member(
+			ng-repeat="item in model.invites track by $index"
+			ui-sref="ws.organization.principal({organizationId: item.company.id})"
+			target="_blank"
+		)
+			.members-grid__member__avatar
+				avatar(data="item.company")
+			b.members-grid__member__name(ng-bind="item.company.name")
+			.members-grid__member__role(ng-bind="item.company.website")
+			.vp_5
+			.btns
+				.btn.btn_18.btn_green(
+					ng-click="acceptCompanyRequest($event, item.company.id)"
+					ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+				)
+				.btn.btn_18.btn_red(
+					ng-click="declineCompanyRequest($event, item.company.id, $index)"
+					ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+				)

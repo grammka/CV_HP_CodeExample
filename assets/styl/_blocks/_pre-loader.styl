@@ -1,0 +1,47 @@
+.pre-loader
+	width: 100%
+	height: 100%
+	display: none
+	background-color: #fff
+	fixed top 0 left 0
+	z-index: 1000000
+	.pre-loading &
+		display: block
+
+.pre-loader__logo__wrapper
+	width: 200px
+	height: 200px
+	margin-top: -20px
+	position: relative
+	overflow: hidden
+
+.pre-loader__logo
+	width: 100%
+	position: relative
+	z-index: 100
+
+.pre-loader__logo__background
+	background-color: #888
+	absolute top -100px right -100px bottom -100px left -140px
+	&:before,
+	&:after
+		content ''
+		display: block
+		background-color #000
+		absolute top 0 left 0 right 0 bottom 0
+		border-radius 50%
+		animation: pulse-dot 1.6s infinite ease-in-out
+		transform scale(0)
+	&:after
+		animation-delay 0.8s
+
+@keyframes pulse-dot
+	0%
+		transform scale(0)
+		opacity: 1
+	80%
+		transform scale(1)
+		opacity: 0.2
+	100%
+		transform scale(1)
+		opacity: 0

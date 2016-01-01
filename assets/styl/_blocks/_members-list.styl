@@ -1,0 +1,28 @@
+.members-list
+	display: block
+
+.members-list__member
+	min-height: 28px
+	line-height: 15px
+	display: block
+	padding: 12px 0 12px $padding + 28px + $padding
+	border-bottom: 1px solid $border-color
+	position: relative
+	no-select()
+	&:hover
+		background-color: #F7F9FA
+
+.members-list__member__avatar
+	width: 28px
+	height-lineheight(28px)
+	absolute top 12px left $padding
+	font-size: 13px
+	//ov-corner-left-bottom(#000, $content-bg-color, 3px)
+
+.members-list__member__name
+	font-weight: normal
+	font-size: 13px
+
+.members-list__member__role
+	font-size: 12px
+	color $light-text-color

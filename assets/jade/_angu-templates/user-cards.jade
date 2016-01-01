@@ -1,0 +1,79 @@
+.user-cards
+	.user-card(ng-repeat="user in users track by $index")
+		.user-card__header
+			.user-card__approved-status(
+				ng-if="user.is_approved_by_hackpack"
+				n-tooltip="{{ 'COMMON.APPROVED_BY_HACKPACK' | translate }}"
+				n-tooltip-placement="right"
+			)
+			a.user-card__avatar(href="{{ '/profile/' + user.id }}")
+				avatar(data="user")
+			a.user-card__name.t-link(
+				href="{{ '/profile/' + user.id }}"
+				ng-bind="user.full_name"
+			)
+			span.user-card__availability.hp_10(
+				ng-if="!RC('Expert', user.role.name)"
+				ng-class="{ true: 't-text_success', false: 't-text_error' }[user.is_available]"
+				ng-bind="(user.is_available ? 'COMMON.OPEN_TO_GIGS' : 'COMMON.BOOKED') | translate"
+			)
+				location-text(ng-if="user" model="user")
+
+		//.user-card__content
+		//	.user-card__content__item(ng-if="user.affiliations.length")
+		//		.fs_12.t-text_light(ng-bind="'SEARCH.LIST.AFFILIATIONS.TITLE' | translate")
+		//		.tags.vp_5
+		//			.tag(
+		//				ng-repeat="affiliation in user.affiliations"
+		//				ng-bind="affiliation.name"
+		//			)
+		//	.user-card__content__item(ng-if="user.languages.length")
+		//		.fs_12.t-text_light(ng-bind="'SEARCH.LIST.LANGUAGES.TITLE' | translate")
+		//		.tags.vp_5
+		//			.tag(ng-repeat="item in user.languages")
+		//				b(ng-bind="item.language")
+		//				span.hp_5(ng-bind="item.experience")
+		//	.user-card__content__item(ng-if="user.skills.length")
+		//		.fs_12.t-text_light(ng-bind="'SEARCH.LIST.SKILLS.TITLE' | translate")
+		//		.tags.vp_5
+		//			.tag(
+		//				ng-repeat="name in user.skills"
+		//				ng-bind="name"
+		//			)
+		//	.user-card__content__item(ng-if="user.expertise.length")
+		//		.fs_12.t-text_light(ng-bind="(RC('Expert', model.user.role.name) ? 'SEARCH.LIST.EXPERTISE.TITLE_BY_ROLES.EXPERT' : (RC('PR', model.user.role.name) || RC('NGO', model.user.role.name) ? 'SEARCH.LIST.EXPERTISE.TITLE_BY_ROLES.PR_NGO' : 'SEARCH.LIST.EXPERTISE.TITLE_BY_ROLES.OTHERS')) | translate")
+		//		.tags.vp_5
+		//			.tag(
+		//				ng-repeat="name in user.expertise"
+		//				ng-bind="name"
+		//			)
+		//
+		//.user-card__footer
+		//	.btns.t-text_right
+		//		.btn.btn_20.t-w120.t-text_center.btn_white(
+		//			ng-if="!user.colleague_status"
+		//			ng-click="requestAsColleague(user)"
+		//			ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.NONE' | translate"
+		//		)
+		//		.btn.btn_20.t-w120.t-text_center(
+		//			ng-if="user.colleague_status == 'pending'"
+		//			ng-init="this.status = 'Pending'"
+		//			ng-class="{ true: 'btn_orange', false: 'btn_red' }[this.status == 'Pending']"
+		//			ng-mouseenter="this.status = 'Cancel'"
+		//			ng-mouseleave="this.status = 'Pending'"
+		//			ng-click="cancelRequestAsColleague(user)"
+		//			ng-bind="(this.status == 'Pending' ? 'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.PENDING' : 'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.CANCEL') | translate"
+		//		)
+		//		.fbtn.btn_20.t-w120.t-text_center.btn_white(
+		//			ng-if="user.colleague_status == 'accepted'"
+		//			ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.ACCEPTED' | translate"
+		//		)
+		//		.btn.btn_20.t-w120.t-text_center.btn_white(
+		//			ng-if="user.colleague_status == 'rejected'"
+		//			ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.REJECTED' | translate"
+		//		)
+		//		a.btn.btn_20.btn_white(
+		//			ng-href="{{ 'messenger/' + model.currUserId + '/' + user.id }}"
+		//			target="_blank"
+		//			ng-bind="'COMMON.SEND_MESSAGE' | translate"
+		//		)

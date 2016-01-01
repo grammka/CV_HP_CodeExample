@@ -1,0 +1,36 @@
+.container__sidebar
+
+	.header
+		.header__content
+			.header__title(
+				n-tooltip="{{ model.organization.name.length > 22 ? model.organization.name : '' }}"
+				n-tooltip-placement="right"
+				ng-bind="model.organization.name"
+			)
+
+	.content__with-header
+		.nano(nano-scroll, track="false")
+			.nano-content
+				.container__sidebar__photo
+					label.container__sidebar__photo__upload-overlay(ng-if="model.organization.permissions.is_admin && model.organization.permissions.edit_company")
+						.center-block-parent
+							.center-block
+								.sl-icon.sl-icon-id-picture-2
+								span(ng-bind="'MY_COMPANY.SIDEBAR.UPDATE_PHOTO' | translate")
+						input.t-hidden-input(type="file", ngf-select="true", ngf-change="uploadPhoto($files)")
+					avatar(data="model.organization")
+
+				.profile__sidebar__user-info
+					div(ng-if="model.organization.links && (model.organization.links | objLength)")
+						span(ng-repeat="(name, link) in model.organization.links")
+							a.t-white-link(
+								ng-show="link"
+								ng-href="{{ link }}"
+								target="_blank"
+								ng-bind="name"
+							)
+							span.hsl(ng-if="!$last && link") /
+					.vp_10(ng-show="model.organization.description && model.organization.links && (model.organization.links | userLinksExist)")
+					div(ng-if="model.organization.description")
+						.profile__sidebar__user-info__title(ng-bind="'MY_COMPANY.SIDEBAR.ABOUT_TITLE' | translate")
+						.profile__sidebar__user-info__desc(ng-bind-html="model.organization.description")

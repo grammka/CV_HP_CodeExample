@@ -1,0 +1,65 @@
+getItemWidth($defaultPercent, $maxItemsPerRow)
+	$width = 0
+	if 100 / $maxItemsPerRow > $defaultPercent
+		$width = 100% / $maxItemsPerRow
+	else
+		$width = $defaultPercent * 1%
+	return $width
+
+getAdditionalClassName($maxItemsPerRow)
+	$classNamePart = ""
+	if $maxItemsPerRow != 10
+		$classNamePart = "_max-items-" + $maxItemsPerRow
+	return $classNamePart
+
+media($stateClass, $itemsCount, $minWidth, $additionalWidth, $percentWidth, $maxItemsPerRow)
+	@media (min-width: ($minWidth * $itemsCount + $additionalWidth + 1px)) and (max-width: ($minWidth * ($itemsCount + 1) + $additionalWidth))
+		.sidebar_{$stateClass}
+			.adaptive-grid_min-{"" + $minWidth + getAdditionalClassName($maxItemsPerRow)}
+				.adaptive-grid__item
+					width: getItemWidth($percentWidth, $maxItemsPerRow)
+
+
+
+adaptive-grid-media($minWidth, $maxItemsPerRow=10)
+	$additionalClass = "" + $minWidth + getAdditionalClassName($maxItemsPerRow)
+
+	/* Minimized Sidebar */
+
+	@media (min-width: $minWidth * 7 + $sidebar-width + 1px)
+		.sidebar_unlocked
+			.adaptive-grid_min-{$additionalClass}
+				.adaptive-grid__item
+					width: getItemWidth(14.28, $maxItemsPerRow)
+
+	media("unlocked", 6, $minWidth, $sidebar-width, 16.66, $maxItemsPerRow)
+	media("unlocked", 5, $minWidth, $sidebar-width, 20, $maxItemsPerRow)
+	media("unlocked", 4, $minWidth, $sidebar-width, 25, $maxItemsPerRow)
+	media("unlocked", 3, $minWidth, $sidebar-width, 33.33, $maxItemsPerRow)
+	media("unlocked", 2, $minWidth, $sidebar-width, 50, $maxItemsPerRow)
+
+	@media (max-width: $minWidth * 2 + $sidebar-width)
+		.sidebar_unlocked
+			.adaptive-grid_min-{$additionalClass}
+				.adaptive-grid__item
+					width: getItemWidth(100, $maxItemsPerRow)
+
+	/* Maximized Sidebar */
+
+	@media (min-width: $minWidth * 7 + $sidebar-width + 1px)
+		.sidebar_locked
+			.adaptive-grid_min-{$additionalClass}
+				.adaptive-grid__item
+					width: getItemWidth(14.28, $maxItemsPerRow)
+
+	media("locked", 6, $minWidth, $sidebar-width, 16.66, $maxItemsPerRow)
+	media("locked", 5, $minWidth, $sidebar-width, 20, $maxItemsPerRow)
+	media("locked", 4, $minWidth, $sidebar-width, 25, $maxItemsPerRow)
+	media("locked", 3, $minWidth, $sidebar-width, 33.33, $maxItemsPerRow)
+	media("locked", 2, $minWidth, $sidebar-width, 50, $maxItemsPerRow)
+
+	@media (max-width: $minWidth * 2 + $sidebar-width)
+		.sidebar_locked
+			.adaptive-grid_min-{$additionalClass}
+				.adaptive-grid__item
+					width: getItemWidth(100, $maxItemsPerRow)

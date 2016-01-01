@@ -1,0 +1,40 @@
+.info-list
+	display: block
+
+.info-list__with-editing-form
+	.info-list__item__header
+		&:before
+			display: none
+
+.info-list__item
+	margin-top: 10px
+	//position: relative
+	&:first-child
+		margin-top: 0
+
+.info-list__item__header
+	height: 20px
+	position: relative
+	cursor: default
+	.info-list_header-with-hr &
+		&:before
+			width: 100%
+			content ''
+			display: block
+			border-bottom 1px dotted #bbb
+			absolute left 0 bottom 5px
+			z-index: 10
+
+.info-list__item__title
+	padding-right 10px
+	position: relative
+	z-index: 20
+	text-transform: uppercase
+	color $light-text-color
+	font-size: 11px
+	display-inline-block()
+	.info-list_header-with-hr &
+		background-color: $content-bg-color
+
+.info-list__item__content
+	margin-top 3px

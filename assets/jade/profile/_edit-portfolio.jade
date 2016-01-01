@@ -1,0 +1,48 @@
+.p_10(ng-if="model.editing")
+	form.t-max-w500(
+		name="ArticleForm"
+		ng-submit="ArticleForm.$valid && ArticleForm.$dirty && save()"
+		novalidate
+	)
+		input.t-hidden-input(ng-model="model.form.id")
+		input.input.input_32(
+			ng-model="model.form.title"
+			placeholder="{{ 'PROFILE.PORTFOLIO.FORM.PLACEHOLDERS.TITLE' | translate }}"
+			required
+		)
+		.vp_10
+		input.input.input_32(
+			ng-model="model.form.publisher"
+			placeholder="{{ 'PROFILE.PORTFOLIO.FORM.PLACEHOLDERS.PUBLISHER' | translate }}"
+			required
+		)
+		.vp_10
+		input.input.input_32.t-validate-highlight(
+			ng-model="model.form.link"
+			placeholder="{{ 'PROFILE.PORTFOLIO.FORM.PLACEHOLDERS.LINK' | translate }}"
+			required
+			ng-pattern="regExp.url"
+		)
+		.vp_10
+		.t-pos_relative
+		input.input.input_32(
+			date-time
+			type="datetime"
+			min-view="date"
+			view="date"
+			auto-close="true"
+			ng-model="model.form.created"
+			placeholder="{{ 'PROFILE.PORTFOLIO.FORM.PLACEHOLDERS.DATE' | translate }}"
+			required
+		)
+
+		.vp_10
+
+		.btns
+			label.btn.btn_32.btn_green.t-text_center.t-w100(ng-class="{ 'disabled': ArticleForm.$invalid || !ArticleForm.$dirty }")
+				span(ng-bind="'COMMON.SAVE_BUTTON' | translate")
+				input(type="submit")
+			.btn.btn_32.btn_red(
+				ng-click="cancel()"
+				ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+			)

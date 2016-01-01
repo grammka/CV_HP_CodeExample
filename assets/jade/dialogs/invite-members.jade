@@ -1,0 +1,28 @@
+form.invite-form(
+	style="width: 300px;"
+	name="InviteMembersForm"
+	ng-submit="InviteMembersForm.$valid && InviteMembersForm.$dirty && inviteMember()"
+	novalidate
+)
+	.ngdialog__title {{ 'DIALOGS.INVITE.TITLE' | translate }}
+
+	input.binput.input_40(type="email", ng-model="model.form.email", placeholder="E-mail", required)
+	.vp_10
+	.bselect.select_40.t-w100p
+		select(
+			ng-model = "model.form.role"
+			ng-options = "role.value as (role.label | translate) for role in model.roles"
+			ng-class="{ 'default' : !model.form.role }"
+		)
+			option(value="", disabled) {{ 'COMMON.ROLE_PLACEHOLDER' | translate }}
+
+	.vp_20
+
+	.btns.t-text_right
+		label.btn.btn_36.btn_green.t-text_center.t-w50p(ng-class="{ 'disabled' : InviteMembersForm.$invalid || !InviteMembersForm.$dirty }")
+			span(ng-bind="'DIALOGS.INVITE.CONFIRM_BUTTON' | translate")
+			input(type="submit")
+		.btn.btn_36.btn_red.t-text_center.t-w50p(
+			ng-click="closeThisDialog()"
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+		)

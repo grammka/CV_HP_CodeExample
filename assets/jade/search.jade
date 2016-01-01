@@ -1,0 +1,169 @@
+form.container__sidebar.search__sidebar(
+	name="SearchForm"
+	novalidate
+)
+	.header
+		.header__content
+			.t-float_right.search__sidebar__header__found-count(ng-bind-html="'SEARCH.FOUND_COUNT' | translate:{count: model.foundCount}")
+			.header__title
+				span(ng-bind="'SEARCH.TITLE' | translate")
+				a.header__info-icon.sl-icon.sl-icon-infomation-circle(
+					href="//hackpack.press/blog/wtf-is-hp-search/"
+					target="_blank"
+				)
+
+	.content__with-header.search__sidebar__content
+		.nano(nano-scroll, track="false")
+			.nano-content
+				.search__sidebar__form
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.PERSON.TITLE' | translate")
+					input.input.input_32(
+						type="text"
+						ng-model="model.form.search"
+						placeholder="{{ 'SEARCH.FORM.PERSON.PLACEHOLDER' | translate }}"
+					)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.ROLE.TITLE' | translate")
+					my-select.selectize_32(
+						options="model.roles"
+						ng-model="model.form.roles"
+						dynamic-model="model.form.roles"
+						placeholder="{{ 'SEARCH.FORM.ROLE.PLACEHOLDER' | translate }}"
+					)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.LANGUAGES.TITLE' | translate")
+					my-multiple-select.selectize_min-32(
+						options="model.languages"
+						ng-model="model.form.languages"
+						dynamic-model="model.form.languages"
+						placeholder="{{ 'SEARCH.FORM.LANGUAGES.PLACEHOLDER' | translate }}"
+					)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.LOCATION.TITLE' | translate")
+					my-select-location.selectize_32.t-no-arrow(
+						ng-model="model.selectizeLocationObject"
+						dynamic-model="model.selectizeLocationObject"
+						placeholder="{{ 'SEARCH.FORM.LOCATION.PLACEHOLDER' | translate }}"
+						method="full"
+					)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.BEAT.TITLE' | translate")
+					my-select.selectize_32(
+						options="model.expertise"
+						ng-model="model.form.expertise"
+						dynamic-model="model.form.expertise"
+						placeholder="{{ 'SEARCH.FORM.BEAT.PLACEHOLDER' | translate }}"
+					)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.SKILLS.TITLE' | translate")
+					.search__sidebar__not-confirmed__container
+						.search__sidebar__not-confirmed__hint(
+							ng-if="!model.user.is_confirmed"
+							n-tooltip="{{ 'COMMON.NOT_CONFIRMED_DESC' | translate }}"
+							n-tooltip-placement="top"
+						)
+						my-multiple-select.selectize_min-32(
+							options="model.skills"
+							ng-model="model.form.skills"
+							dynamic-model="model.form.skills"
+							placeholder="{{ 'SEARCH.FORM.SKILLS.PLACEHOLDER' | translate }}"
+							ng-disabled="!model.user.is_confirmed"
+						)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.AVAILABILITY.TITLE' | translate")
+					.search__sidebar__not-confirmed__container
+						.search__sidebar__not-confirmed__hint(
+							ng-if="!model.user.is_confirmed"
+							n-tooltip="{{ 'COMMON.NOT_CONFIRMED_DESC' | translate }}"
+							n-tooltip-placement="top"
+						)
+						.select.select_32.t-w100p
+							select(
+								ng-model="model.form.is_available"
+								ng-options="status.value as status.label for status in model.isAvailableOptions"
+								ng-class="{ 'default' : !model.form.is_available }"
+								ng-disabled="!model.user.is_confirmed"
+							)
+								option(ng-bind="'SEARCH.FORM.AVAILABILITY.PLACEHOLDER' | translate" value="" disabled)
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SEARCH.FORM.CAR.TITLE' | translate")
+					.search__sidebar__not-confirmed__container
+						.search__sidebar__not-confirmed__hint(
+							ng-if="!model.user.is_confirmed"
+							n-tooltip="{{ 'COMMON.NOT_CONFIRMED_DESC' | translate }}"
+							n-tooltip-placement="top"
+						)
+						.select.select_32.t-w100p
+							select(
+								ng-model="model.form.has_car"
+								ng-options="car.value as car.label for car in model.carOptions"
+								ng-class="{ 'default' : !model.form.has_car }"
+								ng-disabled="!model.user.is_confirmed"
+							)
+								option(ng-bind="'SEARCH.FORM.CAR.PLACEHOLDER' | translate" value="" disabled)
+
+					.vp_40
+
+	.search__sidebar__footer
+		.btns
+			.btn.btn_32.btn_green.t-w50p.t-text_center(
+				ng-click="submitSearch()"
+				ng-bind="'SEARCH.FORM.SUBMIT_BUTTON' | translate"
+			)
+			.btn.btn_32.btn_red.t-w50p.t-text_center(
+				ng-bind="'SEARCH.FORM.CLEAR_BUTTON' | translate"
+				ng-click="clearSearchForm()"
+			)
+
+.content__with-sidebar.search__content__with-sidebar
+
+	.fixed-table-header(fixed-table-header, rows="model.users")
+		.fixed-table-header__header
+			.fixed-table-header__header__item
+			.fixed-table-header__header__item
+			.fixed-table-header__header__item Name
+			.fixed-table-header__header__item Role
+			.fixed-table-header__header__item
+		.fixed-table-header__content
+			.nano(
+				ng-if="model.users"
+				nano-scroll
+				lazy-loader="loadNextUsersPage()"
+			)
+				.nano-content
+					table.table-list(rows="model.users.length")
+						tbody
+							tr(ng-repeat="item in model.users")
+								td.t-w1p
+									.table-list__item__approved-status(
+										ng-if="item.is_approved_by_hackpack"
+										n-tooltip="{{ 'COMMON.APPROVED_BY_HACKPACK' | translate }}"
+										n-tooltip-placement="right"
+									)
+								td.t-w1p
+									a.table-list__item__avatar(
+										ui-sref="ws.profile.principal({userId: item.id})"
+										ui-sref-opts="{reload: true}"
+									)
+										avatar(data="item")
+								td
+									a.t-link(
+										ui-sref="ws.profile.principal({userId: item.id})"
+										ui-sref-opts="{reload: true}"
+										ng-bind="item.full_name"
+									)
+								td(ng-bind="item.role.label")
+								td
+									span(
+										ng-if="!RC('Expert', item.role.name)"
+										ng-class="{ true: 't-text_success', false: 't-text_error' }[item.is_available]"
+										ng-bind="(item.is_available ? 'COMMON.OPEN_TO_GIGS' : 'COMMON.BOOKED') | translate"
+									)
+					.vp_50

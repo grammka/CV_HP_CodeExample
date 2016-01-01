@@ -1,0 +1,16 @@
+.title__container
+	.title(ng-bind="'MY_COMPANY.CREATE.COMPANY_NAME.TITLE' | translate")
+	.sub-title(ng-bind="'MY_COMPANY.CREATE.COMPANY_NAME.DESC' | translate")
+
+.p_20
+	input.binput.input_36.t-w400.t-validate-highlight(
+		type="text"
+		ng-model="model.form.name"
+		placeholder="{{ 'MY_COMPANY.CREATE.COMPANY_NAME.INPUT_PLACEHOLDER' | translate }}"
+	)
+	.vp_20
+	.btns
+		.btn.btn_32.btn_green(
+			ng-click="create()"
+			ng-bind="'COMMON.CREATE_BUTTON' | translate"
+		)

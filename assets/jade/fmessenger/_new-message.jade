@@ -1,0 +1,10 @@
+.messenger__new-mess(ng-show="model.currChat")
+	.messenger__new-mess__author-avatar
+		avatar(data="model.currChat.to_profile.photo ? model.currChat.to_profile : model.user")
+	.messenger__new-mess__textarea#messengerNewMessage(
+		text-editor
+		model="model.newMessageText"
+		placeholder="{{ 'MESSENGER.NEW_POST_PLACEHOLDER' | translate }}"
+		on-change="newMessageFormChanged()"
+		on-submit="sendMessage()"
+	)

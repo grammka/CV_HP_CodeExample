@@ -1,0 +1,8 @@
+.opengraph(ng-class="{ 'with-image': data.image }")
+	.opengraph__remove-btn(ng-if="removeExist", ng-click="remove()")
+		.sl-icon.sl-icon-close
+	a.opengraph__link(ng-href="{{ data.url }}", target="_blank")
+		.opengraph__photo(style="background-image: url({{ data.image }});")
+		.opengraph__title(ng-bind="data.title")
+		.opengraph__desc(ng-bind="data.description")
+	

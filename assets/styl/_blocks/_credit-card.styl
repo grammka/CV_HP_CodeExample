@@ -1,0 +1,100 @@
+.credit-card
+	width: 720px
+	height: 260px
+	display: block
+	margin 0 auto
+	position: relative
+	.input
+	.select select
+		border 0
+		border-radius 2px
+		box-shadow #000 0 0 1px !important
+	.input
+		font-size: 18px
+	.select select
+		font-size: 16px
+
+.credit-card__front
+.credit-card__back
+	width: 460px
+	height: 260px
+	position: absolute
+	border-radius 6px
+
+
+.credit-card__front
+	background-image url(/data/img/credit-card-front-bg.jpg)
+	top 0
+	left 0
+	z-index: 20
+
+.credit-card__field
+	display: block
+
+.credit-card__field__title
+	font-weight: bold
+	font-size: 15px
+	color #fff
+	text-shadow rgba(0,0,0, 0.4) 0 1px
+	text-transform: uppercase
+
+.credit-card__field__container
+	margin-top: 4px
+
+.credit-card__holder-name
+	absolute top 40px left 20px right 20px
+
+.credit-card__number
+	absolute top 110px left 20px right 20px
+
+.credit-card__expire
+	absolute top 184px right 20px
+	white-space nowrap
+	font-size: 0
+
+.credit-card__expire__title
+	line-height: 36px
+	padding-right: 12px
+	font-weight: bold
+	font-size: 15px
+	color #fff
+	text-shadow rgba(0,0,0, 0.4) 0 1px
+	display-inline-block()
+
+
+
+.credit-card__back
+	background-color: #e5e5e5
+	top 0
+	right 0
+	z-index: 10
+
+.credit-card__back__magnetic-tape
+	width: 100%
+	height: 50px
+	background-color: #333
+	absolute top 40px left 0 right 0
+
+.credit-card__back__cvc
+	height: 46px
+	padding: 8px 8px 0 0
+	background: repeating-linear-gradient(
+	#d8d8d8,
+	#d8d8d8 1px,
+	#e5e5e5 1px,
+	#e5e5e5 4px
+	)
+	absolute top 100px left 0 right 12px
+	white-space nowrap
+	font-size: 0
+	text-align: right
+	.input
+		display-inline-block()
+
+.credit-card__back__cvc__title
+	line-height: 36px
+	padding-right: 12px
+	font-weight: bold
+	font-size: 18px
+	color #888
+	display-inline-block()

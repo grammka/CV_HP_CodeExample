@@ -1,0 +1,50 @@
+.messenger__messages__container
+	width: 100%
+	absolute top 0 left 0 bottom 0
+
+.messenger__messages
+	margin 0 10px
+
+.messenger__message
+	margin-top: 10px
+	margin-right: 130px
+	font-size: 12px
+
+.messenger__message__content
+	max-width: 100%
+	background-color: #E9F2F9
+	border 1px solid #D3DEE6
+	padding 3px 10px 7px
+	position: relative
+	box-sizing border-box
+	border-radius: 2px
+	display-inline-block()
+	a
+		@extend .t-link
+
+.messenger__message__author-name
+	font-weight 600
+
+.messenger__message__posted-date
+	width: 160px
+	line-height: 32px
+	padding 0 10px
+	absolute top 0 right -180px
+	//color #DBDDE2
+	color $light-text-color
+
+.messenger__message__text
+	margin-top: 2px
+	font-size: 13px
+	word-wrap: break-word
+
+.messenger__message_my
+	margin-right: 0
+	margin-left: 130px
+	text-align: right
+	.messenger__message__content
+		text-align: left
+	.messenger__message__posted-date
+		right auto
+		left -180px
+		text-align: right

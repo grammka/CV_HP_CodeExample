@@ -1,0 +1,35 @@
+.container__sidebar
+	.header
+		.header__content
+			.header__title(ng-bind="'MESSENGER.TITLE' | translate")
+	.messenger__sidebar__content.content__with-header
+		.nano(
+			ng-if="model.chats"
+			nano-scroll
+			track="false"
+			lazy-loader="loadNextChatsPage()"
+		)
+			.nano-content
+				.messenger__chats
+					.messenger__chat(
+						ng-repeat="chat in model.chats | orderObjectBy:'_updated_date':true track by $index"
+						ng-class="{ 'active': model.currChat.id == chat.id, 'with-new-messages': chat.new_messages }"
+						ng-click="openChat(chat)"
+					)
+						.messenger__chat__hide-btn(
+							ng-click="$event.stopPropagation();"
+							confirm-click="removeChat(chat.id)"
+						)
+							.sl-icon.sl-icon-close
+						.messenger__chat__from
+							.members-list__member
+								.members-list__member__avatar
+									avatar(data="chat.from_profile")
+								.members-list__member__name(ng-bind="chat.from_profile.full_name")
+								.members-list__member__role(ng-bind="chat.from_profile.role.label")
+						.messenger__chat__to(ng-if="chat.to_profile.id")
+							a.members-list__member(ui-sref="ws.messenger({userId: chat.to_profile.id})")
+								.members-list__member__avatar
+									avatar(data="chat.to_profile")
+								.members-list__member__name(ng-bind="chat.to_profile.full_name")
+								.members-list__member__role(ng-bind="chat.to_profile.role.label")

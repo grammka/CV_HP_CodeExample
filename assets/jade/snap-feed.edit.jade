@@ -1,0 +1,288 @@
+.header
+	.header__content
+		.header__title
+			a.t-white-link(ui-sref="ws.snapFeed.list")
+				i.sl-icon.sl-icon-arrow-left
+				span.hp_10
+				span(ng-bind="'SNAP_FEED.HEADER.BACK_TO_SNAPS_LIST' | translate")
+			span.hp_10
+			span.hsl /
+			span.hp_10
+			span(ng-bind="(model.currSnapId ? 'SNAP_FEED.EDIT.EDIT_TITLE' : 'SNAP_FEED.EDIT.CREATE_TITLE') | translate")
+
+.content__with-header(ng-if="model.form")
+	.nano(nano-scroll)
+		.nano-content
+			.content
+				.t-max-w500.t-center
+
+					ng-form(
+						name="SnapFeedForm"
+						novalidate
+						server-validation="model.validateObject"
+						methods="model.validateMethods"
+					)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.SNAP_TYPE' | translate")
+							.info-list__item__content
+								.select.select_32.t-w100p
+									select(
+										ng-model="model.selectedCategory"
+										ng-options="category as category.label for category in model.categoriesSelectOptions"
+										ng-change="onCategoryChanged()"
+									)
+										option(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.SNAP_TYPE' | translate" value="" disabled)
+
+						.info-list__item(ng-if="model.selectedCategory.type == 'job'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.FOR_ROLES' | translate")
+							.info-list__item__content
+								my-multiple-select.selectize_min-32(
+									ng-model="model.form.for_roles"
+									dynamic-model="model.form.for_roles"
+									options="model.forRolesMultipleSelectOptions"
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type != 'idea'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.TITLE' | translate")
+							.info-list__item__content(validate-field="title")
+								.pre-field(
+									ng-class="{ 'error': (model.form.title | replaceHTML).length > 100 }"
+									ng-bind="'SNAP_FEED.EDIT.FORM.TEASER.WARNING' | translate:{length: 100, used: (model.form.title | replaceHTML).length}"
+								)
+								input.input.input_32(
+									type="text"
+									ng-model="model.form.title"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(
+									ng-if="model.selectedCategory.type != 'idea'"
+									ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.TEASER' | translate"
+								)
+								.info-list__item__title(
+									ng-if="model.selectedCategory.type == 'idea'"
+									ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.IDEA' | translate"
+								)
+							.info-list__item__content
+								.pre-field(
+									ng-class="{ 'error': (model.form.teaser | replaceHTML).length > (model.selectedCategory.type == 'idea' ? 140 : 350) }"
+									ng-bind="'SNAP_FEED.EDIT.FORM.TEASER.WARNING' | translate:{length: (model.selectedCategory.type == 'idea' ? 140 : 350), used: (model.form.teaser | replaceHTML).length}"
+								)
+								.textarea.t-min-h100(
+									validate-field="teaser"
+									model="model.form.teaser"
+									text-editor
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type != 'idea'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.DESC' | translate")
+							.info-list__item__content(validate-field="description")
+								.textarea.t-min-h100(
+									model="model.form.description"
+									text-editor
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type == 'job' || model.selectedCategory.type == 'quote'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.DEADLINE' | translate")
+							.info-list__item__content(validate-field="deadline")
+								input.input.input_32(
+									ng-model="model.form.deadline"
+									date-time
+									type="datetime"
+									min-view="date"
+									view="date"
+									auto-close="true"
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type == 'pr'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.DATE_TO_PUBLISH' | translate")
+							.info-list__item__content(validate-field="date_to_publish")
+								input.input.input_32(
+									date-time
+									type="datetime"
+									min-view="date"
+									view="date"
+									auto-close="true"
+									ng-model="model.form.date_to_publish"
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type == 'event'")
+							.row_6
+								.col.col_8
+									.info-list__item__header
+										.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.EVENT_START_DATE' | translate")
+									.info-list__item__content(validate-field="event_start")
+										input.input.input_32(
+											ng-model="model.form.event_start"
+											date-time
+											type="datetime"
+											min-view="date"
+											view="date"
+											auto-close="true"
+										)
+								.col.col_8
+									.info-list__item__header
+										.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.EVENT_END_DATE' | translate")
+									.info-list__item__content(validate-field="event_finish")
+										input.input.input_32(
+											ng-model="model.form.event_finish"
+											date-time
+											type="datetime"
+											min-view="date"
+											view="date"
+											auto-close="true"
+										)
+		
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.LANGUAGE' | translate")
+							.info-list__item__content(validate-field="languages")
+								my-multiple-select.selectize_min-32(
+									ng-model="model.form.languages"
+									dynamic-model="model.form.languages"
+									options="model.languagesSelectOptions"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.LOCATION.TITLE' | translate")
+							.info-list__item__content(validate-field="countries")
+								my-multiple-select.selectize_min-32(
+									ng-model="model.form.country_ids"
+									dynamic-model="model.form.country_ids"
+									options="model.countriesSelectOptions"
+								)
+
+						//
+							.info-list__item(validate-field="city_ids")
+								.info-list__item__header
+									.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.LOCATION.TITLE' | translate")
+								.info-list__item__content
+									.profile__languages
+										.profile__language(ng-repeat="item in model.form.countries track by $index")
+											b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(ng-click="removeLocation($index)")
+											span.hp_5
+											location-text(model="item")
+										.vp_10
+										.row_6
+											.col.col_12
+												my-select-location.selectize_min-32.t-no-arrow(
+													method="countries"
+													ng-model="model.locationForm.object"
+													dynamic-model="model.locationForm.object"
+													placeholder="{{ '' }}"
+												)
+											.col.col_4
+												.btn.btn_32.btn_green.btn_w100.t-text_center(
+													ng-class="{ 'disabled': !model.locationForm.object }"
+													ng-click="addLocation()"
+													ng-bind="'PROFILE.MAIN.INFO_LIST.LANGUAGES.ADD_BUTTON' | translate"
+												)
+
+						.info-list__item(ng-if="model.selectedCategory.type != 'idea'")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.AFFILIATION' | translate")
+							.info-list__item__content(validate-field="affiliation")
+								my-select.selectize_32(
+									ng-model="model.form.affiliation"
+									dynamic-model="model.form.affiliation"
+									options="model.affiliationsSelectOptions"
+									create="true"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.INDUSTRY_TAGS' | translate")
+							.info-list__item__content(validate-field="tags")
+								my-multiple-select.selectize_min-32(
+									ng-model="model.form.tags"
+									dynamic-model="model.form.tags"
+									options="model.tagsMultipleSelectOptions"
+								)
+
+						.info-list__item(ng-if="model.selectedCategory.type == 'job'")
+							.row_6
+								.col.col_1
+									.info-list__item__header
+									.info-list__item__content
+										.select.select_32.t-w90
+											select(
+												ng-model="model.form.reward_range"
+												ng-options="item.value as item.label for item in model.rewardRangeSelectOptions"
+											)
+								.col.col_7
+									.info-list__item__header
+										.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.REWARD.PRICE' | translate")
+									.info-list__item__content
+										input.input.input_32(
+											type="text"
+											ng-model="model.form.reward_value"
+											select-on-click
+											just-number
+										)
+								.col.col_1
+									.info-list__item__header
+										.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.REWARD.CURRENCY' | translate")
+									.info-list__item__content
+										.select.select_32.t-w100p
+											select(
+												ng-model="model.form.reward_currency"
+												ng-options="item.value as item.label for item in model.rewardCurrencySelectOptions"
+												ng-class="{ 'default' : !model.form.reward_currency }"
+											)
+								.col.col_7
+									.info-list__item__header
+										.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.REWARD.FOR' | translate")
+									.info-list__item__content
+										.select.select_32.t-w100p
+											select(
+												ng-model="model.form.reward_for"
+												ng-options="status.value as status.label for status in model.rewardForSelectOptions"
+												ng-class="{ 'default' : !model.form.reward_for }"
+											)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'SNAP_FEED.EDIT.FORM.PLACEHOLDERS.ATTACHMENTS' | translate")
+							.info-list__item__content(ng-if="!model.currSnapId")
+								attachments(model="model.attachments" max-total-size="8" thumb-size="93")
+							.info-list__item__content(ng-if="model.currSnapId && model.uploadedAttachments.length")
+								.post__edit__photos-thumb(
+									ng-repeat="photo in model.uploadedAttachments"
+									style="background-image: url({{ photo.thumb }})"
+								)
+									.post__edit__photos-thumb__remove-btn.sl-icon.sl-icon-close(ng-click="removePhoto(photo.id, $index)")
+
+
+						div(ng-if="model.photosUploadingProcess")
+							.vp_20
+							.notifier.warning.notifier_animated(ng-bind="'SNAP_FEED.EDIT.PHOTOS_UPLOADING_WARNING' | translate")
+
+						.hr-line
+
+						.btns
+							.btn.btn_32.btn_green.t-min-w100.t-text_center(
+								ng-class="{ 'disabled' : SnapFeedForm.$invalid }"
+								ng-click="SnapFeedForm.$valid && SnapFeedForm.$dirty && submit()"
+								ng-bind="'COMMON.SAVE_BUTTON' | translate"
+							)
+							.btn.btn_32.btn_red.t-min-w100.t-text_center(
+								ng-if="!model.form.id"
+								confirm-click="clearForm()"
+								ng-bind="'COMMON.CLEAR_BUTTON' | translate"
+							)
+							a.btn.btn_32.btn_red.t-min-w100.t-text_center(
+								ng-if="model.form.id"
+								ui-sref="ws.snapFeed.list"
+								ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+							)
+
+						.vp_50

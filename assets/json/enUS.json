@@ -1,0 +1,1087 @@
+{
+	"COMMON": {
+		"APPROVED_BY_HACKPACK": "HackPack Approved",
+
+		"NOT_CONFIRMED_DESC": "We take the security of our members very seriously; therefore you are currently stuck in limited-access mode...<br>To gain full access, 3 members within your regional HackPack must confirm you. Speed up the process by filling out your profile, adding location, languages and stories to your portfolio, then finding colleagues.",
+
+		"FULL_MONTHS": {
+			"JANUARY": "January",
+			"FEBRUARY": "February",
+			"MARCH": "March",
+			"APRIL": "April",
+			"MAY": "May",
+			"JUNE": "June",
+			"JULY": "July",
+			"AUGUST": "August",
+			"SEPTEMBER": "September",
+			"OCTOBER": "October",
+			"NOVEMBER": "November",
+			"DECEMBER": "December"
+		},
+
+		"FULL_DAYS": {
+			"MONDAY": "Monday",
+			"TUESDAY": "Tuesday",
+			"WEDNESDAY": "Wednesday",
+			"THURSDAY": "Thursday",
+			"FRIDAY": "Friday",
+			"SATURDAY": "Saturday",
+			"SUNDAY": "Sunday"
+		},
+
+		"NAME": "Name",
+		"PASSWORD": "Password",
+		"REPEAT_PASSWORD": "Repeat password",
+		"REPEAT_NEW_PASSWORD": "Repeat new password",
+		"FORGOT_PASSWORD_?": "Forgot password?",
+		"RESET_PASSWORD": "Reset password",
+		"REMEMBER_ME": "Remember me",
+		"SIGN_IN": "Sign In",
+		"SIGN_UP": "Sign Up",
+		"SEND_MESSAGE": "Send message",
+		"DEADLINE": "Deadline",
+		"CREATED_AT": "Created",
+
+		"OK_BUTTON": "OK",
+		"ADD_BUTTON": "Add",
+		"CREATE_BUTTON": "Create",
+		"POST_BUTTON": "Post",
+		"PUBLISH_BUTTON": "Publish",
+		"UNPUBLISH_BUTTON": "Unpublish",
+		"EDIT_BUTTON": "Edit",
+		"SAVE_BUTTON": "Save",
+		"CANCEL_BUTTON": "Cancel",
+		"DONE_EDITING_BUTTON": "Done editing",
+		"REMOVE_BUTTON": "Remove",
+		"CONFIRM_BUTTON": "Confirm",
+		"DECLINE_BUTTON": "Decline",
+		"HIDE_BUTTON": "Hide",
+		"CLEAR_BUTTON": "Clear",
+		"SEND_BUTTON": "Send",
+		"INVITE_BUTTON": "Invite",
+		"PREV_BUTTON": "Prev",
+		"NEXT_BUTTON": "Next",
+		"CONTINUE_BUTTON": "Continue",
+		"ADD_COLLEAGUE": "Add colleague",
+
+		"ALL": "All",
+		"OR": "Or",
+		"REQUIRED": "Required",
+		"ONLINE": "Online",
+		"OFFLINE": "Offline",
+		"OPEN_TO_GIGS": "Open to gigs",
+		"BOOKED": "Booked",
+		"ON_MODERATION": "Moderation",
+		"NOT_PUBLISHED": "Not published",
+		"NOT_SELECTED": "Not selected",
+
+		"COLLEAGUE_STATUSES": {
+			"NONE": "Add colleague",
+			"PENDING": "Pending",
+			"ACCEPTED": "Colleague",
+			"REJECTED": "Rejected"
+		},
+
+		"ADD_TO_IGNORE_BUTTON": {
+			"IGNORE": "Block",
+			"IGNORING": "Blocked",
+			"CANCEL": "Unblock"
+		},
+
+		"SHARE_PRIVATE_INFO_BUTTON": {
+			"SHARE": "Reveal Profile Info",
+			"SHARING": "Profile Info Revealed",
+			"CANCEL": "Conceal Profile Info"
+		},
+
+		"ROLE_PLACEHOLDER": "Role",
+		"ROLES": {
+			"JOURNALIST": "Journalist",
+			"PHOTOGRAPHER": "Photographer",
+			"VIDEOGRAPHER": "Videographer",
+			"FIXER": "Fixer",
+			"EXPERT": "Expert",
+			"EDITOR_MEDIA_OUTLET": "Editor / Media Outlet",
+			"PR": "PR Professional / PR agency, University, Company",
+			"NGO": "PR Professional (NGO)"
+		},
+		"SHORT_ROLES": {
+			"JOURNALIST": "Journalist",
+			"PHOTOGRAPHER": "Photographer",
+			"VIDEOGRAPHER": "Videographer",
+			"FIXER": "Fixer",
+			"EXPERT": "Expert",
+			"EDITOR": "Editor",
+			"PR": "PR Professional",
+			"NGO": "NGO"
+		},
+
+		"ATTACHMENTS": {
+			"WARNING": "No more than {{ max }}MB (selected total size: {{ used }}MB)"
+		}
+	},
+
+
+	"PLACEHOLDERS": {
+		"LOCATION": "Type in your location",
+		"SEARCH_COMPANIES_BY_WEBSITE": "Company website"
+	},
+
+
+	"NOTIFICATIONS": {
+		"OOPS_SMTH_GOES_WORNG": "Ooops, something went wrong.",
+		"CHANGES_SUCCESSFULLY_SAVED": "Changes saved!",
+		"CHECK_FORM_FIELDS": "Check to make sure you filled everything in correctly.",
+		"CONTACT_ADMIN": "Contact administrator",
+		"TRY_AGAIN": "Please, try one more time.",
+		"EMAIL_CONFIRMED": "Email confirmed",
+		"NEW_EMAIL_CONFIRMED": "Email changed",
+		"EMAIL_CHANGE_CODE_NOT_EXIST": "Confirmation code doesn't exist. Check your email for confirmation code or contact administrator",
+		"REQUEST_SENT": "Request sent",
+		"REQUEST_CANCELED": "Request canceled",
+		"COLLEAGUE_REQUEST_ACCEPTED": "Colleague request accepted",
+		"COLLEAGUE_REQUEST_REJECTED": "Colleague request rejected",
+		"USER_PROFILE_NOT_FOUND": "User with this ID not found",
+		"NEW_MEMBER_INVITED": {
+			"SUCCESS": "Thanks for inviting another member"
+		},
+		"NEW_COMPANY_MEMBER_INVITED": {
+			"SUCCESS": "New member invited"
+		},
+		"PASSWORD_CHANGE": {
+			"SUCCESS": "Your new password is set"
+		},
+		"EMAIL_CHANGE": {
+			"SUCCESS": "We sent you a letter. Please check (<b>{{ email }}</b>) to confirm the email address"
+		},
+		"GRANT_ACCESS_TO_EXPERT_PROFILE": {
+			"SUCCESS": "Invite sent"
+		},
+		"FEEDBACK_SENT": {
+			"SUCCESS": "Thank you for helping us improve"
+		},
+		"SNAP_SUBSCRIBE_CHANGED": {
+			"SUCCESS": "Post subscribe changed"
+		},
+		"SNAP_SUBSCRIBE_CANCELED": {
+			"SUCCESS": "Your subscribed Posts have all been cleared"
+		},
+		"SNAP_NOTIFICATIONS_TIME_CHANGED": {
+			"SUCCESS": "Notifications settings saved"
+		},
+		"SNAP_MODERATION_DESC": "Thanks for creating a Post! You are not yet confirmed by the administrators, so we’ve sent your post off to mediation. Once the post or you are confirmed, it will be published."
+	},
+
+
+	"DIALOGS": {
+		"CONFIRM": {
+			"TITLE": "Are you sure?",
+			"CONFIRM_BUTTON": "Yes",
+			"DECLINE_BUTTON": "No"
+		},
+		"FEEDBACK": {
+			"TITLE": "Please leave us feedback so we can improve",
+			"FB_BUTTON": "Write us in Facebook",
+			"FORM": {
+				"CATEGORY_PLACEHOLDER": "Category",
+				"DESC_PLACEHOLDER": "Description",
+				"SELECT_OPTIONS": {
+					"BUG": "Bug",
+					"RANDOM_THOUGHTS": "Random thoughts",
+					"FUNC_DISLIKES": "Functionality dislikes",
+					"FUNC_LIKES": "Functionality likes",
+					"FUNC_WISHLIST": "Functionality wishlist",
+					"DESIGN_DISLIKE": "Design dislikes",
+					"DESIGN_LIKE": "Design likes",
+					"DESIGN_WISHLIS": "Design wishlist"
+				}
+			}
+		},
+		"INVITE": {
+			"TITLE": "Invite new member",
+			"CONFIRM_BUTTON": "Send invite"
+		}
+	},
+
+
+	"POSTS": {
+		"ATTACH_BUTTON": "Attach photos",
+		"POST_BUTTON": "Post",
+		"SHOW_COMMENTS_BUTTON": "View {{ count }} more {{ count | plural:'comment':'comments' }}",
+		"HIDE_COMMENTS_BUTTON": "Hide comments",
+		"NEW_POST_PLACEHOLDER": "Write a comment...",
+		"WRITE_COMMENT_PLACEHOLDER": "Write a comment..."
+	},
+
+
+	"LANDING": {
+		"NAVIG": {
+			"ABOUT": "About",
+			"BLOG": "Blog",
+			"PRICES": "Price List",
+			"SWITCH_LANGUAGE": "Русский",
+			"SIGNIN": "Sign In",
+			"REGISTRATE": "Register"
+		},
+		"TITLE": "The global network for the media industry",
+		"SLOGAN": "Strengthening independent journalism to better inform the public about our world",
+		"ROLES": "Editors, Fixers, Story Ideas, Photographers, Experts, Videographers, Journalists, Quotes",
+		"WATCH_VIDEO": "Watch our demo",
+		"JOIN_BUTTON": "Join the Community",
+		"SNAPS": {
+			"TITLE": "Latest Posts",
+			"DESC": "We’re connecting you with gigs, story ideas, events, quotes, and each other!"
+		},
+		"WE_ARE": {
+			"TITLE": "We're a community for",
+			"JOURNALISTS": {
+				"TITLE": "Journalists",
+				"PHRASE_1": "Cover what you want, where you want",
+				"PHRASE_2": "Connect with the right editor or fixer",
+				"PHRASE_3": "Save time as PR members chase comments",
+				"PHRASE_4": "Get your hands on an endless rolodex"
+			},
+			"EDITORS": {
+				"TITLE": "Editors",
+				"PHRASE_1": "Expand coverage as news breaks",
+				"PHRASE_2": "Gain access to niche topics",
+				"PHRASE_3": "Diversify your list of sources",
+				"PHRASE_4": "Produce original material"
+			},
+			"PRS": {
+				"TITLE": "PR Professionals",
+				"PHRASE_1": "Identify all journalists covering your industry",
+				"PHRASE_2": "Receive daily updates for quote requests",
+				"PHRASE_3": "Distribute press releases to interested journalists",
+				"PHRASE_4": "Read reviews of journalists before collaborating"
+			}
+		},
+		"ABOUT": {
+			"YOU_CAN": {
+				"TITLE": "With HackPack you can",
+				"ITEMS": {
+					"CONNECT_RAPIDLY": {
+						"TITLE": "Connect Rapidly",
+						"DESC": "Search the database of specialized profiles and find the right person based upon their portfolio, designated colleagues and subjective feedback."
+					},
+					"CHOOSE_CONFIDENTLY": {
+						"TITLE": "Choose Confidently",
+						"DESC": "Read reviews by colleagues before collaborating with a member to ensure you choose the right candidate for you."
+					},
+					"DO_MORE_WITH_LESS": {
+						"TITLE": "Do more with less",
+						"DESC": "Expand your coverage while diminishing your costs and increase your list of sources with no extra work."
+					},
+					"SECURE": {
+						"TITLE": "Work securely",
+						"DESC": "Engage with a community of vetted professionals, where members and regional administrators approve new members. Then set your privacy settings to control who sees your identity."
+					}
+				}
+			},
+			"YOU_GET": {
+				"TITLE": "Here is what you get"
+			}
+		},
+		"PROFESSIONALS_AROUND_THE_WORLD": {
+			"TITLE": "We are just growing, but already global"
+		},
+		"ALREADY_REGISTERED": {
+			"TITLE": "Already registered on HackPack",
+			"PLURAL_ROLES": {
+				"JOURNALIST": "Journalist# #Journalists",
+				"PHOTOGRAPHER": "Photographer# #Photographers",
+				"VIDEOGRAPHER": "Videographer# #Videographers",
+				"FIXER": "Fixer# #Fixers",
+				"EXPERT": "Expert# #Experts",
+				"EDITOR": "Editor# #Editors",
+				"PR": "PR member# #PR members",
+				"NGO": "NGO# #NGOs"
+			}
+		},
+		"WHAT_USERS_SAY": {
+			"TITLE": "What our users say",
+			"QUOTES": {
+				"0": {
+					"NAME": "Alec Luhn",
+					"ROLE": "Freelance reporter for The Guardian & Foreign Policy",
+					"TEXT": "In a relatively short time, HackPack has become a valuable resource. Through it I was able to connect with a local journalist at the #ElectricYerevan protests in Armenia & with journalists & fixers in St. Petersburg."
+				},
+				"1": {
+					"NAME": "Erica Alini",
+					"ROLE": "Deputy Managing Editor, Monitor Global Outlook",
+					"TEXT": "I spent weeks looking for a solid Moscow-based business reporter without success. HackPack found the perfect candidate in just a few days."
+				},
+				"2": {
+					"NAME": "Igor Serebryany",
+					"ROLE": "Editor",
+					"TEXT": "HackPack was an instantaneous and landslide of a success in my hunt for employees at our office. In less than one week, I found three candidates, one of which has already begun working full-time."
+				}
+			}
+		},
+		"FOOTER": {
+			"CREATORS": "Designed and built with all the love in the world by",
+			"TERMS_OF_USE": "Terms of Use",
+			"PRIVACY_POLICY": "Privacy Policy"
+		}
+	},
+
+
+	"SIGNIN": {
+		"RESET_PASSWORD_DESC": "Enter the email address associated with your account, and we'll email you a link to reset your password.",
+		"SEND_PASSWORD_RESET_LINK": "Send reset link",
+		"PASSWORD_RESET": "Resetting your password",
+		"PASSWORD_RESET_DESC": "You've got mail. We just sent instructions for resetting your password.",
+		"I_DONT_HAVE_ACCOUNT": "I don't have an account",
+		"SOCIALS_BUTTONS": {
+			"FACEBOOK": "Sign in with Facebook",
+			"TWITTER": "Sign in with Twitter",
+			"LINKEDIN": "Sign in with LinkedIn"
+		},
+		"CONFIRM_DESC": "By registering you agree that you have read and agree with<br><a class=\"t-blue-link\" href=\"/terms-of-use/\" target=\"_blank\">Terms of Use</a> and <a class=\"t-blue-link\" href=\"/privacy-policy/\" target=\"_blank\">Privacy Policy</a>"
+	},
+
+
+	"CONFIG_PROFILE": {
+		"WELCOME": "Welcome to HackPack",
+		"WELCOME_DESC": "Think of us as the airbnb for the news industry, but you find journalists instead of apartments. We keep registration short and simple, so within a minute you can make the connections you need.",
+		"ROLE_TITLE": "Main Role",
+		"ROLE_DESC": "Later you can select Secondary roles, but this is what you consider your primary role.",
+		"ROLE_SELECT_PLACEHOLDER": "Main Role",
+		"EMAIL_DESC": "Your social media account didn’t provide an email. To ensure you receive messages from members, be sure to include your email account."
+	},
+
+
+	"RULES_CONFIRMATION": {
+		"TITLE": "Welcome back to HackPack",
+		"DESC": "We’ve changed our “Privacy Policy“ and “Terms of Use since“ last time you were on the site. Before continuing on to HackPack, make sure to review and confirm them.",
+		"BONUS_DESC": "Your privacy is very important to us, check out <a class=\"t-link\" href=\"//hackpack.press/blog\" target=\"_blank\">the HackPack blog</a> to see what else we do to ensure you and your data stay safe.",
+		"SUBMIT_BUTTON": "Confirm"
+	},
+
+
+	"EMAIL_CONFIRMATION": {
+		"TITLE": "You’re almost there",
+		"DESC": "We sent you a letter. Now check (<b>{{ email }}</b>) to confirm the email address, and you’ll be a part of the network.",
+		"RESEND_BUTTON": "Resend letter",
+		"LETTER_RESENT": "Letter sent"
+	},
+
+
+	"INTRO": {
+		"WELCOME_TITLE": "Welcome!",
+		"TITLE": {
+			"BY_ROLES": {
+				"JOURNALIST": "We are creating a global network for the media industry to help connect you with editors, fixers, photographers, videographers and experts around the world.",
+				"FIXER": "We are creating a global network for the media industry to help connect you with editors, journalists, photographers, videographers and experts around the world.",
+				"PHOTOGRAPHER": "We are creating a global network for the media industry to help connect you with editors, journalists, fixers, videographers and experts around the world.",
+				"VIDEOGRAPHER": "We are creating a global network for the media industry to help connect you with editors, journalists, fixers, photographers and experts around the world.",
+				"EDITOR": "We are creating a global network for the media industry to help connect you with journalists, fixers, videographers, photographers and experts around the world.",
+				"EXPERT_PR_NGO": "We are creating a global network for the media industry to help connect you with editors, journalists, photographers and videographers around the world."
+			}
+		},
+		"BY_ROLES": {
+			"JOURNALIST": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Receive Verification",
+						"DESC": "Once three members verify you, you’re in. Add colleagues to accelerate the process."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Search for fixers, post quote queries and receive job offers."
+					}
+				}
+			},
+			"FIXER": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Receive Verification",
+						"DESC": "Once three members verify you, you’re in. Add colleagues to accelerate the process."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Post story ideas, receive job offers and chat in the professional forums."
+					}
+				}
+			},
+			"PHOTOGRAPHER": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Receive Verification",
+						"DESC": "Once three members verify you, you’re in. Add colleagues to accelerate the process."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Find members in the search, place story ideas and receive gig notifications in The Feed based upon your profile info. "
+					}
+				}
+			},
+			"VIDEOGRAPHER": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Receive Verification",
+						"DESC": "Once three members verify you, you’re in. Add colleagues to accelerate the process."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Post story ideas, receive job offers and search for editors."
+					}
+				}
+			},
+			"EDITOR": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Receive Verification",
+						"DESC": "Once three members verify you, you’re in. Add colleagues to accelerate the process."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Find journalists on location, post vacancies, and receive story ideas."
+					}
+				}
+			},
+			"EXPERT_PR_NGO": {
+				"STEPS": {
+					"0": {
+						"TITLE": "Profile = Access",
+						"DESC": "Add your location, beats, languages & current employer to appear higher in the search."
+					},
+					"1": {
+						"TITLE": "Promotion",
+						"DESC": "Add your organization and experts, so journalists can find you while working on stories."
+					},
+					"2": {
+						"TITLE": "Get to Work",
+						"DESC": "Find journalists, post freelancer requests, press releases and receive quote queries."
+					}
+				}
+			}
+		},
+		"WATCH_DEMO_BUTTON": "Watch Demo",
+		"CONTINUE_BUTTON": "Continue"
+	},
+
+
+	"SIDEBAR": {
+		"NAVIG": {
+			"SEARCH": "Search",
+			"MY_PROFILE": "My Profile",
+			"MY_COMPANY": "My Company",
+			"MY_HACK_PACKS": "My HackPacks",
+			"MESSENGER": "Messenger",
+			"SNAP_FEED": "The Feed",
+			"FEEDBACK": "Leave feedback",
+			"INVITE": "Invite",
+			"SETTINGS": "Settings",
+			"LOGOUT": "Logout"
+		},
+		"VIEW_PROFILE": "View profile"
+	},
+
+
+	"SEARCH": {
+		"TITLE": "Search",
+		"FOUND_COUNT": "Results <b>{{ count }}</b>",
+		"FORM": {
+			"PERSON": {
+				"TITLE": "Name",
+				"PLACEHOLDER": "Search by Name"
+			},
+			"ROLE": {
+				"TITLE": "Role",
+				"PLACEHOLDER": "Search by Role"
+			},
+			"LANGUAGES": {
+				"TITLE": "Languages",
+				"PLACEHOLDER": "Search by Language"
+			},
+			"LOCATION": {
+				"TITLE": "Location",
+				"PLACEHOLDER": "Search by Location"
+			},
+			"BEAT": {
+				"TITLE": "Beat",
+				"PLACEHOLDER": "Search by Expertise"
+			},
+			"SKILLS": {
+				"TITLE": "Skills",
+				"PLACEHOLDER": "Search by Skills"
+			},
+			"AVAILABILITY": {
+				"TITLE": "Availability",
+				"PLACEHOLDER": "Filter by Availability"
+			},
+			"CAR": {
+				"TITLE": "Car",
+				"PLACEHOLDER": "Filter for Cars"
+			},
+			"SUBMIT_BUTTON": "Search",
+			"CLEAR_BUTTON": "Clear"
+		},
+		"LIST": {
+			"LANGUAGES": {
+				"TITLE": "Languages"
+			},
+			"EXPERTISE": {
+				"TITLE_BY_ROLES": {
+					"EXPERT": "Expertise",
+					"PR_NGO": "Industries",
+					"OTHERS": "Beat"
+				}
+			},
+			"AFFILIATIONS": {
+				"TITLE": "Current Employer / Freelance Employers"
+			},
+			"SKILLS": {
+				"TITLE": "Skills"
+			}
+		}
+	},
+
+
+	"PROFILE": {
+		"HIDDEN_PRIVATE_INFO_DESC": "This user only shares this information with Colleagues",
+		"SIDEBAR": {
+			"HEADER": {
+				"LOOK_AT_PROFILE_LIKE_USER_BUTTON": "Look how users see your profile"
+			},
+			"CONTROLLED_BY_COMPANY": "This profile is controlled by the organization’s representative",
+			"SHARED_PRIVATE_INFO": "This user shared his private info with you",
+			"UPDATE_PHOTO": "Update profile photo",
+			"COLLEAGUE_REQUEST_BUTTON": {
+				"NONE": "Add сolleague",
+				"PENDING": "Pending",
+				"ACCEPTED": "Colleague",
+				"REJECTED": "Rejected",
+				"CANCEL": "Cancel"
+			},
+			"OPEN_TO_GIGS_BUTTON": "Open to gigs",
+			"BOOKED_BUTTON": "Booked",
+			"SEND_MESSAGE": "Send message",
+			"ABOUT_ME_TITLE_BY_ROLES": {
+				"EXPERT": "Bio",
+				"OTHERS": "About me"
+			},
+			"LINKS_TITLE": "Links",
+			"REFERENCES_TITLE": "Colleagues"
+		},
+		"NAVIG": {
+			"MAIN": "Main Info",
+			"PORTFOLIO": "Portfolio",
+			"COLLEAGUES": "Colleagues",
+			"FEEDBACK": "Colleague Feedback",
+			"PRIVACY": "Privacy Settings"
+		},
+		"GRANT_ACCESS_TO_EXPERT": {
+			"EDIT_BUTTON": "Grant access to this expert profile",
+			"TITLE": "Grant access to this expert profile",
+			"SAVE_BUTTON": "Send invite"
+		},
+		"PRIVACY_SETTINGS": {
+			"EDIT_BUTTON": "Privacy settings",
+			"FORM": {
+				"PRIVACY_LEVEL": {
+					"TITLE": "Privacy level",
+					"PLACEHOLDER": "Privacy level",
+					"SELECT_OPTIONS": {
+						"PUBLIC": {
+							"LABEL": "Public",
+							"DESC": "<b>Public:</b><br>All members can view your profile"
+						},
+						"SECURE": {
+							"LABEL": "Secure",
+							"DESC": "Only colleagues can view your real name, portfolio, social media links, references and about me. You choose who sees your real name when sending messages."
+						},
+						"TOP_SECRET": {
+							"LABEL": "Top Secret",
+							"DESC": "All non-colleagues only see your pseudonym, profile pic and role on your profile. You do not appear within any search."
+						}
+					}
+				},
+				"PSEUDONYM": {
+					"TITLE": "Pseudonym",
+					"PLACEHOLDER": "Pseudonym",
+					"DESC": "All members will view this name until you have confirmed them as colleagues or choose to send a message with your real name."
+				}
+			}
+		},
+		"LOCATION_DEFINED": {
+			"TITLE": "It looks like you are located in <b>{{ location }}</b>. Is this correct?",
+			"ACCEPT_BUTTON": "Yes",
+			"DECLINE_BUTTON": "No"
+		},
+		"MAIN": {
+			"EDIT_BUTTON": "Edit",
+			"CANCEL_BUTTON": "Leave editing",
+			"INFO_LIST": {
+				"FULL_NAME": {
+					"TITLE": "Full name",
+					"FIRST_NAME_PLACEHOLDER": "First name",
+					"LAST_NAME_PLACEHOLDER": "Last name"
+				},
+				"ORGANIZATION": {
+					"TITLE": "Organization"
+				},
+				"ROLE": {
+					"TITLE": "Role"
+				},
+				"SECONDARY_ROLES": {
+					"TITLE": "Secondary Roles"
+				},
+				"MEDIA_TYPES": {
+					"TITLE": "Media types"
+				},
+				"LOCATION": {
+					"TITLE": "Locations"
+				},
+				"LANGUAGES": {
+					"TITLE": "Languages",
+					"LANGUAGE_PLACEHOLDER": "Language",
+					"EXPERIENCE_PLACEHOLDER": "Experience",
+					"ADD_BUTTON": "Add"
+				},
+				"CONTACTING": {
+					"TITLE": "Contacting",
+					"PLACEHOLDER": "How to contact experts for interviews & quotes"
+				},
+				"PAYMENT_SCHEDULE": {
+					"TITLE_BY_ROLES": {
+						"PR_NGO": "Content Opportunities",
+						"EDITOR": "Payment schedule",
+						"OTHERS": "Payment preferences"
+					},
+					"PLACEHOLDER_BY_ROLES": {
+						"PR_NGO": "Interest in hiring writers, photographers, or video team for projects",
+						"EDITOR": "What is your company’s schedule for paying content producers",
+						"OTHERS": "How do you prefer to receive payments"
+					}
+				},
+				"HOW_APPROACH_ME": {
+					"TITLE_BY_ROLES": {
+						"EXPERT_PR_NGO": "Willingness to Collaborate",
+						"OTHERS": "Pitching preferences"
+					},
+					"PLACEHOLDER_BY_ROLES": {
+						"EXPERT_PR_NGO": "Your interest in participating at events, in case studies, or guest blogs",
+						"EDITOR": "How should journalists approach you",
+						"OTHERS": "How should PR members contact you"
+					}
+				},
+				"DEADLINES": {
+					"TITLE": "Deadlines",
+					"PLACEHOLDER": "What are key editorial dates and times for publishing stories"
+				},
+				"SPECIAL_FEATURES": {
+					"TITLE": "Special Features",
+					"PLACEHOLDER": "What unique features or topics would you like pitches and ideas for"
+				},
+				"GOING_LIVE": {
+					"TITLE": "Going Live",
+					"PLACEHOLDER": "My experience with live interviews"
+				},
+				"EXPERTISE": {
+					"TITLE_BY_ROLES": {
+						"EXPERT": "Expertise",
+						"PR_NGO": "Industries",
+						"OTHERS": "Beat"
+					},
+					"PLACEHOLDER": "Type a new type of expertise if needed"
+				},
+				"AFFILIATIONS": {
+					"TITLE": "Current Employer / Freelance Employers",
+					"PLACEHOLDER": ""
+				},
+				"SKILLS": {
+					"TITLE": "Skills",
+					"PLACEHOLDER": "Type a new Skill if needed"
+				},
+				"INVENTORY": {
+					"TITLE": "Inventory",
+					"CATEGORY_PLACEHOLDER": "Category",
+					"DESC_PLACEHOLDER": "New item",
+					"ADD_BUTTON": "Add"
+				},
+				"CAR": {
+					"TITLE": "Car",
+					"CONTENT": "I have a car"
+				},
+				"DANGER_LEVEL": {
+					"TITLE": "Risk tolerance",
+					"LEVELS": {
+						"0": {
+							"TITLE": "Select your Risk Tolerance",
+							"DESC": "Designate the level of physical and political risk you are willing to take for a story"
+						},
+						"1": {
+							"TITLE": "Basic Journalism",
+							"DESC": "This Risk Tolerance demonstrates a desire to work on stories that are far away from violence, such as sport, business, fashion, IT, editing etc."
+						},
+						"2": {
+							"TITLE": "Gettin’ Feet Wet",
+							"DESC": "At this level, you are interested in reporting in the field, but not willing to go to a conflict zone. Rallies with little likelihood of arrests are ok."
+						},
+						"3": {
+							"TITLE": "Violence Gloves Off",
+							"DESC": "You’ve taken precautions and are ready to report at political protests with riot police and orderly conflicts after the frontline has stopped moving."
+						},
+						"4": {
+							"TITLE": "Conflict Reporting",
+							"DESC": "Oftentimes for photographers and videographers willing to get a shot of the fighting or a fixer ready to help on politically dangerous topics in a very risky country. Be sure to take the necessary precautions for safety."
+						}
+					}
+				},
+				"ABOUT": {
+					"TITLE_BY_ROLES": {
+						"EXPERT": "Bio",
+						"OTHERS": "About me"
+					},
+					"WARNING": "No more than {{ length }} symbols ({{ used }} used)"
+				},
+				"MY_LINKS": {
+					"TITLE": "My links",
+					"DISABLED_LINK_DESC": "You can't edit this link, because you used it during the registration",
+					"NAME_PLACEHOLDER": "Site",
+					"URL_PLACEHOLDER": "http://www.example.com"
+				}
+			}
+		},
+		"PORTFOLIO": {
+			"TITLE": "Portfolio",
+			"SUB_TITLE": "Stories",
+			"EDIT_BUTTON": "Add a new story",
+			"CANCEL_BUTTON": "Leave editing",
+			"FORM": {
+				"PLACEHOLDERS": {
+					"TITLE": "Title",
+					"PUBLISHER": "Media Outlet",
+					"LINK": "Link",
+					"DATE": "Date Published"
+				}
+			},
+			"NO_ITEMS_DESC": "This member has yet to add any publications. Ask them directly for work examples."
+		},
+		"COLLEAGUES": {
+			"TITLE": "Colleagues",
+			"SUB_TITLE": "Members",
+			"NO_ITEMS_DESC": "This member has yet to add any Colleagues. Be the first!"
+		},
+		"SUGGESTIONS": {
+			"TITLE": "Suggested Colleagues",
+			"SUB_TITLE": "Members"
+		},
+		"FEEDBACK": {
+			"TITLE": "Feedback",
+			"EDIT_BUTTON": "Write feedback",
+			"FORM": {
+				"CATEGORY": {
+					"TITLE": "Category",
+					"PLACEHOLDER": "Category"
+				}
+			},
+			"NOT_COLLEAGUES": "To leave feedback, you must first work together and designate each other as colleagues",
+
+			"MY_PAGE_NO_ITEMS_DESC": "This is the Colleague Feedback, allowing you to provide constructive information on how to improve as well as provide insight to other members as they decide to work with someone",
+			"NOT_COLLEAGUES_NO_ITEMS_DESC": "This member has yet to be reviewed. Add each other as colleagues to leave feedback and help others decide whether they want to work together",
+			"COLLEAGUES_NO_ITEMS_DESC": "This member has yet to be reviewed. Be the first one!",
+			"CANT_POST_FEEDBACK_DESC": "This member has yet to be reviewed."
+		}
+	},
+
+
+	"MY_COMPANY": {
+		"LEAVE_BUTTON": "Leave the company",
+		"SIDEBAR": {
+			"UPDATE_PHOTO": "Update profile photo",
+			"ABOUT_TITLE": "About",
+			"LINKS_TITLE": "Links"
+		},
+		"NAVIG": {
+			"MAIN": "Main Info",
+			"USERS": "Users",
+			"USER_REQUESTS": "User requests",
+			"SENT_REQUESTS": "Sent requests"
+		},
+		"CREATE": {
+			"COMPANY_INVITED_YOU": "Organizations invited you:",
+			"COMPANY_NAME": {
+				"TITLE": "Organization Name",
+				"DESC": "Looks like you’re the first one. Write the Organization’s official name below, and you will begin as administrator of the page. After completing your profile, help by working on your organization’s profile as well.",
+				"INPUT_PLACEHOLDER": "Organization Name"
+			},
+			"COMPANY_WEBSITE": {
+				"TITLE": "Organization Website",
+				"DESC": "Place your organization’s website below, and we’ll automatically link you to it. If you’re the first member of your team on the site, you can create the organization’s page.",
+				"INPUT_PLACEHOLDER": "Organization Website"
+			},
+			"COMPANY_EXIST": {
+				"ASSOCIATED_WITH": "You will be associated with",
+				"PLZ_CONFIRM": "Please confirm that this is your organization.",
+				"CONFIRM_BUTTON": "Confirm",
+				"DECLINE_BUTTON": "Decline"
+			},
+			"REQUEST_SENT": "Request sent. Wait until the organization accept it."
+		},
+		"MAIN": {
+			"EDIT_BUTTON": "Edit main info",
+			"CANCEL_BUTTON": "Leave editing",
+			"INFO_LIST": {
+				"LANGUAGES": {
+					"TITLE": "Languages"
+				},
+				"LOCATION": {
+					"TITLE": "HQ"
+				},
+				"EXPERTISE": {
+					"TITLE": "Industry",
+					"PLACEHOLDER": "Type a new Beat if needed"
+				},
+				"WEBSITE": {
+					"TITLE": "Company website",
+					"CONTACT_ADMIN_TITLE": "contact admin to change"
+				},
+				"CONTACTING": {
+					"TITLE": "Contacting",
+					"PLACEHOLDER": "How to contact experts for interviews & quotes"
+				},
+				"DESC": {
+					"TITLE": "Company Description",
+					"WARNING": "No more than {{ length }} symbols ({{ used }} used)"
+				},
+				"LINKS": {
+					"TITLE": "Company links"
+				}
+			}
+		},
+		"USERS": {
+			"TITLE": "Users",
+			"EDIT_BUTTON": "Add user",
+			"CANCEL_BUTTON": "Cancel",
+			"REMOVE_BUTTON": "Remove",
+			"PERMISSIONS": {
+				"IS_ADMIN": "Admin",
+				"EDIT_COMPANY": "Edit company",
+				"INVITE_EXPERTS": "Invite experts",
+				"EDIT_EXPERTS": "Edit experts",
+				"INVITE_ADMINS": "Invite admins"
+			},
+			"FORM": {
+				"FIND_HP_MEMBER_PLACEHOLDER": "Find HackPack member",
+				"CREATE_EXPERT": {
+					"OR_HR": "Or create Expert profile",
+					"FIRST_NAME": "First name",
+					"LAST_NAME": "Last name",
+					"SUBMIT_BUTTON": "Create"
+				}
+			}
+		},
+		"USER_REQUESTS": {
+			"NO_ITEMS_DESC": "Нет ни одного запроса"
+		},
+		"SENT_REQUESTS": {
+			"NO_ITEMS_DESC": "У организации нет ни одного отправленного запроса"
+		}
+	},
+
+
+	"MY_HACKPACKS": {
+		"SIDEBAR": {
+			"FOLLOW_BUTTON_STATUSES": {
+				"FOLLOW": "Follow",
+				"UNFOLLOW": "Unfollow",
+				"FOLLOWING": "Following"
+			},
+			"CONTACT_ADMIN_BUTTON": "Contact admin",
+			"NEW_MEMBERS": {
+				"TITLE": "New members",
+				"CONFIRM_BUTTON": "Hack",
+				"DECLINE_BUTTON": "Flack",
+				"SKIP_BUTTON": "Skip",
+				"HINT": "Here you control who becomes a member of your HackPack. Simply press Hack to confirm, Flack to reject or Skip if unsure. It takes 3 members to confirm, but be sure before confirming."
+			},
+			"MEMBERS_TITLE": "Members"
+		},
+		"CONTENT": {
+			"NEW_POST_PLACEHOLDER": "Scribble something..."
+		},
+		"LIST": {
+			"CREATE_BUTTON": "Create Post"
+		}
+	},
+
+
+	"MESSENGER": {
+		"TITLE": "Messenger",
+		"NEW_POST_PLACEHOLDER": "Message..."
+	},
+
+
+	"SNAP_FEED": {
+		"HEADER": {
+			"BACK_TO_SNAPS_LIST": "To The Feed",
+			"BACK_TO_EDITING_SNAP": "Edit Post"
+		},
+		"FORM": {
+			"CATEGORY": {
+				"TITLE": "Category"
+			},
+			"SNAP_TYPE": {
+				"TITLE": "Post type",
+				"PLACEHOLDER": "Post type"
+			},
+			"LOCATION": {
+				"TITLE": "Location",
+				"PLACEHOLDER": "Search by Location"
+			},
+			"TAGS": {
+				"TITLE": "Tags",
+				"PLACEHOLDER": "Tags"
+			},
+			"SELECTED_TAG": "Selected tag",
+			"SUBMIT_BUTTON": "Search",
+			"CLEAR_BUTTON": "Clear"
+		},
+		"LIST": {
+			"TITLE": "The Feed",
+			"SUBSCRIBE_BUTTON": "Notification settings",
+			"CREATE_BUTTON": "Create post",
+			"NAVIG": {
+				"ALL": "All",
+				"SUBSCRIBED": "My Feed",
+				"CREATED": "My Created",
+				"ANSWERED": "My Responded",
+				"HIDDEN": "Hidden"
+			},
+			"CATEGORIES_TITLE": "Categories",
+			"TAGS_TITLE": "Tags",
+			"TAG_ALL": "All",
+			"SUBSCRIBED": {
+				"NO_SNAPS_DESC": "No posts found that match your filters. Be sure to add languages, beats and location to your profile."
+			},
+			"CREATED": {
+				"NO_SNAPS_DESC": "You haven't created any Post yet. If you want you can <a href=\"/snap-feed/edit/\">create a Post</a> now."
+			},
+			"ANSWERED": {
+				"NO_SNAPS_DESC": "No one so far has not responded to your Posts"
+			},
+			"HIDDEN": {
+				"NO_SNAPS_DESC": "There are no hidden Posts"
+			},
+			"SNAP_ITEM": {
+				"PRICE_MIN": "from {{ price }} {{ currency }}",
+				"PRICE_MAX": "to {{ price }} {{ currency }}"
+			}
+		},
+		"EDIT": {
+			"CREATE_TITLE": "Create Post",
+			"EDIT_TITLE": "Edit Post",
+			"FORM": {
+				"TEASER": {
+					"WARNING": "No more than {{ length }} symbols ({{ used }} used)"
+				},
+				"PLACEHOLDERS": {
+					"SNAP_TYPE": "Select Type",
+					"TITLE": "Title",
+					"DEADLINE": "Deadline",
+					"DATE_TO_PUBLISH": "Publishing Date",
+					"EVENT_START_DATE": "Start date",
+					"EVENT_END_DATE": "End date",
+					"TEASER": "Teaser",
+					"IDEA": "Idea",
+					"DESC": "Description",
+					"ATTACHMENTS": "Photos",
+					"LANGUAGE": "Select language",
+					"COUNTRY": "Select country",
+					"AFFILIATION": "Affiliation",
+					"INDUSTRY_TAGS": "Industry tags",
+					"FOR_ROLES": "Send to",
+					"REWARD": {
+						"PRICE": "Price",
+						"CURRENCY": "Currency",
+						"FOR": "For"
+					}
+				}
+			},
+			"PHOTOS_UPLOADING_WARNING": "Your photos are uploading. Please wait until uploading finished. You will be automaticaly redirected to Posts list."
+		},
+		"PREVIEW": {
+			"PREVIEW_TITLE": "Preview",
+			"POST_TITLE": "Post",
+			"EDIT_BUTTON": "Edit",
+			"PUBLISH_BUTTON": "Publish"
+		},
+		"SUBSCRIBE": {
+			"SUBSCRIBE": {
+				"TITLE": "Notification settings",
+				"FORM": {
+					"PLACEHOLDERS": {
+						"SNAP_TYPES": "Post Types",
+						"INDUSTRY_TYPES": "Industry Types",
+						"LANGUAGES": "Languages"
+					}
+				}
+			},
+			"NOTIFICATIONS": {
+				"TITLE": "Periodicity",
+				"SUB_TITLE": "Select periodicity for email notifications",
+				"TIME_PLACEHOLDER": "Time"
+			}
+		}
+	},
+
+
+	"SETTINGS": {
+		"COMMON": {
+			"TITLE": "Settings",
+			"SELECT_TITLE": "Language",
+			"SELECT_PLACEHOLDER": "Language"
+		},
+		"SITE_NOTIFICATIONS": {
+			"TITLE": "Site notifications"
+		},
+		"EMAIL_NOTIFICATIONS": {
+			"TITLE": "Notify via E-mail when",
+			"FORM": {
+				"HACKPACK_MESSAGE_REPLIED": "Comments on my messages in HackPack forums",
+				"HACKPACK_MESSAGE_REPLIED_OTHER_COMMENTATOR": "Comments on messages in HackPack forums where I also commented",
+				"COLLEAGUE_REQUEST": "A member requests to be a reference",
+				"COLLEAGUE_CONFIRMED": "I’ve been confirmed as someone’s reference",
+				"SNAPFEED_FEED_ITEM_REPLIED": "A member comments on a post in The Feed that I created",
+				"SNAPFEED_FEED_ITEM_AUTHOR_REPLIED": "The author of a post in The Feed responds to my message",
+				"FEEDBACK": "A member leaves me Colleague Feedback",
+				"MESSENGER": "I receive new PMs in Messenger"
+			}
+		},
+		"PASSWORD": {
+			"TITLE": "Change password",
+			"SUB_TITLE": "Your password must be at least {{ length}} symbols",
+			"CURR_PASSWORD_PLACEHOLDER": "Current password",
+			"NEW_PASSWORD_PLACEHOLDER": "New password",
+			"REPEAT_NEW_PASSWORD_PLACEHOLDER": "Repeat new password",
+			"DONT_MATCH": "Passwords don't match",
+			"RESET_BUTTON": "Reset Password"
+		},
+		"EMAIL": {
+			"TITLE": "Change E-mail"
+		}
+	}
+}

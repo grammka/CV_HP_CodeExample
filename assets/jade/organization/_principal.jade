@@ -1,0 +1,38 @@
+.nano(
+	nano-scroll
+	ng-if="!model.editing"
+)
+	.nano-content
+		.p_10(ng-if="model.organization.permissions.is_admin && model.organization.permissions.edit_company")
+			.btn.btn_32.btn_white.btn_inline(
+				ng-bind="'MY_COMPANY.MAIN.EDIT_BUTTON' | translate"
+				ng-click="edit()"
+			)
+
+		.p_10
+			.info-list
+
+				.info-list__item(ng-if="model.organization.languages && model.organization.languages.length")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.LANGUAGES.TITLE' | translate")
+					.info-list__item__content
+						.profile__languages
+							.profile__languages
+								.profile__language(ng-repeat="item in model.organization.languages")
+									span.profile__language__name(ng-bind="item.language")
+									span.profile__language__level(ng-bind="'(' + item.experience + ')'")
+
+				.info-list__item(ng-if="model.organization.expertise && model.organization.expertise.length")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.EXPERTISE.TITLE' | translate")
+					.info-list__item__content
+						.tags
+							.tag(
+								ng-repeat="name in model.organization.expertise"
+								ng-bind="name"
+							)
+
+				.info-list__item(ng-if="model.organization.contacting")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.CONTACTING.TITLE' | translate")
+					.info-list__item__content(ng-bind="model.organization.contacting")

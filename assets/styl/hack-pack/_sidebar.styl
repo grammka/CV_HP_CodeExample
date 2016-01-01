@@ -1,0 +1,38 @@
+.hack-pack__sidebar__header__menu-btn
+	width: $size
+	height-lineheight($header-height)
+	absolute top 0 right 0
+	cursor: pointer
+	text-align: center
+	color $light-text-color
+	font-weight 600
+	font-size: 17px
+	&:hover
+		color #fff
+
+.hack-pack__hps
+	height: 100%
+	background-color: $content-bg-color
+	border-right 1px solid $border-color
+	absolute top -100% left 0 right 0
+	z-index: 80
+	transition top 0.23s ease-out
+	.hack-pack__sidebar_hps-visible &
+		top 0
+
+
+/* Hack Flack */
+
+.hack-pack__hack-flack-member
+	min-height: 52px
+	line-height: 15px
+	border-bottom: 1px solid $border-color
+	padding: 12px 0 12px $padding + 52px + $padding
+	position: relative
+	no-select()
+
+.hack-pack__hack-flack-member__avatar
+	width: 52px
+	height-lineheight(52px)
+	absolute top 12px left $padding
+	font-size: 16px

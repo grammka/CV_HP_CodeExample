@@ -1,0 +1,41 @@
+.organization__members
+	display: block
+
+.organization__admin
+	background-color: $text-bg-color
+
+.organization__member
+	height: 28px
+	line-height: 15px
+	display: block
+	background-color: $text-bg-color
+	padding: 12px 0 12px $padding + 28px + $padding
+	position: relative
+	&:hover
+		.avatar
+			&:before
+			&:after
+				display: block
+
+.organization__member__avatar
+	width: 28px
+	height-lineheight(28px)
+	absolute top 12px left $padding
+	//ov-corner-left-bottom(#000, #fff, 3px)
+
+.organization__member__name
+	font-weight: normal
+	font-size: 12px
+
+.organization__member__role
+	font-size: 11px
+	color $light-text-color
+
+
+.organization__member__navig
+	border-top: 1px solid #E4E8ED
+	.btns
+		margin-top: -1px
+
+.organization__member__permissions
+	padding $padding

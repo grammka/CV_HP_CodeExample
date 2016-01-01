@@ -1,0 +1,52 @@
+.list
+	display: block
+
+.list__item
+	display: block
+	line-height: 15px
+	border-top 1px solid $border-color
+	border-bottom 1px solid $border-color
+	padding: 12px 0 12px $padding
+	margin-top -1px
+	position: relative
+	cursor: pointer
+	&:first-child
+		margin-top: 0
+		border-top: 0
+	&:hover
+		background-color: darken($content-bg-color, 2%)
+	&.active
+		background-color: $color_orange
+		border-color darken($color_orange, 7%)
+		z-index: 10
+	&.with-notifier
+		background-color: #FFECBA
+		border-color #E8D5A0
+		z-index: 10
+		.list__item__sub-title
+			color #B1A072
+		.list__item__counter
+			background-color: #E8D5A0
+			color #6F5F31
+
+.list__item__title
+	text-transform: uppercase
+	font-weight 600
+	font-size: 13px
+
+.list__item__sub-title
+	text-transform: uppercase
+	font-size: 11px
+	color $light-text-color
+
+.list__item__counter
+	height-lineheight(24px)
+	background-color: $color_orange
+	padding: 0 8px
+	absolute top 50% right 12px
+	margin-top: -12px
+	text-align: center
+	font-size: 12px
+	border-radius 3px
+	font-weight: 600
+	color #564007

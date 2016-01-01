@@ -1,0 +1,5 @@
+a.members-list__member(href="{{ '/profile/' + item.id }}")
+	.members-list__member__avatar
+		avatar(data="item")
+	b.members-list__member__name(ng-bind="item.full_name")
+	.members-list__member__role(ng-bind="item.role.label")

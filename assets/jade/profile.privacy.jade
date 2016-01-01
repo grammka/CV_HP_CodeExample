@@ -1,0 +1,46 @@
+.t-max-w600
+	.p_10
+		.info-list.info-list__with-editing-form
+			.info-list__item
+				.info-list__item__header
+					.info-list__item__title
+						span(ng-bind="'PROFILE.PRIVACY_SETTINGS.FORM.PRIVACY_LEVEL.TITLE' | translate")
+				.info-list__item__content
+					.description(
+						ng-if="model.form.privacy_level || model.form.privacy_level == 0"
+						ng-bind-html="model.privacyLevelOptions[model.form.privacy_level].desc | translate"
+					)
+					.vp_10
+					.select.select_32.t-w300
+						select(
+							ng-model="model.form.privacy_level"
+							ng-options="option.value as (option.label | translate) for (key, option) in model.privacyLevelOptions"
+							ng-class="{ 'default' : !model.form.privacy_level }"
+							required
+						)
+							option(
+								value=""
+								disabled
+								ng-bind="'PROFILE.PRIVACY_SETTINGS.FORM.PRIVACY_LEVEL.PLACEHOLDER' | translate"
+							)
+
+			.info-list__item(ng-if="model.form.privacy_level != 'pub'")
+				.info-list__item__header
+					.info-list__item__title(ng-bind="'PROFILE.PRIVACY_SETTINGS.FORM.PSEUDONYM.TITLE' | translate")
+				.info-list__item__content
+					.description(ng-bind-html="'PROFILE.PRIVACY_SETTINGS.FORM.PSEUDONYM.DESC' | translate")
+					.vp_10
+					input.input.input_32.t-w300(
+						type="text"
+						ng-model="model.form.pseudonym"
+						placeholder="{{ 'PROFILE.PRIVACY_SETTINGS.FORM.PSEUDONYM.PLACEHOLDER' | translate }}"
+					)
+
+			.vp_20
+			.btns
+			.btn.btn_32.btn_green.t-text_center.t-w100(
+				ng-click="save()"
+				ng-bind="'COMMON.SAVE_BUTTON' | translate"
+			)
+
+.vp_50

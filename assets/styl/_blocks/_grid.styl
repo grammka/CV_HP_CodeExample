@@ -1,0 +1,39 @@
+// TODO remove this and use lib
+
+.row_6
+.row_25
+	display: table
+
+.row_25
+	width: calc(100% + 25px)
+	margin: 0 -12.5px
+
+.row_6
+	width: calc(100% + 6px)
+	margin: 0 -3px
+
+.col
+	display: table-cell
+	position: relative
+	vertical-align: top
+	.row_6 &
+		padding 0 3px
+	.row_25 &
+		padding: 0 12.5px
+
+for $i in (1..16)
+	.col_{$i}
+		width: $i * 6.25%
+
+
+
+.rows
+	.row_6
+	.row_25
+		margin-top: 10px
+		&:first-child
+			margin-top: 0
+
+.row_table
+	.col
+		vertical-align middle

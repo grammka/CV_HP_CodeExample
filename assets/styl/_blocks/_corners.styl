@@ -1,0 +1,121 @@
+ov-corner($size=4px)
+	&:before
+		content ''
+		display: block
+		width: 0
+		height: 0
+		border $size solid transparent
+		z-index: 30
+
+ov-corner-left-top($arr-color=#000, $overflow-color=$content-bg-color, $size=4px)
+	ov-corner($size)
+	&:before
+		border-right-color $arr-color
+		border-top-color $overflow-color
+		border-left-color $overflow-color
+		border-bottom-color $arr-color
+		absolute left 0 top 0
+
+ov-corner-right-top($arr-color=#000, $overflow-color=$content-bg-color, $size=4px)
+	ov-corner($size)
+	&:before
+		border-right-color $overflow-color
+		border-top-color $overflow-color
+		border-left-color $arr-color
+		border-bottom-color $arr-color
+		absolute right 0 top 0
+
+ov-corner-right-bottom($arr-color=#000, $overflow-color=$content-bg-color, $size=4px)
+	ov-corner($size)
+	&:before
+		border-right-color $overflow-color
+		border-top-color $arr-color
+		border-left-color $arr-color
+		border-bottom-color $overflow-color
+		absolute right 0 bottom 0
+
+ov-corner-left-bottom($arr-color=#000, $overflow-color=$content-bg-color, $size=4px)
+	ov-corner($size)
+	&:before
+		border-right-color $arr-color
+		border-top-color $arr-color
+		border-left-color $overflow-color
+		border-bottom-color $overflow-color
+		absolute left 0 bottom 0
+	
+
+
+
+corner($size=4px)
+	&:before
+		content ''
+		display: block
+		width: 0
+		height: 0
+		border ($size / 2) solid transparent
+		z-index: 5
+
+corner-top-left($color, $size=4px)
+	corner($size)
+	&:before
+		border-top-color $color
+		border-left-color $color
+
+corner-top-right($color, $size=4px)
+	corner($size)
+	&:before
+		border-top-color $color
+		border-right-color $color
+
+corner-bottom-left($color, $size=4px)
+	corner($size)
+	&:before
+		border-bottom-color $color
+		border-left-color $color
+
+corner-bottom-right($color, $size=4px)
+	corner($size)
+	&:before
+		border-bottom-color $color
+		border-right-color $color
+
+
+corner-left-top-top($color, $size=4px)
+	corner-bottom-left($color, $size)
+	&:before
+		absolute left 0 top (-1 * $size)
+
+corner-right-top-top($color, $size=4px)
+	corner-bottom-right($color, $size)
+	&:before
+		absolute right 0 top (-1 * $size)
+
+corner-right-top-right($color, $size=4px)
+	corner-top-left($color, $size)
+	&:before
+		absolute right (-1 * $size) top 0
+
+corner-right-bottom-right($color, $size=4px)
+	corner-bottom-left($color, $size)
+	&:before
+		absolute right (-1 * $size) bottom 0
+
+corner-right-bottom-bottom($color, $size=4px)
+	corner-top-right($color, $size)
+	&:before
+		absolute right 0 bottom (-1 * $size)
+
+corner-left-bottom-bottom($color, $size=4px)
+	corner-top-left($color, $size)
+	&:before
+		absolute left 0 bottom (-1 * $size)
+
+corner-left-bottom-left($color, $size=4px)
+	corner-bottom-right($color, $size)
+	&:before
+		absolute left (-1 * $size) bottom 0
+
+corner-left-top-left($color, $size=4px)
+	corner-top-right($color, $size)
+	&:before
+		absolute left (-1 * $size) top 0

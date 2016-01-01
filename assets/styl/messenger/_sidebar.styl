@@ -1,0 +1,69 @@
+.messenger__sidebar__content
+	.nano-pane
+		display: none !important
+
+.messenger__chats
+	display: block
+
+.messenger__chat
+	padding 12px 0
+	margin -1px 1px -1px 0
+	border-top 1px solid $border-color
+	border-bottom 1px solid $border-color
+	position: relative
+	cursor: pointer
+	.members-list__member
+		padding 0 0 0 60px
+		cursor: pointer
+		border 0
+		&:hover
+			background-color: transparent
+	.members-list__member__avatar
+		top 0
+	&:hover
+		background-color: darken($content-bg-color, 3%)
+	&.with-new-messages
+	&.active
+		z-index: 20
+	&.with-new-messages
+		background-color: #F4DF8F
+		border-color #D8CE77
+		.members-list__member__avatar
+			&:before
+				border-left-color: #F4DF8F
+				border-bottom-color: #F4DF8F
+		.members-list__member__role
+			color #ABA044
+	&.active
+		background-color: #92E785
+		border-color #6AD85C
+		.members-list__member__avatar
+			&:before
+				border-left-color: #92E785
+				border-bottom-color: #92E785
+		.members-list__member__role
+			color #63995B
+
+.messenger__chat__hide-btn
+	width: 16px
+	height-lineheight(16px)
+	absolute top 3px right 3px
+	z-index: 30
+	cursor: pointer
+	text-align: center
+	font-size: 9px
+	color #666
+	&:hover
+		color #000
+
+.messenger__chat__to
+	padding-left 40px
+	margin-top: 10px
+	position: relative
+	&:before
+		content '\21B3'
+		display: block
+		width: 26px
+		height-lineheight(26px)
+		absolute left 26px top -5px
+		font-size: 24px

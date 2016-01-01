@@ -1,0 +1,39 @@
+.p_10(ng-if="model.editing")
+	.t-max-w800
+		.btn.btn_32.btn_red.btn_inline(
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+			ng-click="cancel()"
+		)
+
+		.vp_20
+
+		ng-form(
+			name="FeedbackForm"
+			novalidate
+			server-validation="model.validateObject"
+			methods="model.validateMethods"
+		)
+			table.t-w100p
+				tr.feedback-form__item(ng-repeat-start="item in model.categories track by $index")
+					td.feedback-form__item__title(ng-bind="item.name")
+					td.feedback-form__item__rating
+						rating(max="10", rating="item.rating")
+				tr(ng-repeat-end="item in model.categories track by $index")
+					td(colspan="2")
+						div(ng-if="item.rating > 0")
+							.vp_10
+							.pre-field(
+								ng-class="{ 'error': (item.comment | replaceHTML).length > 300 }"
+								ng-bind="'SNAP_FEED.EDIT.FORM.TEASER.WARNING' | translate:{length: 300, used: (item.comment | replaceHTML).length}"
+							)
+							.textarea.t-min-h100(
+								model="item.comment"
+								placeholder="{{ item.description }}"
+								text-editor
+							)
+		.vp_20
+		.btns
+			.btn.btn_32.btn_green.t-text_center(
+				ng-click="submitFeedback()"
+				ng-bind="'COMMON.POST_BUTTON' | translate"
+			)

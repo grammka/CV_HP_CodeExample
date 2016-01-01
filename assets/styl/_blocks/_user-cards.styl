@@ -1,0 +1,66 @@
+.user-cards
+	display: block
+	font-size: 0
+
+.user-card__container
+	width: 50%
+	display-inline-block()
+
+.user-card
+	background-color: #fff
+	border 1px solid #D1D7E0
+	margin-top: 10px
+	position: relative
+	box-sizing border-box
+	border-radius 2px
+	&:first-child
+		margin-top: 0
+
+.user-card__approved-status
+	width: 18px
+	height-lineheight(18px)
+	background-image: url(../img/approved-icon.png)
+	background-position: 50%
+	background-size 18px auto
+	absolute top 10px right 10px
+
+.user-card__header
+	min-height: 34px
+	padding 10px 40px 10px 54px
+	//border-bottom: 1px solid #F0F2F5
+	line-height: 15px
+
+.user-card__avatar
+	width: 34px
+	height-lineheight(34px)
+	absolute top 10px left 10px
+	font-size: 13px
+
+.user-card__name
+	font-size: 13px
+
+.user-card__role
+	font-size: 11px
+	color $light-text-color
+
+.user-card__availability
+	font-size: 11px
+
+.user-card__location
+	font-size: 12px
+
+.user-card__content
+	padding 0 10px
+	.tag
+		height: 19px
+		line-height: 19px
+		padding 0 6px
+		font-size: 10px
+
+.user-card__content__item
+	margin-bottom: 7px
+	&:first-child
+		margin-top: 7px
+
+.user-card__footer
+	padding 10px

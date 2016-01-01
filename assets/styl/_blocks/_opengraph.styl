@@ -1,0 +1,42 @@
+.opengraph
+	position: relative
+
+.opengraph__remove-btn
+	width: 16px
+	height-lineheight(16px)
+	absolute top 5px right 5px
+	z-index: 20
+	cursor: pointer
+	font-size: 10px
+	text-align: center
+	&:hover
+		font-size: 12px
+
+.opengraph__link
+	display: block
+	padding: 5px $padding
+	border 1px solid #dee2ea
+	//box-shadow rgba(0,0,0, 0.07) 0 1px 5px
+	border-radius 2px
+	no-select()
+	.with-image &
+		padding-left: (100px + $padding)
+	/*&:hover*/
+		/*border-color #D1E5EF*/
+		/*box-shadow rgba(3,171,255, 0.23) 0 0 5px*/
+
+.opengraph__photo
+	width: 100px
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	overflow: hidden
+	absolute top 1px left 1px bottom 1px
+	border-radius left 2px
+
+.opengraph__title
+	padding 5px 0
+	font-weight 600
+
+.opengraph__desc
+	font-size: 12px

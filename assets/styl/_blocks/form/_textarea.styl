@@ -1,0 +1,36 @@
+.textarea
+	display: block
+	height: auto
+	min-height: 18px
+	line-height: 18px
+	background-color: #fff
+	border 1px solid #ccc
+	padding: 8px 10px
+	margin: 0
+	font-size: 14px
+	font-family: "Open Sans"
+	cursor: text
+	+input-placeholder()
+		color $light-text-color !important
+	&[placeholder]
+		&:empty:before
+			content: attr(placeholder)
+			display: block
+			font-size: 14px
+			color $light-text-color
+		&:focus
+			&:before
+				display: none !important
+
+.textarea_min26
+	min-height: 26px
+
+.textarea_min30
+	min-height: 30px
+
+[contenteditable=true]
+	&[placeholder]:empty:before
+		top 0
+		left 0
+		font-size: 14px
+		color $light-text-color

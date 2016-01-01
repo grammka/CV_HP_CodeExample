@@ -1,0 +1,9 @@
+include profile/_sidebar
+
+.content__with-sidebar
+	.nano(nano-scroll)
+		.nano-content
+			include profile/_grant-access
+	
+			content-navig(items="profile", data="model.contentNavigData")
+			div(ui-view="content")

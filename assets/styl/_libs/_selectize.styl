@@ -1,0 +1,91 @@
+.selectize-dropdown
+	z-index: 100
+
+.selectize-input
+	min-height: 36px
+	line-height: (36px - 12px)
+	vertical-align top
+	box-shadow none !important
+	border-radius 0 !important
+	font-size: 14px
+	&.focus
+		border-color: #bcbcbc !important
+	&.disabled,
+	&[disabled]
+		background-color #ddd !important
+		border-color #ccc !important
+		opacity: 1 !important
+	input
+		+input-placeholder()
+			color $light-text-color !important
+		/*
+	.t-validate-failed &
+		background-color: #FFD3D3 !important
+		border-color #EC0000 !important
+		input
+			+input-placeholder()
+				color: #EC0000 !important
+				*/
+
+.selectize-control
+	no-select()
+	&.t-no-arrow
+		.selectize-input:after
+			display: none
+	&.single
+		.selectize-input
+			background #fff
+			box-shadow none
+			border-radius 0
+			&:after
+				right: 12px
+	&.multi
+		.selectize-input>div
+			height: 22px
+			line-height: 22px
+			background-color: $color_blue
+			margin-right: 5px
+			padding 0 3px 0 7px
+			border-radius 0
+			font-size: 12px
+			font-weight: 600
+			color #fff
+			&.active
+				background-color: darken($color_blue, 25%)
+	&.plugin-remove_button
+		[data-value]
+			.remove
+				line-height: 19px
+				font-weight: normal
+
+.selectize-dropdown-content
+	.option
+		&:hover
+		&.active
+			background-color: #E2E2E2
+		&.selected
+			background-color: $color_mustard
+
+
+
+.selectize_32
+	.selectize-input
+		min-height: 32px
+		height: 32px
+		line-height: (32px - 12px)
+		padding 5px 10px
+		font-size: 13px
+
+.selectize_min-32
+	.selectize-input
+		min-height: 32px
+		line-height: (32px - 12px)
+		padding 5px 10px
+		font-size: 13px
+
+.selectize_min-36
+	.selectize-input
+		min-height: 36px
+		line-height: (36px - 12px)
+		padding 5px 10px
+		font-size: 13px

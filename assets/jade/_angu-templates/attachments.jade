@@ -1,0 +1,28 @@
+.attachments__container
+	.pre-field(
+		ng-class="{ 'error': totalSize > maxTotalSize }"
+		ng-bind="'COMMON.ATTACHMENTS.WARNING' | translate:{max: maxTotalSize, used: totalSize}"
+	)
+	.attachments
+		.attachments__list(ng-if="model.attachments.length")
+			.attachments__list__thumb(
+				ng-repeat="attachment in model.attachments"
+				ngf-background="attachment"
+				style="width: {{ thumbSize }}px; height: {{ thumbSize }}px"
+			)
+				.attachments__list__thumb__remove-btn.sl-icon.sl-icon-close(ng-click="removePhoto($index)")
+				.attachments__list__thumb__size(ng-bind="attachment.sizeInMB")
+		.p_5.t-text_right(ng-if="button !== false")
+			.btn.btn_22.btn_orange.btn_inline(
+				type="file"
+				name="attachments"
+				ng-model="model.attachments"
+				ngf-select="true"
+				ngf-accept="accept"
+				accept="image/*"
+				ngf-max-size="'{{ maxTotalSize + 'MB' }}'"
+				ngf-multiple="true"
+				ngf-keep="true"
+				gf-keep-distinct="true"
+				ng-bind="'POSTS.ATTACH_BUTTON' | translate"
+			)

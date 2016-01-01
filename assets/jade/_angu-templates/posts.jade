@@ -1,0 +1,132 @@
+.posts
+	.post(
+		ng-repeat="post in posts track by $index"
+		ng-init="post.chatBox.attachments = [];"
+	)
+
+		.post__edit-btns(ng-if="post.author.id == model.user.id")
+			div(ng-if="!post.editing")
+				.post__edit-btn.post__edit-btn_edit(
+					ng-click="editPost(post)"
+					ng-bind="'COMMON.EDIT_BUTTON' | translate"
+				)
+				.post__edit-btn.post__edit-btn_remove(
+					ng-if="!post.comments || !post.comments.length"
+					confirm-click="removePost(post, $index)"
+					ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+				)
+
+		.post__header
+			a.post__author-avatar(href="{{ '/profile/' + post.author.id }}")
+				avatar(data="post.author")
+			a.post__author-name.t-link(
+				href="{{ '/profile/' + post.author.id }}"
+				ng-bind="post.author.full_name"
+			)
+			.post__posted-date(am-time-ago="post.created_at")
+
+		.post__content(ng-if="!post.editing")
+			.post__message(ng-bind-html="post.text")
+			opengraph.post__opengraph(
+				ng-if="post.opengraph"
+				data="post.opengraph"
+			)
+			.post__file-previews(ng-if="post.attachments && post.attachments.length")
+				grid-gallery(images="post.attachments")
+
+		.post__edit(ng-if="post.editing")
+			.post__edit__message(
+				text-editor
+				model="post.text"
+			)
+			.post__edit__photos-thumbs(ng-if="post.attachments.length")
+				.post__edit__photos-thumb(
+					ng-repeat="photo in post.attachments"
+					style="background-image: url({{ photo.thumb }})"
+				)
+					.post__edit__photos-thumb__remove-btn.sl-icon.sl-icon-close(ng-click="removePhotoFromPost(post, $index)")
+			.post__edit__navig
+				.clearfix
+					.btns.t-float_right
+						.btn.btn_22.btn_green(
+							ng-click="submitPostEditing(post)"
+							ng-bind="'COMMON.SAVE_BUTTON' | translate"
+						)
+						.btn.btn_22.btn_black(
+							ng-click="cancelPostEditing(post)"
+							ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+						)
+
+
+		.post__comments__wrapper(ng-if="model.user.is_confirmed")
+			.post__comments(ng-if="post.comments && post.comments.length")
+				.post__toggle-more-comments-btn(ng-if="post.comments_count > 3")
+					div(
+						ng-hide="post.hiddenCommentsVisible"
+						ng-click="showHiddenComments(post)"
+						ng-bind="'POSTS.SHOW_COMMENTS_BUTTON' | translate:{count: post.comments_count - 3}"
+					)
+					div(
+						ng-show="post.hiddenCommentsVisible"
+						ng-click="hideComments(post)"
+						ng-bind="'POSTS.HIDE_COMMENTS_BUTTON' | translate"
+					)
+				.post__comment(ng-repeat="comment in post.comments track by $index")
+
+					.post__comment__edit-btns(ng-if="comment.author.id == model.user.id")
+						div(ng-if="!comment.editing")
+							.post__edit-btn.post__edit-btn_edit(
+								ng-click="editComment(comment)"
+								ng-bind="'COMMON.EDIT_BUTTON' | translate"
+							)
+							.post__edit-btn.post__edit-btn_remove(
+								confirm-click="removeComment(post, comment, $index)"
+								ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+							)
+
+					.post__comment__content
+						a.post__comment__author-avatar(href="{{ '/profile/' + comment.author.id }}")
+							avatar(data="comment.author")
+						a.post__comment__author-name(
+							href="{{ '/profile/' + comment.author.id }}"
+							ng-bind="comment.author.full_name"
+						)
+						span.hp_10
+						span.post__comment__posted-date(am-time-ago="comment.created_at")
+
+						div(ng-if="!comment.editing")
+							.post__comment__message(ng-bind-html="comment.text")
+							.post__file-previews(ng-if="comment.attachments && comment.attachments.length")
+								grid-gallery(images="comment.attachments")
+						.post__edit(ng-if="comment.editing")
+							.post__edit__message(
+								text-editor
+								model="comment.text"
+							)
+							.post__edit__photos-thumbs(ng-if="comment.attachments.length")
+								.post__edit__photos-thumb(
+									ng-repeat="photo in comment.attachments"
+									style="background-image: url({{ photo.thumb }})"
+								)
+									.post__edit__photos-thumb__remove-btn.sl-icon.sl-icon-close(ng-click="removePhotoFromComment(comment, $index)")
+							.post__edit__navig
+								.clearfix
+									.btns.t-float_right
+										.btn.btn_22.btn_green(
+											ng-click="submitCommentEditing(comment)"
+											ng-bind="'COMMON.SAVE_BUTTON' | translate"
+										)
+										.btn.btn_22.btn_black(
+											ng-click="cancelCommentEditing(comment)"
+											ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+										)
+
+
+			.p_10(ng-if="model.user.is_confirmed")
+				chat-box(
+					placeholder="{{ 'POSTS.WRITE_COMMENT_PLACEHOLDER' | translate }}"
+					text="post.chatBox.text"
+					opengraph="post.chatBox.opengraph"
+					attachments="post.chatBox.attachments"
+					on-submit="submitNewComment(post)"
+				)

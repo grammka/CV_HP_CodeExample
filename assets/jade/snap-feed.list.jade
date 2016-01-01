@@ -1,0 +1,101 @@
+filterForm.container__sidebar.search__sidebar(
+	name="SnapsFilterForm"
+	novalidate
+)
+	.header
+		.header__content
+			.header__title
+				span(ng-bind="'SNAP_FEED.LIST.TITLE' | translate")
+				a.header__info-icon.sl-icon.sl-icon-infomation-circle(
+					href="//hackpack.press/blog/wtf-is-hackpack-snapfeed/"
+					target="_blank"
+				)
+
+	.content__with-header.search__sidebar__content
+		.nano(nano-scroll, track="false")
+			.nano-content
+				.search__sidebar__form
+					.search__sidebar__form__title(ng-bind="'SNAP_FEED.FORM.SNAP_TYPE.TITLE' | translate")
+					.select.select_32.t-w100p
+						select(
+							ng-model="model.filterForm.snap_type"
+							ng-options="item.name as item.name for item in model.typesSelectOptions"
+							ng-class="{ 'default' : !model.filterForm.snap_type }"
+						)
+							option(ng-bind="'COMMON.NOT_SELECTED' | translate" value="")
+
+					.vp_10
+					.search__sidebar__form__title(ng-bind="'SNAP_FEED.FORM.LOCATION.TITLE' | translate")
+					my-select-location.selectize_32.t-no-arrow(
+						ng-model="model.selectizeLocationObject"
+						dynamic-model="model.selectizeLocationObject"
+						placeholder="{{ 'SNAP_FEED.FORM.LOCATION.PLACEHOLDER' | translate }}"
+						method="full"
+					)
+
+					//
+						div(ng-if="model.filterForm.tags")
+							.vp_10
+							.search__sidebar__form__title(ng-bind="'SNAP_FEED.FORM.SELECTED_TAG' | translate")
+							.tags
+								.tag
+									span(ng-bind="model.filterForm.tags")
+									span.hp_10
+									b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(ng-click="removeTag()")
+					.vp_40
+
+	.search__sidebar__footer
+		.btns
+			.btn.btn_32.btn_green.t-w50p.t-text_center(
+				ng-click="submitSearch()"
+				ng-bind="'SNAP_FEED.FORM.SUBMIT_BUTTON' | translate"
+			)
+			.btn.btn_32.btn_red.t-w50p.t-text_center(
+				ng-bind="'SNAP_FEED.FORM.CLEAR_BUTTON' | translate"
+				ng-click="clearFilterForm()"
+			)
+
+
+
+.content__with-sidebar.search__content__with-sidebar
+	content-navig(items="snapFeedList")
+
+	.content__with-header
+		.hack-pack__posts__sidebar
+			.hack-pack__posts__navig
+				a.hack-pack__posts__navig__item(
+					ui-sref="ws.snapFeed.edit"
+					tooltips
+					tooltip-title="{{ 'SNAP_FEED.LIST.CREATE_BUTTON' | translate }}"
+					tooltip-side="right"
+				)
+					.sl-icon.sl-icon-pencil-write-2
+				a.hack-pack__posts__navig__item(
+					ui-sref="ws.snapFeed.subscribe"
+					tooltips
+					tooltip-title="{{ 'SNAP_FEED.LIST.SUBSCRIBE_BUTTON' | translate }}"
+					tooltip-side="right"
+				)
+					.sl-icon.sl-icon-cog
+
+		.hack-pack__posts__container
+			.t-max-w600(ng-if="model.snaps && !model.snaps.length")
+				.vp_20
+				.notifier.info(
+					ng-if="model.selectedTab.id == 'subscribed'"
+					ng-bind-html="'SNAP_FEED.LIST.SUBSCRIBED.NO_SNAPS_DESC' | translate"
+				)
+				.notifier.info(
+					ng-if="model.selectedTab.id == 'created'"
+					ng-bind-html="'SNAP_FEED.LIST.CREATED.NO_SNAPS_DESC' | translate"
+				)
+				.notifier.info(
+					ng-if="model.selectedTab.id == 'answered'"
+					ng-bind-html="'SNAP_FEED.LIST.ANSWERED.NO_SNAPS_DESC' | translate"
+				)
+				.notifier.info(
+					ng-if="model.selectedTab.id == 'hidden'"
+					ng-bind-html="'SNAP_FEED.LIST.HIDDEN.NO_SNAPS_DESC' | translate"
+				)
+
+			include snap-feed/_snaps

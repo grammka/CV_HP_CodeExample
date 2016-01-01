@@ -1,0 +1,232 @@
+.btn
+.fbtn
+	display: block
+	border 1px solid transparent
+	position: relative
+	cursor: pointer
+	white-space: nowrap
+	text-decoration: none !important
+	text-transform uppercase
+	font-weight: 600
+	box-sizing border-box
+	border-radius 2px
+	no-select()
+	input
+		position: absolute
+		left: -99999px
+	.sl-icon
+		height: 100%
+		line-height: inherit
+	&.active,
+	&[disabled],
+	&.disabled
+		cursor: default
+	&[disabled],
+	&.disabled
+		background-color #ccc !important
+		color: #aaa
+
+.fbtn
+	cursor: default
+
+.btn_wb
+	border 1px solid transparent !important
+
+.btn_inline
+	display-inline-block()
+
+.btns
+	line-height: 0
+	font-size: 0
+	white-space nowrap
+	.btn
+	.fbtn
+		margin-left: -1px
+		border-radius 0
+		display-inline-block()
+		&:first-child
+			border-radius left 2px
+		&:last-child
+			border-radius right 2px
+
+
+
+.btn_18
+	height-lineheight-2(18px)
+	padding 0 7px
+	font-size: 9px
+
+.btn_20
+	height-lineheight-2(20px)
+	padding 0 10px
+	font-size: 9px
+
+.btn_22
+	height-lineheight-2(22px)
+	padding 0 11px
+	font-size: 10px
+
+// 24 needs for .header - Header's height is 54px, button's height is 24px, vertical paddings are 15px
+.btn_24
+	height-lineheight-2(24px)
+	padding 0 12px
+	font-size: 10px
+
+.btn_26
+	height-lineheight-2(26px)
+	padding 0 13px
+	font-size: 11px
+
+.btn_32
+	height-lineheight-2(32px)
+	padding 0 15px
+	font-size: 12px
+
+.btn_36
+	height-lineheight-2(36px)
+	padding 0 16px
+	font-size: 12px
+
+.btn_40
+	height-lineheight-2(40px)
+	padding 0 17px
+	font-size: 14px
+
+.btn_50
+	height-lineheight-2(50px)
+	padding 0 18px
+	font-size: 14px
+
+.btn_60
+	height-lineheight-2(60px)
+	padding 0 22px
+	font-size: 16px
+
+
+
+.btn_white
+.btn_light
+.btn_orange
+	color #000
+
+.btn_red
+.btn_blue
+.btn_green
+.btn_gray-blue
+.btn_dark-blue
+.btn_black
+.btn_light-black
+	color #fff
+
+
+
+.btn_white
+.btn_light
+	border-color #ccc
+
+.btn_dark-backdrop
+	border-color #000 !important
+
+
+
+$tabs_colors = {
+	white:        #fff                    #E7EAEF                             #fff,
+	light:        #E7EAEF                 #fff                                #E7EAEF,
+	red:          $color_red              darken($color_red, 10%)             darken($color_red, 20%),
+	green:        $color_green            darken($color_green, 10%)           darken($color_green, 20%),
+	orange:       $color_orange           darken($color_orange, 10%)          darken($color_orange, 20%),
+	gray-blue:    $color_gray-blue        darken($color_gray-blue, 10%)       darken($color_gray-blue, 20%),
+	dark-blue:    $color_dark-gray-blue   darken($color_dark-gray-blue, 10%)  darken($color_dark-gray-blue, 20%),
+	light-black:  $color_light-black      darken($color_light-black, 10%)     darken($color_light-black, 20%),
+	black:        $color_black            darken($color_black, 10%)           darken($color_black, 20%),
+	content:      $content-bg-color       #fff                                $content-bg-color
+}
+
+for $name, $color in $tabs_colors
+	.fbtn_{$name}
+		background-color $color[0]
+	.btn_{$name}
+		background-color $color[0]
+		&:hover
+			background-color $color[1]
+		&:active
+			background-color $color[2]
+
+
+
+.btn_with-l-icon
+	position: relative
+	text-transform: none !important
+	&.btn_24
+		padding-left: 24px + 9px
+	&.btn_40
+		padding-left: 40px + 13px
+	&.btn_50
+		padding-left: 50px + 15px
+
+.btn__l-icon
+	line-height: inherit
+	display: block
+	border-right: 1px solid
+	absolute top 0 left 0 bottom 0
+	text-align: center
+	color: #fff
+	.btn_24 &
+		width: 24px !important
+		font-size: 14px
+	.btn_40 &
+		width: 40px !important
+		font-size: 20px
+	.btn_50 &
+		width: 50px !important
+		font-size: 20px
+	.btn_blue &
+		border-color darken(#30bafe, 20%)
+
+.btn_facebook
+	background: #3a579d
+	color #fff
+	.btn__l-icon
+		border-right-color: #344e8c
+	&:hover
+		background: #4564af
+	&:active
+		background: #344e8c
+
+$btn_blue = #30bafe
+$btn_blue_hover = darken(#30bafe, 10%)
+$btn_blue_active = darken(#30bafe, 20%)
+
+.btn_twitter
+	background: $btn_blue
+	color #fff
+	.btn__l-icon
+		border-right-color: $btn_blue_active
+	&:hover
+		background: $btn_blue_hover
+	&:active
+		background: $btn_blue_active
+
+.btn_linkedin
+	background: #007bb5
+	color #fff
+	.btn__l-icon
+		border-right-color: darken(#007bb5, 20%)
+	&:hover
+		background: darken(#007bb5, 10%)
+	&:active
+		background: darken(#007bb5, 20%)
+
+$btn_ocean = #1fcd54
+$btn_ocean_hover = darken(#1fcd54, 10%)
+$btn_ocean_active = darken(#1fcd54, 20%)
+
+.btn_email
+	background: $btn_ocean
+	color #fff
+	.btn__l-icon
+		border-right-color: $btn_ocean_active
+	&:hover
+		background: $btn_ocean_hover
+	&:active
+		background: $btn_ocean_active

@@ -1,0 +1,46 @@
+@import "nib"
+@import "_blocks/_center.styl"
+
+
+html
+	height: 100%
+
+body
+	width: 100%
+	height: 100%
+	margin 0
+	position: relative
+	background-image: url(/data/img/bg9.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	z-index: -1
+	&:before
+		content ''
+		display: block
+		width: 100%
+		height: 100%
+		background-color: rgba(255,248,230, 0.85)
+		absolute top 0 left 0
+		z-index: 1
+
+
+
+.under-contstruction__wrapper
+	position: relative
+	z-index: 100
+	color #4E4429
+
+.under-contstruction
+	margin-top: -40px
+	font-family: "Open Sans"
+	text-align: center
+
+.under-contstruction__title
+	margin-bottom: 40px
+	font-size: 60px
+	text-transform: uppercase
+
+.under-contstruction__desc
+	line-height: 44px
+	font-size: 25px

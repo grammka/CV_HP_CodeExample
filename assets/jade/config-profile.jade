@@ -1,0 +1,78 @@
+.center-block-parent
+	.center-block
+		.config.t-max-w800
+
+			.config__header
+				a.config__logo(ui-sref="landing")
+					img(src="data/img/logo.svg")
+				.config__title(ng-bind="'CONFIG_PROFILE.WELCOME' | translate")
+				.config__desc(ng-bind-html="'CONFIG_PROFILE.WELCOME_DESC' | translate")
+
+			.vp_50
+
+			form.t-validate-highlight(
+				name="ConfigForm"
+				ng-submit="ConfigForm.$valid && submit()"
+				novalidate
+			)
+
+				div(ng-if="model.isEmailFieldVisible")
+					b.fs_18 Email
+					.vp_5
+					.fs_14(ng-bind-html="'CONFIG_PROFILE.EMAIL_DESC' | translate")
+					.vp_10
+					input.input.input_40.t-validate-highlight(
+						type="email"
+						name="email"
+						ng-model="model.form.email"
+						placeholder="E-mail"
+						required
+					)
+					.vp_20
+
+				div(ng-if="model.isRoleFieldVisible")
+					b.fs_18(ng-bind="'CONFIG_PROFILE.ROLE_TITLE' | translate")
+					.vp_5
+					.fs_14(ng-bind-html="'CONFIG_PROFILE.ROLE_DESC' | translate")
+					.vp_10
+					.bselect.select_40.t-w500
+						select.t-validate-highlight(
+							ng-model="model.form.role"
+							ng-options="role.value as (role.label | translate) for role in model.roles"
+							ng-class="{ 'default' : !model.form.role }"
+							required
+						)
+							option(
+								value=""
+								disabled
+								ng-bind="'CONFIG_PROFILE.ROLE_SELECT_PLACEHOLDER' | translate"
+							)
+					.vp_20
+
+				.t-text_right
+					label.btn.btn_40.btn_green.btn_inline.t-text_center
+						span(ng-bind="'COMMON.CONTINUE_BUTTON' | translate")
+						input(type="submit")
+
+		.vp_20
+
+		.t-max-w800(ng-if="model.suggestions && model.suggestions.length")
+			.title__container
+				.title(ng-bind="'PROFILE.SUGGESTIONS.TITLE' | translate")
+				.sub-title(ng-bind="('PROFILE.SUGGESTIONS.SUB_TITLE' | translate) + ' / ' + model.suggestions.length")
+			.content
+				.members-grid
+					.members-grid__member(ng-repeat="user in model.suggestions track by $index")
+						.members-grid__member__avatar
+							avatar(data="user")
+						.members-grid__member__name(ng-bind="user.full_name")
+						.members-grid__member__role(ng-bind="user.role.label")
+						.btns
+							.btn.btn_18.btn_green(
+								ng-click="addColleague(user, $index)"
+								ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+							)
+							.btn.btn_18.btn_red(
+								ng-click="hideColleague(user, $index)"
+								ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+							)

@@ -1,0 +1,156 @@
+.center-block-parent
+	.center-block
+		.signin__container
+
+			.signin__logo__container
+				.sl-icon.sl-icon-arrow-left-7.signin__back-arrow(
+					ng-show="model.activeSection != 'signin'"
+					ng-click="toggleSection('signin')"
+				)
+				a.signin__logo(ui-sref="landing")
+					img(src="data/img/logo.svg")
+
+			.signin
+
+				.p_20(ng-if="!model.changePasswordCode && model.activeSection != 'forgot' && model.activeSection != 'passresetsuccess'")
+					.btn.btn_with-l-icon.btn_40.btn_facebook(ng-click="signWithSocial('facebook')")
+						i.btn__l-icon.socicon.socicon-facebook
+						span(ng-bind="'SIGNIN.SOCIALS_BUTTONS.FACEBOOK' | translate")
+					.vp_10
+					.btn.btn_with-l-icon.btn_40.btn_twitter(ng-click="signWithSocial('twitter')")
+						i.btn__l-icon.socicon.socicon-twitter
+						span(ng-bind="'SIGNIN.SOCIALS_BUTTONS.TWITTER' | translate")
+					.vp_10
+					.btn.btn_with-l-icon.btn_40.btn_linkedin(ng-click="signWithSocial('linkedin')")
+						i.btn__l-icon.socicon.socicon-linkedin
+						span(ng-bind="'SIGNIN.SOCIALS_BUTTONS.LINKEDIN' | translate")
+
+				.signin__or(ng-if="!model.changePasswordCode && model.activeSection != 'forgot' && model.activeSection != 'passresetsuccess'")
+
+				.p_20(ng-if="model.activeSection == 'signup'")
+					form.t-validate-highlight(
+						name="SignInForm"
+						ng-submit="SignInForm.$valid && submitSignInForm()"
+						novalidate
+					)
+						input.input.signin__field(
+							type="text"
+							name="name"
+							ng-model="model.form.name"
+							placeholder="{{ 'COMMON.NAME' | translate }}"
+							required
+						)
+						input.input.signin__field(
+							type="email"
+							name="email"
+							ng-model="model.form.email"
+							placeholder="E-mail"
+							required
+						)
+						input.input.signin__field.t-validate-highlight-errors(
+							type="password"
+							name="password"
+							ng-model="model.form.password"
+							placeholder="{{ 'COMMON.PASSWORD' | translate }}"
+							autocomplete="off"
+							ng-minlength="8"
+							required
+						)
+						input.input.signin__field.t-validate-highlight-errors(
+							type="password"
+							name="new_password"
+							ng-model="model.form.new_password"
+							placeholder="{{ 'COMMON.REPEAT_PASSWORD' | translate }}"
+							model-values-compare="model.form.password"
+							autocomplete="off"
+							ng-minlength="8"
+							required
+						)
+						.vp_15
+						label.btn.btn_40.btn_green.t-text_center
+							input.t-hidden-input(type="submit")
+							span(ng-bind="'COMMON.SIGN_UP' | translate")
+						.vp_15
+						.fs_10.t-text_center(ng-bind-html="'SIGNIN.CONFIRM_DESC' | translate")
+
+				.p_20(ng-if="model.activeSection == 'signin'")
+					form.t-validate-highlight(
+						name="SignInForm"
+						ng-submit="SignInForm.$valid && submitSignInForm()"
+						novalidate
+					)
+						input.signin__field(
+							type="email"
+							name="email"
+							ng-model="model.form.email"
+							placeholder="E-mail"
+							required
+						)
+						input.signin__field(
+							type="password"
+							name="password"
+							ng-model="model.form.password"
+							placeholder="{{ 'COMMON.PASSWORD' | translate }}"
+							autocomplete="off"
+							ng-minlength="8"
+							required
+						)
+						input.signin__field.t-validate-highlight-errors(
+							ng-if="model.changePasswordCode"
+							type="password"
+							name="new_password"
+							ng-model="model.form.new_password"
+							placeholder="{{ 'COMMON.REPEAT_NEW_PASSWORD' | translate }}"
+							model-values-compare="model.form.password"
+							autocomplete="off"
+							ng-minlength="8"
+							required
+						)
+						.vp_15
+						//label.checkbox__wrap.t-float_left
+						//	checkbox(model="value3")
+						//	span(ng-bind="'COMMON.REMEMBER_ME' | translate")
+						a.t-link.t-float_right(
+							ng-click="toggleSection('forgot')"
+							ng-bind="'COMMON.FORGOT_PASSWORD_?' | translate"
+						)
+						.clear
+						.vp_15
+						label.btn.btn_40.btn_green.t-text_center
+							input.t-hidden-input(type="submit")
+							span(ng-bind="'COMMON.SIGN_IN' | translate")
+
+				.p_20(ng-if="model.activeSection == 'forgot'")
+					.signin__text(ng-bind="'SIGNIN.RESET_PASSWORD_DESC' | translate")
+					.vp_15
+					form.t-validate-highlight(
+						name="EmailResetForm"
+						ng-submit="EmailResetForm.$valid && submitEmailResetForm()"
+						novalidate
+					)
+						.signin__fields
+							input.signin__field(
+								type="email"
+								ng-model="model.form.email"
+								placeholder="E-mail"
+								required
+							)
+						.vp_15
+						label.btn.btn_40.btn_green.t-text_center
+							input.t-hidden-input(type="submit")
+							span(ng-bind="'SIGNIN.SEND_PASSWORD_RESET_LINK' | translate")
+
+				.p_20(ng-if="model.activeSection == 'passresetsuccess'")
+					.signin__title
+						i.fs-icon-check
+						span.hp_5
+						span(ng-bind="'SIGNIN.PASSWORD_RESET' | translate")
+					.vp_15
+					.signin__text(ng-bind="'SIGNIN.PASSWORD_RESET_DESC' | translate")
+
+				.t-text_center(ng-if="!model.changePasswordCode && model.activeSection != 'forgot' && model.activeSection != 'passresetsuccess' && model.activeSection != 'signup'")
+					a.t-link(
+						ng-click="toggleSection('signup')"
+						ng-bind="'SIGNIN.I_DONT_HAVE_ACCOUNT' | translate"
+					)
+					.vp_15

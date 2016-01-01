@@ -1,0 +1,126 @@
+.nano(
+	nano-scroll
+	ng-if="model.editing"
+)
+	.nano-content
+		.p_10
+			.adaptive-grid.adaptive-grid_min-540_max-items-2(
+				server-validation="model.validateObject"
+				methods="model.validateMethods"
+			)
+				.adaptive-grid__item
+					.info-list.info-list__with-editing-form
+
+						.info-list__item(validate-field="city_id")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.LOCATION.TITLE' | translate")
+							.info-list__item__content
+								my-select-location.selectize_min-32.t-no-arrow(
+									ng-model="model.selectizeLocationObject"
+									default-option="{id: model.form.city_id, name: model.form.city, country: model.form.country}"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.EXPERTISE.TITLE' | translate")
+							.info-list__item__content
+								my-multiple-select.selectize_min-32(
+									options="model.expertiseSelectOptions"
+									ng-model="model.form.expertise"
+									placeholder="{{ 'MY_COMPANY.MAIN.INFO_LIST.EXPERTISE.PLACEHOLDER' | translate }}"
+									create="true"
+								)
+
+						.info-list__item(validate-field="links.Website")
+							.info-list__item__header
+								.info-list__item__title
+									span(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.WEBSITE.TITLE' | translate")
+									span.hp_5
+									a.t-link(
+										ng-href="{{ 'messenger/' + model.currUserId + '/4' }}"
+										ng-bind="'(' + ('MY_COMPANY.MAIN.INFO_LIST.WEBSITE.CONTACT_ADMIN_TITLE' | translate) + ')'"
+										target="_blank"
+									)
+							.info-list__item__content
+								input.input.input_32(
+									type="text"
+									ng-model="model.form.links.Website"
+									ng-disabled="true"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.CONTACTING.TITLE' | translate")
+							.info-list__item__content
+								input.input.input_32(
+									type="text"
+									ng-model="model.form.contacting"
+									placeholder="{{ 'MY_COMPANY.MAIN.INFO_LIST.CONTACTING.PLACEHOLDER' | translate }}"
+								)
+
+				.adaptive-grid__item
+					.info-list.info-list__with-editing-form
+
+						.info-list__item(validate-field="description")
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'MY_COMPANY.MAIN.INFO_LIST.DESC.TITLE' | translate")
+							.info-list__item__content
+								.t-text_light(
+									ng-class="{ 't-text_error': (model.form.description | replaceHTML).length > 750 }"
+									ng-bind="'MY_COMPANY.MAIN.INFO_LIST.DESC.WARNING' | translate:{length: 750, used: (model.form.description | replaceHTML).length}"
+								)
+								.textarea.t-min-h100(
+									text-editor
+									model="model.form.description"
+								)
+
+						.info-list__item
+							.info-list__item__header
+								.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.MY_LINKS.TITLE' | translate")
+							.info-list__item__content
+								.profile__languages
+									.profile__language(
+										ng-repeat="(name, url) in model.form.links track by $index"
+										ng-if="url && name != 'Website'"
+									)
+										b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(
+											ng-click="removeLink(name)"
+											ng-disabled="name == model.currUser.social_auth_used_links"
+											n-tooltip="{{ name == model.currUser.social_auth_used_links ? ('PROFILE.MAIN.INFO_LIST.MY_LINKS.DISABLED_LINK_DESC' | translate) : '' }}"
+											n-tooltip-placement="top"
+										)
+										span.hp_5
+										span.profile__language__name(ng-bind="name")
+										a.t-link.profile__language__level(target="_blank", ng-href="{{ url }}", ng-bind="'(' + url + ')'")
+									.vp_10
+									.row_6
+										.col.col_6
+											my-select.selectize_32(
+												options="model.linksSelectOptions"
+												ng-model="model.linksForm.name"
+												placeholder="{{ 'PROFILE.MAIN.INFO_LIST.MY_LINKS.NAME_PLACEHOLDER' | translate }}"
+											)
+										.col.col_6
+											input.input.input_32(
+												type="text"
+												ng-model="model.linksForm.url"
+												placeholder="{{ 'PROFILE.MAIN.INFO_LIST.MY_LINKS.URL_PLACEHOLDER' | translate }}"
+											)
+										.col.col_4
+											.btn.btn_32.btn_green.btn_w100.t-text_center(
+												ng-class="{ 'disabled': !model.linksForm.name || !model.linksForm.url }"
+												ng-click="addLink()"
+												ng-bind="'COMMON.ADD_BUTTON' | translate"
+											)
+
+			.vp_20
+
+			.btns
+				.btn.btn_32.btn_green.t-text_center.t-w100(
+					ng-click="save()"
+					ng-bind="'COMMON.SAVE_BUTTON' | translate"
+				)
+				.btn.btn_32.btn_red(
+					ng-click="cancel()"
+					ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+				)

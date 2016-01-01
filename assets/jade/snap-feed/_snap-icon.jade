@@ -1,0 +1,14 @@
+.snap__header__icon.sl-icon.sl-icon-hide(
+	ng-if="!snap.is_published"
+	n-tooltip="{{ 'COMMON.NOT_PUBLISHED' | translate }}"
+	n-tooltip-placement="right"
+)
+.snap__header__icon.sl-icon.sl-icon-clock-2(
+	ng-if="!snap.is_approved"
+	n-tooltip="{{ 'COMMON.ON_MODERATION' | translate }}"
+	n-tooltip-placement="right"
+)
+.snap__header__icon.sl-icon(
+	ng-if="snap.is_published && snap.is_approved"
+	ng-class="'snap__header__icon_' + snap.snap_type"
+)

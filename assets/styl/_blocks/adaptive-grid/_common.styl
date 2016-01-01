@@ -1,0 +1,20 @@
+.adaptive-grid
+	margin ($padding / -2)
+	font-size: 0
+
+.adaptive-grid_no-padding
+	font-size: 0
+	.adaptive-grid__item
+		padding 0
+
+.adaptive-grid__item
+	padding ($padding / 2)
+	font-size: 13px
+	box-sizing border-box
+	display-inline-block()
+
+
+
+adaptive-grid-media(340, 3)   // .adaptive-grid_min-340_max-items-3
+adaptive-grid-media(250, 4)   // .adaptive-grid_min-250_max-items-4
+adaptive-grid-media(540, 2)   // .adaptive-grid_min-540_max-items-2

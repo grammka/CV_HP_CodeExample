@@ -1,0 +1,51 @@
+div(ng-if="model.editing")
+	.p_10
+
+		.btn.btn_32.btn_red.btn_inline(
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+			ng-click="cancel()"
+		)
+
+		.vp_20
+
+		members-autocomplete.selectize_32.t-w300.t-no-arrow(
+			ajax-params='{"roles": ["Expert"]}'
+			placeholder="{{ 'MY_COMPANY.EXPERTS.FORM.PLACEHOLDERS.FIND_HP_MEMBER' | translate }}"
+			on-item-selected="inviteHackPackMember(user)"
+		)
+
+		.hr-line
+			.hr-line__text(ng-bind="'COMMON.OR' | translate")
+
+
+		.inline-elems
+			input.input.input_32.t-w200(
+				type="email"
+				ng-model="model.form.email"
+				placeholder="E-mail"
+			)
+			.btn.btn_32.btn_green(
+				ng-click="inviteMemberViaEmail()"
+				ng-bind="'COMMON.INVITE_BUTTON' | translate"
+			)
+
+		.hr-line
+			.hr-line__text(ng-bind="'COMMON.OR' | translate")
+
+		.inline-elems
+			input.input.input_32.t-w200(
+				type="text"
+				ng-model="model.form.first_name"
+				placeholder="{{ 'MY_COMPANY.EXPERTS.FORM.PLACEHOLDERS.FIRST_NAME' | translate }}"
+			)
+			input.input.input_32.t-w200(
+				type="text"
+				ng-model="model.form.last_name"
+				placeholder="{{ 'MY_COMPANY.EXPERTS.FORM.PLACEHOLDERS.LAST_NAME' | translate }}"
+			)
+			.btn.btn_32.btn_green(
+				ng-click="createNewExpertProfile()"
+				ng-bind="'MY_COMPANY.EXPERTS.FORM.CREATE_EXPERT_PAGE_BUTTON' | translate"
+			)
+
+	.hr-line

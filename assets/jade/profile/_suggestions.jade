@@ -1,0 +1,35 @@
+div(ng-if="model.suggestions && model.suggestions.length")
+	.title__container
+		.title(ng-bind="'PROFILE.SUGGESTIONS.TITLE' | translate")
+		.sub-title(ng-bind="('PROFILE.SUGGESTIONS.SUB_TITLE' | translate) + ' / ' + model.suggestions.length")
+	table.table-list
+		thead
+			th
+			th Name
+			th Role
+			th
+		tbody
+			tr(ng-repeat="item in model.suggestions")
+				td.t-w1p
+					a.table-list__item__avatar(
+						ui-sref="ws.profile.principal({userId: item.id})"
+						ui-sref-opts="{reload: true}"
+					)
+						avatar(data="item")
+				td
+					a.t-link(
+						ui-sref="ws.profile.principal({userId: item.id})"
+						ui-sref-opts="{reload: true}"
+						ng-bind="item.full_name"
+					)
+				td(ng-bind="item.role.label")
+				td
+					.btns
+						.btn.btn_26.btn_green(
+							ng-click="addColleague(item, $index)"
+							ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+						)
+						.btn.btn_26.btn_red(
+							ng-click="hideColleague(item, $index)"
+							ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+						)

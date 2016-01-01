@@ -1,0 +1,111 @@
+.header
+	.header__content
+		.header__title
+			a.t-white-link(href="/snap-feed/list/")
+				i.sl-icon.sl-icon-arrow-left
+				span.hp_10
+				span(ng-bind="'SNAP_FEED.HEADER.BACK_TO_SNAPS_LIST' | translate")
+			span.hp_10
+			span.hsl /
+			span.hp_10
+			span(ng-bind="'SNAP_FEED.SUBSCRIBE.SUBSCRIBE.TITLE' | translate")
+
+.content__with-header
+	.nano(nano-scroll)
+		.nano-content
+
+			.title__container
+				.t-center.t-max-w600
+					.title(ng-bind="'SNAP_FEED.SUBSCRIBE.SUBSCRIBE.TITLE' | translate")
+			.t-center.t-max-w600
+				.vp_20
+				form(
+					name="model.forms.SnapSubscribeForm"
+					ng-submit="subscribe()"
+					novalidate
+				)
+					my-multiple-select(
+						ng-model="model.filterForm.categories"
+						dynamic-model="model.filterForm.categories"
+						options="model.categoriesSelectizeOptions"
+						placeholder="{{ 'SNAP_FEED.SUBSCRIBE.SUBSCRIBE.FORM.PLACEHOLDERS.SNAP_TYPES' | translate }}"
+						required
+					)
+					.vp_10
+					my-multiple-select(
+						ng-model="model.filterForm.tags"
+						dynamic-model="model.filterForm.tags"
+						options="model.tagsSelectizeOptions"
+						placeholder="{{ 'SNAP_FEED.SUBSCRIBE.SUBSCRIBE.FORM.PLACEHOLDERS.INDUSTRY_TYPES' | translate }}"
+						required
+					)
+					.vp_10
+					//my-multiple-select(
+					//	ng-model="model.filterForm.countries"
+					//	dynamic-model="model.filterForm.countries"
+					//	options="model.countriesSelectizeOptions"
+					//	placeholder="Countries"
+					//	required
+					//)
+					//.vp_10
+					my-multiple-select(
+						ng-model="model.filterForm.languages"
+						dynamic-model="model.filterForm.languages"
+						options="model.languagesSelectizeOptions"
+						placeholder="{{ 'SNAP_FEED.SUBSCRIBE.SUBSCRIBE.FORM.PLACEHOLDERS.LANGUAGES' | translate }}"
+						required
+					)
+					.vp_20
+					.btns
+						label.btn.btn_32.btn_green.t-min-w100.t-text_center(
+							ng-class="{ 'disabled' : !model.forms.SnapSubscribeForm.$dirty || (!model.filterForm.categories.length && !model.filterForm.tags.length && !model.filterForm.languages.length) }"
+						)
+							span(ng-bind="'COMMON.SAVE_BUTTON' | translate")
+							input(type="submit")
+						.btn.btn_32.btn_red.t-min-w100.t-text_center(
+							confirm-click="unsubscribe()"
+							ng-bind="'COMMON.CLEAR_BUTTON' | translate"
+						)
+					.vp_30
+
+			.title__container
+				.t-center.t-max-w600
+					.title(ng-bind="'SNAP_FEED.SUBSCRIBE.NOTIFICATIONS.TITLE' | translate")
+					.sub-title(ng-bind="'SNAP_FEED.SUBSCRIBE.NOTIFICATIONS.SUB_TITLE' | translate")
+			.t-center.t-max-w600
+				.vp_20
+				form(
+					name="model.forms.SnapNotificationsForm"
+					ng-submit="model.forms.SnapNotificationsForm.$dirty && saveNotificationsSettings()"
+					novalidate
+				)
+					.snap-feed__notifications
+						.snap-feed__notifications__days
+							label.snap-feed__notifications__days__item(ng-repeat="day in model.notifyForm.weekdays")
+								input(
+									type="checkbox"
+									name="{{ day.label }}"
+									ng-model="day.value"
+									ng-true-value="1"
+									ng-false-value="0"
+								)
+								.snap-feed__notifications__days__item__value(ng-bind="day.label | translate")
+						.vp_10
+						.select.select_32.search-families-filter__select
+							select(
+								name="time"
+								ng-model="model.notifyForm.time"
+								ng-options="time.value as time.label for time in model.timeOptions"
+								ng-class="{ 'default' : model.notifyForm.time == 'default' }"
+							)
+								option(
+									value=""
+									disabled
+									ng-bind="'SNAP_FEED.SUBSCRIBE.NOTIFICATIONS.TIME_PLACEHOLDER' | translate"
+								)
+						.vp_20
+						.btns
+							label.btn.btn_32.btn_green.t-min-w100.t-text_center(ng-class="{ 'disabled' : !model.forms.SnapNotificationsForm.$dirty }")
+								span(ng-bind="'COMMON.SAVE_BUTTON' | translate")
+								input(type="submit")
+				.vp_30

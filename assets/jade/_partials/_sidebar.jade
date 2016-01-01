@@ -1,0 +1,39 @@
+.sidebar__container
+	.sidebar
+		.sidebar__header
+			.sidebar__header__logo
+				img(src="data/img/logo.svg")
+			.sidebar__header__name HackPack
+
+		.sidebar__navig
+			.nano(nano-scroll, track="false")
+				.nano-content
+					a.sidebar__navig__item(
+						ng-repeat="item in model.navigation"
+						ng-if="!item.hidden || !item.hidden()"
+						ui-sref="{{ item.route }}"
+						sidebar-ui-sref-active="{{ item.route }}"
+						ng-class="{ 'with-notifier': model[item.count] }"
+						tooltips
+						tooltip-title="{{ !sidebarLocked ? (item.title | translate) : '' }}"
+						tooltip-side="right"
+						ng-click="item.onClick && item.onClick()"
+					)
+						.sl-icon.sidebar__navig__item__icon(ng-class="item.icon")
+						span.sidebar__navig__item__counter(ng-if="model[item.count]") / {{ model[item.count] }}
+						.sidebar__navig__item__title(ng-bind="item.title | translate")
+
+		.sidebar__footer-navig
+			.sidebar__navig__item(
+				ng-repeat="item in model.userNavigation"
+				tooltips
+				tooltip-title="{{ !sidebarLocked ? (item.title | translate) : '' }}"
+				tooltip-side="right"
+				ng-click="item.onClick()"
+			)
+				.sl-icon.sidebar__navig__item__icon(ng-class="item.icon")
+				.sidebar__navig__item__title(ng-bind="item.title | translate")
+
+		.sidebar__toggle-btn(ng-click="toggleLock()")
+			.sl-icon.sl-icon-arrow-right-9(ng-show="!sidebarLocked")
+			.sl-icon.sl-icon-arrow-left-9(ng-show="sidebarLocked")

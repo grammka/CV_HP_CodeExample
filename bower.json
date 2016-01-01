@@ -1,0 +1,62 @@
+{
+  "name": "HackPack",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.1.1",
+    "angular": "1.4.0",
+    "angular-datepicker": "1.0.14",
+    "angular-ui-router": "0.2.15",
+    "angular-sanitize": "1.4.0",
+    "angular-translate": "2.7.2",
+    "angular-translate-loader-static-files": "2.7.2",
+    "angular-translate-loader-url": "2.7.2",
+    "angular-local-storage": "0.1.5",
+    "angular-loading-bar": "0.8.0",
+    "angulartics": "0.20.1",
+    "angular-tooltips": "0.1.24",
+    "noty": "2.3.6",
+    "ngDialog": "master",
+    "ng-file-upload": "7.2.2",
+    "ng-file-upload-shim": "7.2.2",
+    "oauth-js": "oauthio-web#0.4.4",
+    "headroom.js": "0.7.0",
+    "smart-plurals": "1.1.0",
+    "angular-moment": "0.10.3",
+    "angular-truncate": "*",
+    "Autolinker.js": "0.19.0",
+    "At.js": "1.3.2",
+    "geolocator": "1.2.9",
+    "angular-selectize2": "3.0.1",
+    "mapbox.js": "2.2.1",
+    "braintree-web": "~2.17.4"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "angular": ">= 1.3",
+    "jquery": ">= 2.1.1"
+  },
+  "overrides": {
+    "angular-datepicker": {
+      "main": [
+        "dist/index.js",
+        "dist/index.css"
+      ]
+    },
+    "ngDialog": {
+      "main": [
+        "js/ngDialog.js",
+        "css/ngDialog.css"
+      ]
+    },
+    "moment": {
+      "main": [
+        "moment.js",
+        "locale/en-gb.js",
+        "locale/ru.js"
+      ]
+    },
+    "smart-plurals": {
+      "main": "dist/Smart.Plurals.angular/Smart.Plurals.angular-all.js"
+    }
+  }
+}

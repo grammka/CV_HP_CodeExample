@@ -1,0 +1,42 @@
+div(ng-if="model.colleagues && model.colleagues.length")
+	.title__container
+		.title(ng-bind="'PROFILE.COLLEAGUES.TITLE' | translate")
+		.sub-title(ng-bind="('PROFILE.COLLEAGUES.SUB_TITLE' | translate) + ' / ' + model.colleagues.length")
+	table.table-list
+		thead
+			th
+			th Name
+			th Role
+			th
+		tbody
+			tr(ng-repeat="item in model.colleagues")
+				td.t-w1p
+					a.table-list__item__avatar(
+						ui-sref="ws.profile.principal({userId: item.id})"
+						ui-sref-opts="{reload: true}"
+					)
+						avatar(data="item")
+				td
+					a.t-link(
+						ui-sref="ws.profile.principal({userId: item.id})"
+						ui-sref-opts="{reload: true}"
+						ng-bind="item.full_name"
+					)
+				td(ng-bind="item.role.label")
+				td
+					.btns(ng-if="model.currUserId == model.user.id && !item.is_confirmed")
+						.vp_5
+						.btn.btn_26.btn_green(
+							ng-click="acceptColleagueRequest(item)"
+							ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+						)
+						.btn.btn_26.btn_red(
+							ng-click="declineColleagueRequest(item, $index)"
+							ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+						)
+
+.p_10(ng-if="model.currUserId != model.user.id && model.colleagues && !model.colleagues.length")
+	.t-max-w600
+		.notifier.info(ng-bind-html="'PROFILE.COLLEAGUES.NO_ITEMS_DESC' | translate")
+
+include profile/_suggestions

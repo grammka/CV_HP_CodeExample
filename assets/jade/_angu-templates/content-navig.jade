@@ -1,0 +1,14 @@
+.content__navig
+	.content__navig__item(
+		ng-repeat="item in model.items"
+		ng-click="select(item)"
+		ui-sref="{{ item.sref }}"
+		ui-sref-active="active"
+	)
+		span(ng-bind="item.title | translate")
+		a.header__info-icon.sl-icon.sl-icon-infomation-circle(
+			ng-if="item.infoLink"
+			ng-click="$event.stopPropagation();"
+			ng-href="{{ item.infoLink }}"
+			target="_blank"
+		)

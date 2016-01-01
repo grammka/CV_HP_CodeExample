@@ -1,0 +1,144 @@
+.snap
+	background-color: #fff
+	border-top 1px solid #E8EBEF
+	padding 10px 0
+	position: relative
+	border-radius 2px
+	&:first-child
+		padding-top: 0
+		margin-top: 10px
+		border-top: 0
+	.tag
+		cursor: pointer
+
+.snap_preview
+	border 1px solid #D0D1D6 !important
+
+.snap_on-moderation
+	background-color: #FFFCF3
+	.snap__header__icon
+		&:before
+			font-weight: 600
+			color #E2A401
+
+.snap_not-published
+	background-color: #F9ECEC
+	.snap__header__icon
+		&:before
+			font-weight: 600
+			color #D88989
+
+.snap__header
+	height: 50px
+	padding 0 0 0 54px
+	position: relative
+
+.snap__header__icon
+	width: 30px
+	height-lineheight(30px)
+	absolute top 10px left 10px
+	z-index: 20
+	text-align: center
+	font-size: 30px
+
+.snap__header__icon_job
+	&:before
+		content sl-icon-toolbox
+
+.snap__header__icon_quote
+	&:before
+		content sl-icon-file-edit-2
+
+.snap__header__icon_pr
+	&:before
+		content sl-icon-newspaper
+
+.snap__header__icon_event
+	&:before
+		content sl-icon-calendar-1
+
+.snap__header__icon_idea
+	&:before
+		content sl-icon-bubble-chat-text-2
+
+.snap__header__info
+	line-height: 50px
+	margin 0 10px 0 20px
+	float right
+	font-size: 13px
+
+.snap__content
+	padding 0 10px
+	position: relative
+
+.snap__idea-content
+	display: block
+	min-height: 30px
+	padding 10px 10px 10px 60px
+	position: relative
+	&:hover
+		text-decoration: underline
+
+.snap__title
+	height: 50px
+	line-height: 20px
+	display: table-cell
+	vertical-align middle
+	margin-right 20px
+	font-weight 600
+	font-size: 14px
+	text-align: left
+
+.snap__teaser
+	font-size: 13px
+	reset-tags-in-text()
+
+
+
+.snap__footer
+	margin-top: 10px
+	padding 2px 10px
+	position: relative
+	font-size: 11px
+	*
+		vertical-align middle
+
+.snap__author-name
+	font-weight 600
+
+.snap__posted-date
+	color #acb0b7
+
+.snap__edit-btns
+	height: 15px
+	absolute top 4px right 5px
+	z-index: 10
+	font-size: 0
+	display-inline-block()
+
+.snap__edit-btn
+	height-lineheight(15px)
+	margin-left: 5px
+	padding 0 5px
+	cursor: pointer
+	font-size: 10px
+	font-weight 600
+	text-transform lowercase
+	color #63696F
+	border-radius 1px
+	no-select()
+	display-inline-block()
+	.snap_answer &
+		font-size: 9px
+	&:first-child
+		margin-left: 0
+	&:hover
+		color #fff
+
+.snap__edit-btn_edit
+	&:hover
+		background-color: $color_dark-gray-blue
+
+.snap__edit-btn_remove
+	&:hover
+		background-color: $color_red

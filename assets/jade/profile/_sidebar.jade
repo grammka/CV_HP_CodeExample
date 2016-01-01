@@ -1,0 +1,154 @@
+.container__sidebar
+
+	.header
+		.profile__sidebar__header__user-name__container
+			.profile__sidebar__header__online-status(
+				ng-class="{ true: 'online', false: 'offline' }[model.user.is_online]"
+				n-tooltip="{{ (model.user.is_online ? 'COMMON.ONLINE' : 'COMMON.OFFLINE') | translate }}"
+				n-tooltip-placement="right"
+			)
+			.profile__sidebar__header__user-name(
+				n-tooltip="{{ model.user.full_name.length > 22 ? model.user.full_name : '' }}"
+				n-tooltip-placement="right"
+				ng-bind="model.user.full_name"
+			)
+		.profile__sidebar__header__user-info
+			span(ng-bind="model.user.role.label")
+			span(ng-if="model.user.cities[0]")
+				span.hsl /
+				location-text(model="model.user.cities[0]")
+		.profile__sidebar__header__approved-status(
+			ng-if="model.user.is_approved_by_hackpack"
+			n-tooltip="{{ 'COMMON.APPROVED_BY_HACKPACK' | translate }}"
+			n-tooltip-placement="right"
+		)
+
+	.content__with-header
+		.nano(nano-scroll, track="false")
+			.nano-content
+				.profile__sidebar__controlled-by(
+					ng-if="!model.user.is_admin && model.user.is_controlled_by_company == true && model.user.is_controlled_by_expert == false"
+					ng-bind="'PROFILE.SIDEBAR.CONTROLLED_BY_COMPANY' | translate"
+				)
+				.profile__sidebar__shared-profile(
+					ng-if="model.currUserId != model.user.id && model.user.is_profile_shared && model.user.colleague_status != 'accepted'"
+					ng-bind="'PROFILE.SIDEBAR.SHARED_PRIVATE_INFO' | translate"
+				)
+				.container__sidebar__photo
+					label.container__sidebar__photo__upload-overlay(ng-if="model.currUserId == model.user.id || model.user.is_admin")
+						.center-block-parent
+							.center-block
+								.sl-icon.sl-icon-id-picture-2
+								span(ng-bind="'PROFILE.SIDEBAR.UPDATE_PHOTO' | translate")
+						input.t-hidden-input(type="file", ngf-select="true", ngf-change="uploadAvatar($files)")
+					avatar(data="model.user")
+
+				.container__sidebar__navig(ng-if="model.currUserId != model.user.id")
+					.btns.t-text_center
+						.btn.btn_26.btn_green.t-w50p(
+							ng-if="!model.user.colleague_status"
+							ng-click="requestAsColleague()"
+							ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.NONE' | translate"
+						)
+						.btn.btn_26.t-w50p(
+							ng-if="model.user.colleague_status == 'pending'"
+							ng-init="this.status = 'Pending'"
+							ng-class="{ true: 'btn_orange', false: 'btn_red' }[this.status == 'Pending']"
+							ng-mouseenter="this.status = 'Cancel'"
+							ng-mouseleave="this.status = 'Pending'"
+							ng-click="cancelRequestAsColleague()"
+							ng-bind="(this.status == 'Pending' ? 'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.PENDING' : 'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.CANCEL') | translate"
+						)
+						.fbtn.btn_26.fbtn_green.t-w50p(
+							ng-if="model.user.colleague_status == 'accepted'"
+							ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.ACCEPTED' | translate"
+						)
+						.btn.btn_26.btn_green.t-w50p(
+							ng-if="model.user.colleague_status == 'rejected'"
+							ng-bind="'PROFILE.SIDEBAR.COLLEAGUE_REQUEST_BUTTON.REJECTED' | translate"
+						)
+						a.btn.btn_26.btn_dark-blue.t-w50p(
+							ng-href="{{ 'messenger/' + model.currUserId + '/' + model.user.id }}"
+							ng-bind="'PROFILE.SIDEBAR.SEND_MESSAGE' | translate"
+						)
+
+					div(ng-if="model.currUserId != model.user.id && model.user.colleague_status != 'accepted' && model.currUser.privacy_level != 'pub'")
+						.vp_5
+						.t-text_center(ng-switch="model.user.is_my_profile_shared")
+							.btn.btn_26.btn_light-black(
+								ng-switch-when="false"
+								ng-click="sharePrivateInfo()"
+								ng-bind="'COMMON.SHARE_PRIVATE_INFO_BUTTON.SHARE' | translate"
+							)
+							.btn.btn_26(
+								ng-switch-when="true"
+								ng-init="this.status = 'Sharing'"
+								ng-class="{ true: 'btn_green', false: 'btn_red' }[this.status == 'Sharing']"
+								ng-mouseenter="this.status = 'Cancel'"
+								ng-mouseleave="this.status = 'Sharing'"
+								ng-click="stopSharingPrivateInfo()"
+								ng-bind="(this.status == 'Sharing' ? 'COMMON.SHARE_PRIVATE_INFO_BUTTON.SHARING' : 'COMMON.SHARE_PRIVATE_INFO_BUTTON.CANCEL') | translate"
+							)
+
+				.container__sidebar__navig(ng-if="model.currUserId == model.user.id && !RC('Expert', model.mainInfoForm.role.name) && !RC('PR', model.mainInfoForm.role.name) && !RC('NGO', model.mainInfoForm.role.name)")
+					.btns.t-text_center
+						.btn.btn_26.btn_light-black.t-w50p.profile__sidebar__open-to-gigs-btn(
+							ng-class="{ 'active': model.user.is_available }"
+							ng-click="!model.user.is_available && updateAvailableStatus(true)"
+							ng-bind="'PROFILE.SIDEBAR.OPEN_TO_GIGS_BUTTON' | translate"
+						)
+						.btn.btn_26.btn_light-black.t-w50p.profile__sidebar__booked-btn(
+							ng-class="{ 'active': !model.user.is_available }"
+							ng-click="model.user.is_available && updateAvailableStatus(false)"
+							ng-bind="'PROFILE.SIDEBAR.BOOKED_BUTTON' | translate"
+						)
+
+				.profile__sidebar__user-info(ng-if="model.user.about || (model.user.links && model.user.links | userLinksExist)")
+					div(ng-if="model.user.links && (model.user.links | userLinksExist)")
+						.profile__sidebar__user-info__title(ng-bind="'PROFILE.SIDEBAR.LINKS_TITLE' | translate")
+						.profile__sidebar__user-info__desc
+							span.profile__sidebar__user-info__link(ng-repeat="(name, link) in model.user.links")
+								a.t-white-link(
+									ng-show="link"
+									ng-href="{{ link }}"
+									target="_blank"
+									ng-bind="name"
+								)
+								span.hsl(ng-if="!$last && link") /
+						.vp_10(ng-show="model.user.about")
+					div(ng-if="model.user.about")
+						.profile__sidebar__user-info__title(ng-bind="(RC('Expert', model.user.role.name) ? 'PROFILE.SIDEBAR.ABOUT_ME_TITLE_BY_ROLES.EXPERT' : 'PROFILE.SIDEBAR.ABOUT_ME_TITLE_BY_ROLES.OTHERS') | translate")
+						.profile__sidebar__user-info__desc(ng-bind-html="model.user.about")
+
+				//.container__sidebar__unscrollable
+				//	.container__sidebar__members__title(ng-if="model.colleagues.length")
+				//		span(ng-bind="'PROFILE.SIDEBAR.REFERENCES_TITLE' | translate")
+				//		a.container__sidebar__members__title__hint.sl-icon.sl-icon-infomation-circle(
+				//			href="//hackpack.press/blog/wtf-is-hackpack-colleagues/"
+				//			target="_blank"
+				//		)
+				//	.padding(ng-if="model.currUserId != model.user.id && model.user.is_private")
+				//		.description(ng-bind="'PROFILE.HIDDEN_PRIVATE_INFO_DESC' | translate")
+				//	.container__sidebar__members__container(ng-if="model.colleagues && model.colleagues.length")
+				//		.nano(nano-scroll, track="false")
+				//			.nano-content
+				//				.members-list
+				//					a.members-list__member(
+				//						ng-repeat="user in model.colleagues"
+				//						ui-sref="ws.profile({userId: user.id})"
+				//						ui-sref-opts="{reload: true}"
+				//					)
+				//						.members-list__member__avatar
+				//							avatar(data="user")
+				//						b.members-list__member__name(ng-bind="user.full_name")
+				//						.members-list__member__role(ng-bind="user.role.label")
+				//						.btns(ng-if="model.currUserId == model.user.id && !user.is_confirmed")
+				//							.vp_5
+				//							.btn.btn_18.btn_green(
+				//								ng-click="acceptColleagueRequest($event, user)"
+				//								ng-bind="'COMMON.CONFIRM_BUTTON' | translate"
+				//							)
+				//							.btn.btn_18.btn_red(
+				//								ng-click="declineColleagueRequest($event, user, $index)"
+				//								ng-bind="'COMMON.DECLINE_BUTTON' | translate"
+				//							)

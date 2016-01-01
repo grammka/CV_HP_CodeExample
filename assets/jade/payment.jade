@@ -1,0 +1,61 @@
+.vp_30
+.t-center
+	.content
+		.p_10
+			form(name="model.forms.CardInfo")
+				.credit-card
+					.credit-card__front
+						.credit-card__holder-name
+							.credit-card__field
+								.credit-card__field__title Card Holder
+								.credit-card__field__container
+									input.binput.input_40.t-validate-highlight(
+										type="text"
+										ng-model="model.form.cardInfo.number"
+										placeholder="John Doe"
+										required
+									)
+						.credit-card__number
+							.credit-card__field
+								.credit-card__field__title Enter your credit card number
+								.credit-card__field__container
+									input.binput.input_40.t-validate-highlight(
+										type="text"
+										ng-model="model.form.cardInfo.holder"
+										placeholder="1234 5678 0000 0000"
+										required
+										just-number
+									)
+						.credit-card__expire
+							.credit-card__expire__title Expires on
+							.bselect.select_40
+								select.t-validate-highlight(
+									ng-model="model.form.cardInfo.month"
+									ng-options="month.value as month.label for month in [] | range:1:12 | options"
+									ng-class="{ 'default' : !model.form.cardInfo.month }"
+									required
+								)
+									option(value="", disabled) MM
+							span.hp_5
+							.bselect.select_40
+								select.t-validate-highlight(
+									ng-model="model.form.cardInfo.year"
+									ng-options="year.value as year.label for year in [] | range:2015:2030:true | options"
+									ng-class="{ 'default' : !model.form.cardInfo.year }"
+									required
+								)
+									option(value="", disabled) YY
+					.credit-card__back
+						.credit-card__back__magnetic-tape
+						.credit-card__back__cvc
+							.credit-card__back__cvc__title CVC
+							input.binput.input_40.t-validate-highlight(
+								style="width: 80px;"
+								type="text"
+								ng-model="model.form.cardInfo.cvc"
+								ng-minlength="3"
+								maxlength="4"
+								required
+								just-number
+							)
+.vp_50

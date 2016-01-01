@@ -1,0 +1,54 @@
+div(ng-if="!model.editing")
+	.p_10(
+		ng-if="model.currUserId == model.user.id || model.user.is_admin"
+		ng-hide="model.editing"
+	)
+		.btns
+			.btn.btn_32.btn_white(
+				ng-bind="'PROFILE.PORTFOLIO.EDIT_BUTTON' | translate"
+				ng-click="edit()"
+			)
+
+	.p_10(ng-if="model.articles && model.articles.length")
+		.adaptive-grid.adaptive-grid_min-540_max-items-2
+			.profile__portfolio__articles
+				.adaptive-grid__item(ng-repeat="article in model.articles")
+					a.profile__portfolio__article(
+						ng-href="{{ article.link }}"
+						target="_blank"
+					)
+						.profile__portfolio__article__type-icon
+							i.sl-icon.sl-icon-file-new-2
+						.profile__portfolio__article__title(ng-bind="article.title")
+						span.t-text_light
+							span(ng-bind="article.publisher")
+							span.hsl /
+							span(ng-bind="article.created | amDateFormat:'MMM D, YYYY'")
+					.profile__portfolio__article__navig(ng-if="model.currUserId == model.user.id || (model.user.is_admin && model.user.is_controlled_by_company)")
+						.btns
+							//.btn.btn_22.btn_orange(ng-click="toggleArticleFavorite(article, $index);")
+							//	| Favorite
+							.btn.btn_22.btn_gray-blue(
+								ng-click="editStory(article, $index)"
+								ng-bind="'COMMON.EDIT_BUTTON' | translate"
+							)
+							.btn.btn_22.btn_red(
+								confirm-click="removeArticle(article.id, $index)"
+								confirm-title="Are you sure you want to delete this story?"
+								confirm-button="Delete"
+								cancel-button="Cancel"
+								ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+							)
+
+.p_10(ng-if="model.currUserId != model.user.id")
+	.t-max-w600
+
+		.notifier.info(
+			ng-if="model.user.is_private"
+			ng-bind="'PROFILE.HIDDEN_PRIVATE_INFO_DESC' | translate"
+		)
+
+		.notifier.info(
+			ng-if="!model.user.is_private && (!model.articles || !model.articles.length)"
+			ng-bind-html="'PROFILE.PORTFOLIO.NO_ITEMS_DESC' | translate"
+		)

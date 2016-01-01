@@ -1,0 +1,29 @@
+.snap-feed__snap__new-mess
+	.snap-feed__snap__new-mess__author-avatar
+		avatar(data="model.user")
+	.snap-feed__snap__new-mess__textarea__container
+		.textarea.snap-feed__snap__new-mess__textarea(
+			contenteditable="true"
+			ng-model="model.newMessageForm.text"
+			placeholder
+			strip-br="true"
+			safe-paste
+		)
+	.btn.btn_32.btn_black.t-text_center.snap-feed__snap__new-mess__submit-btn(
+		ng-click="submitNewMessage()"
+		ng-bind="'COMMON.SEND_BUTTON' | translate"
+	)
+
+.snap-feed__snap__messages.snap-feed__snap__user-messages
+	.posts
+		.post(ng-repeat="post in model.messages track by $index")
+			.post__header
+				a.post__author-avatar(href="{{ '/profile/' + post.author.id }}")
+					avatar(data="post.author")
+				a.post__author-name.t-link(
+					href="{{ '/profile/' + post.author.id }}"
+					ng-bind="post.author.full_name"
+				)
+				.post__posted-date(am-time-ago="post.created_at")
+			.post__content
+				.post__message(ng-bind-html="post.text")

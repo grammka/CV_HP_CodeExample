@@ -1,0 +1,74 @@
+$tooltip-color = #232935
+$tooltip-border-color = rgba(255,255,255, 0.4)
+$arrow-size = 6px
+
+.n-tooltip
+	max-width 400px
+	line-height: 17px
+	background-color: $tooltip-color
+	padding: 3px 8px 4px
+	opacity: 0
+	position: fixed
+	z-index: 10000 !important
+	font-size: 11px
+	color: #fff
+	box-shadow $tooltip-border-color 0 0 0 1px
+	&:before
+	&:after
+		content: ''
+		width: 0
+		height: 0
+		position: absolute
+		border-width: $arrow-size
+		border-style: solid
+		border-color: transparent
+	&:before
+		z-index: 20
+	&:after
+		z-index: 10
+
+.n-tooltip_top,
+.n-tooltip_bottom
+	&:before
+	&:after
+		left: 50%
+		margin-left: (-1 * $arrow-size)
+
+.n-tooltip_right,
+.n-tooltip_left
+	&:before
+	&:after
+		top: 50%
+		margin-top: (-1 * $arrow-size)
+
+.n-tooltip_top
+	&:before
+		border-top-color: $tooltip-color
+		bottom: (-2 * $arrow-size + 1px)
+	&:after
+		border-top-color $tooltip-border-color
+		bottom: (-2 * $arrow-size)
+
+.n-tooltip_right
+	&:before
+		border-right-color: $tooltip-color
+		left: (-2 * $arrow-size + 1px)
+	&:after
+		border-right-color: $tooltip-border-color
+		left: (-2 * $arrow-size)
+
+.n-tooltip_bottom
+	&:before
+		border-bottom-color: $tooltip-color
+		top: (-2 * $arrow-size + 1px)
+	&:after
+		border-bottom-color: $tooltip-border-color
+		top: (-2 * $arrow-size)
+
+.n-tooltip_left
+	&:before
+		border-left-color: $tooltip-color
+		right: (-2 * $arrow-size + 1px)
+	&:after
+		border-left-color: $tooltip-border-color
+		right: (-2 * $arrow-size)

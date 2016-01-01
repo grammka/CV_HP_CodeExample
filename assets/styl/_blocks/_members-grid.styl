@@ -1,0 +1,38 @@
+.members-grid
+	margin -10px -10px 0
+	font-size: 0
+
+.members-grid__member
+	width: 170px
+	min-height: 34px
+	line-height: 11px
+	padding 10px 10px 10px (10px + 34px + $padding)
+	margin 10px 0 0 10px
+	position: relative
+	display-inline-block()
+	no-select()
+	&:hover
+		background-color: darken($content-bg-color, 3%)
+		.avatar
+			&:before
+			&:after
+				display: block
+
+.members-grid__member__avatar
+	width: 34px
+	height-lineheight(34px)
+	absolute top 10px left 10px
+	font-size: 13px
+	//ov-corner-left-bottom(#000, $content-bg-color, 3px)
+
+.members-grid__member__name
+	padding-bottom: 6px
+	font-size: 13px
+
+.members-grid__member__role
+	padding-bottom: 5px
+	font-size: 11px
+	color $light-text-color
+
+.members-grid__member__availability
+	font-size: 11px

@@ -1,0 +1,381 @@
+html, body
+	height: 100%
+
+body
+	position: relative
+	margin: 0
+	padding: 0
+	overflow-x: hidden
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+*:focus
+	outline: none
+
+b, strong
+	/*
+		Makes browsers agree.
+		IE + Opera = font-weight: bold.
+		Gecko + WebKit = font-weight: bolder.
+	  */
+	font-weight: 600
+
+a
+	cursor: pointer
+	text-decoration: none
+	outline: none
+	&:hover
+		text-decoration: none
+	&:active
+		outline: none
+	&:focus
+		outline: none
+
+img
+	border: 0
+	color: transparent
+	font-size: 0
+	vertical-align: top
+	/*
+		For IE.
+		http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+	  */
+	-ms-interpolation-mode: bicubic
+
+ul, ol
+	padding-left: 22px
+
+li
+	/*
+		For IE6 + IE7:
+
+		"display: list-item" keeps bullets from
+		disappearing if hasLayout is triggered.
+	  */
+	display: list-item
+
+input
+	vertical-align: top
+	margin: 0
+	padding: 0
+	border: 0
+	box-shadow none !important
+	&[type=submit]
+		background: none
+		cursor: pointer
+
+input, textarea, button, select
+	&:focus
+		outline: none !important;
+	&:-webkit-autofill
+		background: #fff !important
+		&:focus
+			background: #fff !important
+	&::-moz-focus-inner
+		border: 0 !important
+
+select:-moz-focusring
+	color: transparent
+	text-shadow: 0 0 0 #000
+	appearance: normal
+	-webkit-appearance: none
+	-moz-appearance: radio-container
+
+textarea
+	resize: none
+
+[contenteditable=true]
+	cursor: text
+	&[placeholder]:empty:before
+		content: attr(placeholder)
+		display: block
+		text-indent 2px
+		color $light-text-color
+
+table
+	border: 0
+	border-spacing: 0
+	border-collapse: collapse
+
+th, td, caption
+	font-weight: normal
+	vertical-align: top
+
+td
+	padding: 0
+	border: 0
+
+
+/* Square image */
+
+.sq-img
+	width: 100%
+	height: 0
+	background-color: #fff
+	padding-bottom: 100%
+	position: relative
+	overflow: hidden
+	img
+		width: 100%
+		absolute top 0 left 0 right 0 bottom 0
+		margin auto
+
+
+/* Additional */
+
+.clear
+	content: "."
+	height: 0
+	line-height: 0
+	display: block
+	clear: both
+	visibility: hidden
+	font-size: 0
+
+.clearfix
+	&:after
+		@extend .clear
+
+.inline-elems
+	font-size: 0
+	white-space nowrap
+	.select
+	.input
+	.btn
+		width: auto
+		margin-left: 6px
+		display-inline-block()
+		&:first-child
+			margin-left: 0
+	.selectize-control
+		font-size: 13px
+		display-inline-block()
+
+
+/* Titles */
+
+for $i in (4..15)
+	.fs_{$i * 2px}
+		font-size: $i * 2px
+		//line-height: $i * 2px + 4px
+
+.t-weight_300
+	font-weight: 300 !important
+
+.t-weight_600
+.t-weight_bold
+	font-weight: 600 !important
+
+
+/* Line-height */
+
+.lh_10
+	line-height 10px
+
+.lh_20
+	line-height 20px
+
+.lh_30
+	line-height 30px
+
+.lh_36
+	line-height 36px
+
+
+/* Padding */
+
+.p_0_5
+	padding 0 5px
+
+.p_0_10
+	padding 0 10px
+
+for $i in (1..6)
+	.p_{$i * 5}
+		padding $i * 5px
+
+.hp_3
+	padding-left 3px
+
+.hp_8
+	padding-left 8px
+
+.hp_{$padding}
+	padding-left $padding
+
+for $i in (1..6)
+	.hp_{$i * 5}
+		padding-left $i * 5px
+
+for $i in (1..20)
+	.vp_{$i * 5}
+		padding-top $i * 5px
+		display block
+
+
+/* Width / Height */
+
+.t-w1p
+	width: 1% !important
+	white-space nowrap !important
+
+for $i in (1..19)
+	.t-w{$i * 10}
+		width $i * 10px !important
+
+for $i in (2..8)
+	.t-w{$i * 50}
+		width $i * 50px !important
+
+for $i in (1..6)
+	.t-min-w{$i * 100}
+		min-width $i * 100px !important
+
+for $i in (3..10)
+	.t-max-w{$i * 100}
+		max-width $i * 100px !important
+
+for $i in (1..20)
+	.t-w{$i * 5}p
+		width $i * 5%
+		box-sizing border-box
+
+.t-h100p
+	height: 100%
+
+for $i in (1..20)
+	.t-min-h{$i * 10}
+		min-height $i * 10px !important
+
+
+/* Horizontal Slash */
+
+.hsl
+	padding 0 5px
+	color $light-text-color
+
+
+/* HR */
+
+.hr
+	height: 1px
+	background: $border-color
+
+.hr-line
+	height: 1px
+	background: $border-color
+	margin: 20px 0
+	text-align: center
+
+.hr-line__text
+	height-lineheight(40px)
+	padding 0 20px
+	margin-top: -20px
+	background-color: $content-bg-color
+	display-inline-block()
+
+
+/* Types */
+
+.t-float_left
+	float left
+
+.t-float_right
+	float right
+
+.t-cursor_pointer
+	cursor: pointer !important
+
+.t-gradient
+	filter: none
+
+.t-hidden-input
+	position: fixed
+	left: -9999px
+	z-index: -1
+
+
+/* Positions */
+
+.t-pos_relative
+	position: relative
+
+
+/* Displays */
+
+.t-display-block
+	display: block !important
+
+.t-display_none
+	display: none !important
+
+.t-inline-container
+	font-size: 0
+
+.t-inline-block
+	display-inline-block()
+
+
+/* Text styling */
+
+.t-center
+	margin: 0 auto
+	position: relative
+	&.t-fixed
+		height: 100%
+		position: fixed
+		left: 50%
+		margin: 0 0 0 -490px
+
+.t-text_left
+	text-align: left !important
+
+.t-text_right
+	text-align: right !important
+
+.t-text_center
+	text-align: center !important
+		
+.t-text_white
+	color #fff !important
+
+.t-text_light
+	color $light-text-color !important
+
+.t-text_success
+	color $color_ocean !important
+
+.t-text_warning
+	color $color_orange !important
+
+.t-text_error
+	color $color_red !important
+
+
+/* Link */
+
+.t-link
+.t-hyper-link
+	color: $color_blue_darken
+	text-decoration: none
+	vertical-align top
+	cursor: pointer
+	&:visited
+		color: $color_blue_darken
+	&:hover
+		text-decoration: underline
+		color: $color_blue
+
+.t-hyper-link
+	position: relative
+	border-bottom 1px dashed lighten($color_blue_darken, 30%)
+	&:hover
+		text-decoration: none
+		border-bottom 0
+
+
+/* Angular ngCloak */
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}

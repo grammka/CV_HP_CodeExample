@@ -1,0 +1,116 @@
+.header
+	.header__content
+		.header__title
+			a.t-white-link(ui-sref="ws.snapFeed.list")
+				i.sl-icon.sl-icon-arrow-left
+				span.hp_10
+				span(ng-bind="'SNAP_FEED.HEADER.BACK_TO_SNAPS_LIST' | translate")
+
+.content__with-header
+	.nano(nano-scroll)
+		.nano-content
+			.content(ng-if="model.snap")
+
+
+				.fs_24(ng-bind="'SNAP_FEED.PREVIEW.PREVIEW_TITLE' | translate")
+				.vp_15
+				.t-max-w800
+					.snap.snap_preview
+						div(ng-if="model.snap.snap_type == 'idea'")
+							.snap__header__icon.sl-icon(ng-class="'snap__header__icon_' + model.snap.snap_type")
+							include snap-feed/_snap-info
+							a.snap__idea-content(ng-bind-html="model.snap.teaser")
+						div(ng-if="model.snap.snap_type != 'idea'")
+							.snap__header.clearfix
+								.snap__header__icon.sl-icon(ng-class="'snap__header__icon_' + model.snap.snap_type")
+								include snap-feed/_snap-info
+								a.snap__title.t-link(ng-bind="model.snap.title")
+							.snap__content
+								.snap__teaser(ng-bind-html="model.snap.teaser || model.snap.description")
+						.snap__footer
+							span(ng-if="model.snap.affiliation")
+								span.snap__author-name(ng-bind="model.snap.affiliation")
+							a.snap__author-name.t-link(
+								ng-if="!model.snap.affiliation"
+								ui-sref="ws.profile({userId: model.snap.author.id})"
+								ng-bind="model.snap.author.full_name"
+							)
+							span.hp_8
+							span.snap__posted-date(am-time-ago="model.snap.created_at")
+						.vp_10
+						.tags.p_0_10
+							.tag(
+								ng-repeat="tag in model.snap.tags track by $index"
+								ng-bind="tag"
+							)
+
+				.vp_30
+
+				.fs_24(ng-bind="'SNAP_FEED.PREVIEW.POST_TITLE' | translate")
+				.vp_15
+				.t-max-w800
+					.snap-feed__snap-in
+						a.snap-feed__snap-in__author-avatar(ui-sref="ws.profile({userId: model.snap.author.id})")
+							avatar(data="model.snap.author")
+						.snap-feed__snap-in__container
+							.snap-feed__snap-in__header
+								.t-float_left
+									span.snap-feed__snap-in__category(ng-bind="model.snap.category")
+									span.hsl /
+									span.snap-feed__snap-in__title(ng-bind="model.snap.title")
+								.btns.t-float_right
+									.snap-feed__snap-in__deadline(ng-if="model.snap.deadline")
+										span(ng-bind="('COMMON.DEADLINE' | translate) + ':'")
+										span.hp_5
+										b(ng-bind="model.snap.deadline | amDateFormat:'MMM D, YYYY'")
+									a.btn.btn_26.btn_gray-blue(
+										ng-if="snap.author.id == model.user.id"
+										ui-sref="ws.snapFeed.edit({snapId: model.snap.id})"
+										ng-bind="'COMMON.EDIT_BUTTON' | translate"
+									)
+									.btn.btn_26.btn_red(
+										ng-if="snap.author.id == model.user.id"
+										confirm-click="removeSnap()"
+										ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+									)
+							.snap-feed__snap-in__content
+								.snap-feed__snap-in__description(ng-bind-html="model.snap.description || model.snap.teaser")
+								.post__file-previews(ng-if="model.snap.attachments && model.snap.attachments.length")
+									grid-gallery(images="model.snap.attachments")
+								.snap-feed__snap-in__author-info
+									span(ng-if="model.snap.affiliation")
+										span.snap__author-name(ng-bind="model.snap.affiliation")
+										span.hsl /
+									a.snap__author-name.t-link(
+										ui-sref="ws.profile({userId: model.snap.author.id})"
+										ng-bind="model.snap.author.full_name"
+									)
+									span(ng-if="model.snap.country")
+										span.hsl /
+										span.snap-feed__snap-in__location(ng-bind="model.snap.country")
+									span.hp_10
+									span.snap__posted-date(am-time-ago="model.snap.created_at")
+
+				.vp_30
+
+				.btns
+					a.btn.btn_32.btn_orange.t-min-w100.t-text_center(
+						ui-sref="ws.snapFeed.edit({snapId: model.snap.id})"
+						ng-bind="'SNAP_FEED.PREVIEW.EDIT_BUTTON' | translate"
+					)
+					.btn.btn_32.btn_green.t-min-w100.t-text_center(
+						ng-if="!model.snap.is_published"
+						ng-click="publish()"
+						ng-bind="'SNAP_FEED.PREVIEW.PUBLISH_BUTTON' | translate"
+					)
+					.btn.btn_32.btn_red.t-min-w100.t-text_center(
+						ng-if="model.snap.is_published"
+						confirm-click="unpublish()"
+						ng-bind="'COMMON.UNPUBLISH_BUTTON' | translate"
+					)
+					.btn.btn_32.btn_red.t-min-w100.t-text_center(
+						confirm-click="remove()"
+						ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+					)
+
+				.vp_50

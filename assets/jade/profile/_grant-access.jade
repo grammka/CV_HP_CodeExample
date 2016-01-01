@@ -1,0 +1,19 @@
+.content.profile__portfolio__edit-article(
+	ng-if="model.user.is_admin && model.user.is_controlled_by_company == true && model.user.is_controlled_by_expert == false"
+)
+		.info-list__item__header
+			.info-list__item__title(ng-bind="'PROFILE.GRANT_ACCESS_TO_EXPERT.TITLE' | translate")
+		.info-list__item__content
+			input.input.input_32.t-w300(
+				type="email"
+				ng-model="model.grantAccessToExpertForm.email"
+				placeholder="E-mail"
+			)
+
+			span.hp_20
+
+			.btns.t-inline-block
+				.btn.btn_32.btn_green(
+					ng-click="giveAccessToExpertViaEmail()"
+					ng-bind="'PROFILE.GRANT_ACCESS_TO_EXPERT.SAVE_BUTTON' | translate"
+				)

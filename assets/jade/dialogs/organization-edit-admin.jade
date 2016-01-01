@@ -1,0 +1,37 @@
+.edit-user-dialog
+	.edit-user-dialog__header
+		a.t-link(
+			href="{{ '//hackpack.press/profile/' + model.user.id }}"
+			target="_blank"
+			ng-bind="model.user.full_name"
+		)
+		span.hp_8
+		span.t-text_light(ng-bind="model.user.role.label")
+
+	.vp_20
+	label.checkbox__wrap
+		checkbox(model="model.user.permissions.edit_company")
+		span(ng-bind="'MY_COMPANY.USERS.PERMISSIONS.EDIT_COMPANY' | translate")
+	.vp_5
+	label.checkbox__wrap
+		checkbox(model="model.user.permissions.invite_experts")
+		span(ng-bind="'MY_COMPANY.USERS.PERMISSIONS.INVITE_EXPERTS' | translate")
+	.vp_5
+	label.checkbox__wrap
+		checkbox(model="model.user.permissions.edit_experts")
+		span(ng-bind="'MY_COMPANY.USERS.PERMISSIONS.EDIT_EXPERTS' | translate")
+	.vp_5
+	label.checkbox__wrap
+		checkbox(model="model.user.permissions.invite_administrators")
+		span(ng-bind="'MY_COMPANY.USERS.PERMISSIONS.INVITE_ADMINS' | translate")
+
+	.vp_20
+	.btns.t-text_right
+		.btn.btn_26.btn_green(
+			ng-click="save()"
+			ng-bind="'COMMON.SAVE_BUTTON' | translate"
+		)
+		.btn.btn_26.btn_white(
+			ng-click="closeThisDialog()"
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+		)

@@ -1,0 +1,31 @@
+.notifier
+	padding 12px $padding
+	font-size: 13px
+	&.info
+		background-color: $color_blue
+		color #fff
+		a
+			color #fff !important
+	&.warning
+		background-color: $color_orange
+		color #000
+	&.error
+		background-color: $color_red
+		color #fff
+		a
+			color #fff !important
+	a
+		text-decoration underline
+
+.notifier_animated
+	position: relative
+	animation(notifier-scaling 0.7s)
+
+@keyframes notifier-scaling
+	0%
+		z-index: 100
+		transform scale(1.4)
+	99%
+		transform scale(1)
+	100%
+		z-index: 1

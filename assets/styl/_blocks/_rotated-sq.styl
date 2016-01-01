@@ -1,0 +1,12 @@
+rotated-sq($size, $bg-color)
+	width: $size
+	height-lineheight($size)
+	margin ((sqrt($size * $size * 2) - $size) / 2)
+	&:after
+		content ''
+		width: 100%
+		height: 100%
+		display: block
+		background-color: $bg-color
+		absolute top 0 left 0
+		transform rotate(45deg)

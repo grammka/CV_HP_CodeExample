@@ -1,0 +1,31 @@
+.p_10(ng-if="model.currUserId == model.user.id")
+	.t-max-w700
+
+		.t-max-w600(ng-if="model.posts && !model.posts.length")
+			.notifier.info(
+				ng-if="model.user.colleague_status != 'accepted'"
+				ng-bind-html="'PROFILE.FEEDBACK.MY_PAGE_NO_ITEMS_DESC' | translate"
+			)
+
+		.feedback__categories
+			.feedback__categories__item(
+				ng-repeat="item in model.posts track by $index"
+				ng-class="{ 'active': item.id == model.activeCategory.id }"
+				ng-click="selectCategory(item)"
+			)
+				span.feedback__categories__item__title(ng-bind="item.name")
+				span.feedback__categories__item__counter(ng-bind="item.messages_count")
+
+		.feedback__post(
+			ng-if="model.activeCategory"
+			ng-repeat="item in model.activeCategory.messages track by $index"
+		)
+			.feedback__post__header
+				.t-inline-container
+					.t-inline-block
+						.fs_14(ng-bind="item.category")
+					span.hp_15
+					.t-inline-block
+						.rating
+							.rating__bar(style="width: {{ item.rating * 10 }}%")
+			.feedback__post__text(ng-bind-html="item.comment")

@@ -1,0 +1,322 @@
+.p_10(ng-if="model.editing")
+
+	.btns
+		.btn.btn_32.btn_green.t-text_center.t-w100(
+			ng-click="save()"
+			ng-bind="'COMMON.SAVE_BUTTON' | translate"
+		)
+		.btn.btn_32.btn_red(
+			ng-click="cancel()"
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+		)
+
+	.vp_20
+
+	.adaptive-grid.adaptive-grid_min-540_max-items-2(
+		server-validation="model.validateObject"
+		methods="model.validateMethods"
+	)
+		.adaptive-grid__item
+			.info-list.info-list__with-editing-form
+
+				.info-list__item
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.FULL_NAME.TITLE' | translate")
+					.info-list__item__content
+						.row_6
+							.col.col_8(validate-field="first_name")
+								input.input.input_32(
+									type="text"
+									ng-model="model.form.first_name"
+									placeholder="First Name"
+								)
+							.col.col_8(validate-field="last_name")
+								input.input.input_32(
+									type="text"
+									ng-model="model.form.last_name"
+									placeholder="Last Name"
+								)
+
+				.info-list__item(ng-if="[1,4,5,2148].indexOf(model.user.id) >= 0")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.ROLE.TITLE' | translate")
+					.info-list__item__content
+						my-select.selectize_32(
+							options="model.rolesSelectOptions"
+							ng-model="model.form.role"
+						)
+
+				.info-list__item
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.SECONDARY_ROLES.TITLE' | translate")
+					.info-list__item__content
+						my-multiple-select.selectize_min-32(
+							options="model.extraRolesSelectOptions"
+							ng-model="model.form.extra_roles"
+						)
+
+				.info-list__item(ng-if="!RC('Expert', model.form.role.name) && !RC('PR', model.form.role.name) && !RC('NGO', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.MEDIA_TYPES.TITLE' | translate")
+					.info-list__item__content
+						my-multiple-select.selectize_min-32(
+							options="model.mediaTypesSelectOptions"
+							ng-model="model.form.media_types"
+						)
+
+				.info-list__item(validate-field="city_ids")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.LOCATION.TITLE' | translate")
+					.info-list__item__content
+						.profile__languages
+							.profile__language(ng-repeat="item in model.form.cities track by $index")
+								b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(ng-click="removeLocation($index)")
+								span.hp_5
+								location-text(model="item")
+							.vp_10
+							.row_6
+								.col.col_12
+									my-select-location.selectize_min-32.t-no-arrow(
+										ng-model="model.locationForm.object"
+										dynamic-model="model.locationForm.object"
+									)
+								.col.col_4
+									.btn.btn_32.btn_green.btn_w100.t-text_center(
+										ng-class="{ 'disabled': !model.locationForm.object }"
+										ng-click="addLocation()"
+										ng-bind="'PROFILE.MAIN.INFO_LIST.LANGUAGES.ADD_BUTTON' | translate"
+									)
+
+				.info-list__item(ng-if="!RC('Expert', model.form.role.name) && !RC('PR', model.form.role.name) && !RC('NGO', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.AFFILIATIONS.TITLE' | translate")
+					.info-list__item__content
+						my-select-affiliations.selectize_min-32.t-no-arrow(
+							ng-model="model.form.affiliations"
+							default-options="model.user.affiliations"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.AFFILIATIONS.PLACEHOLDER' | translate }}"
+						)
+
+				.info-list__item
+					.info-list__item__header
+						.info-list__item__title(ng-bind="(RC('Expert', model.user.role.name) ? 'PROFILE.MAIN.INFO_LIST.EXPERTISE.TITLE_BY_ROLES.EXPERT' : (RC('PR', model.user.role.name) || RC('NGO', model.user.role.name) ? 'PROFILE.MAIN.INFO_LIST.EXPERTISE.TITLE_BY_ROLES.PR_NGO' : 'PROFILE.MAIN.INFO_LIST.EXPERTISE.TITLE_BY_ROLES.OTHERS')) | translate")
+					.info-list__item__content
+						my-multiple-select.selectize_min-32(
+							options="model.expertiseSelectOptions"
+							ng-model="model.form.expertise"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.EXPERTISE.PLACEHOLDER' | translate }}"
+							create="true"
+						)
+
+				.info-list__item(ng-if="!RC('Expert', model.form.role.name) && !RC('PR', model.form.role.name) && !RC('NGO', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.SKILLS.TITLE' | translate")
+					.info-list__item__content
+						my-multiple-select.selectize_min-32(
+							options="model.skillsSelectOptions"
+							ng-model="model.form.skills"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.SKILLS.PLACEHOLDER' | translate }}"
+							create="true"
+						)
+
+				.info-list__item
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.LANGUAGES.TITLE' | translate")
+					.info-list__item__content
+						.profile__languages
+							.profile__language(ng-repeat="item in model.form.languages track by $index")
+								b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(ng-click="removeLanguage($index)")
+								span.hp_5
+								span.profile__language__name(ng-bind="item.language")
+								span.profile__language__level(ng-bind="'(' + item.experience + ')'")
+							.vp_10
+							.row_6
+								.col.col_6
+									my-select.selectize_32(
+										options="model.languagesSelectOptions"
+										placeholder="{{ 'PROFILE.MAIN.INFO_LIST.LANGUAGES.LANGUAGE_PLACEHOLDER' | translate }}"
+										ng-model="model.languageForm.language"
+										dynamic-model="model.languageForm.language"
+									)
+								.col.col_6
+									my-select.selectize_32(
+										options="model.languageExperienceSelectOptions"
+										placeholder="{{ 'PROFILE.MAIN.INFO_LIST.LANGUAGES.EXPERIENCE_PLACEHOLDER' | translate }}"
+										ng-model="model.languageForm.experience"
+										dynamic-model="model.languageForm.experience"
+									)
+								.col.col_4
+									.btn.btn_32.btn_green.btn_w100.t-text_center(
+										ng-class="{ 'disabled': !model.languageForm.language || !model.languageForm.experience }"
+										ng-click="addLanguage()"
+										ng-bind="'PROFILE.MAIN.INFO_LIST.LANGUAGES.ADD_BUTTON' | translate"
+									)
+
+		.adaptive-grid__item
+			.info-list.info-list__with-editing-form
+
+				.info-list__item(validate-field="about")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="(RC('Expert', model.form.role.name) ? 'PROFILE.MAIN.INFO_LIST.ABOUT.TITLE_BY_ROLES.EXPERT' : 'PROFILE.MAIN.INFO_LIST.ABOUT.TITLE_BY_ROLES.OTHERS') | translate")
+					.info-list__item__content
+						.t-text_light(
+							ng-class="{ 't-text_error': (model.form.about | replaceHTML).length > (RC('Expert', model.form.role.name) ? 750 : 250) }"
+							ng-bind="'PROFILE.MAIN.INFO_LIST.ABOUT.WARNING' | translate:{length: RC('Expert', model.form.role.name) ? 750 : 250, used: (model.form.about | replaceHTML).length}"
+						)
+						.textarea.t-min-h100(
+							text-editor
+							model="model.form.about"
+						)
+
+				.info-list__item(ng-if="RC('Expert', model.form.role.name) || RC('PR', model.form.role.name) || RC('NGO', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.CONTACTING.TITLE' | translate")
+					.info-list__item__content
+						input.input.input_32(
+							type="text"
+							ng-model="model.form.contacting"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.CONTACTING.PLACEHOLDER' | translate }}"
+						)
+
+				.info-list__item(ng-if="RC('Editor', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.DEADLINES.TITLE' | translate")
+					.info-list__item__content
+						input.input(
+							type="text"
+							ng-model="model.form.deadlines"
+							ng-maxlength="115"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.DEADLINES.PLACEHOLDER' | translate }}"
+						)
+
+				.info-list__item(ng-if="RC('Editor', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.SPECIAL_FEATURES.TITLE' | translate")
+					.info-list__item__content
+						input.input.input_32(
+							type="text"
+							ng-model="model.form.special_features"
+							ng-maxlength="115"
+							placeholder="{{ 'PROFILE.MAIN.INFO_LIST.SPECIAL_FEATURES.PLACEHOLDER' | translate }}"
+						)
+
+				.info-list__item(ng-if="RC('Expert', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.GOING_LIVE.TITLE' | translate")
+					.info-list__item__content
+						.select.select_32
+							select(
+								ng-model="model.form.going_live"
+								ng-options="option.value as option.label for option in model.goingLiveSelectOptions"
+								ng-class="{ 'default' : !model.form.going_live }"
+								required
+							)
+								option(
+									value=""
+									disabled
+									ng-bind="'PROFILE.MAIN.INFO_LIST.GOING_LIVE.PLACEHOLDER' | translate"
+								)
+
+				.info-list__item(ng-if="RC('Fixer', model.form.role.name) || RC('Photographer', model.form.role.name) || RC('Videographer', model.form.role.name)")
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.INVENTORY.TITLE' | translate")
+					.info-list__item__content
+						.profile__main-info__edit-languages
+							.profile__main-info__edit-languages__item(ng-repeat="item in model.form.gears track by $index")
+								b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(ng-click="removeGear($index)")
+								span.hp_5
+								span.profile__language__name(ng-bind="item.description")
+							.vp_10
+							.row_6
+								.col.col_12
+									input.input.input_32(
+										type="text"
+										ng-model="model.gearForm.description"
+										placeholder="{{ 'PROFILE.MAIN.INFO_LIST.INVENTORY.DESC_PLACEHOLDER' | translate }}"
+									)
+								.col.col_4
+									.btn.btn_32.btn_green.btn_w100.t-text_center(
+										ng-class="{ 'disabled' : !model.gearForm.description }"
+										ng-click="model.gearForm.description && addGear()"
+										ng-bind="'COMMON.ADD_BUTTON' | translate"
+									)
+
+				.info-list__item.profile__danger-lvl__editing(
+					ng-if="!RC('Expert', model.form.role.name) && !RC('PR', model.form.role.name) && !RC('NGO', model.form.role.name)"
+					ng-mouseenter="model.mainInfoHelpers.dangerLevel.currLevelIndex = model.form.danger_level"
+				)
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.DANGER_LEVEL.TITLE' | translate")
+					.info-list__item__content
+						.profile__danger-lvl
+							.profile__danger-lvl__info__navig
+								.profile__danger-lvl__info__navig__item(
+									ng-class="{ 'disabled': !model.mainInfoHelpers.dangerLevel.currLevelIndex }"
+									ng-click="goDangerLevelHelperInfo(-1, true)"
+								)
+									i.profile__danger-lvl__info__navig__item__icon.sl-icon.sl-icon-arrow-left-9
+									span(ng-bind="'COMMON.PREV_BUTTON' | translate")
+								span.hsl /
+								.profile__danger-lvl__info__navig__item(
+									ng-class="{ 'disabled': model.mainInfoHelpers.dangerLevel.currLevelIndex == model.mainInfoHelpers.dangerLevel.levels.length - 1 }"
+									ng-click="goDangerLevelHelperInfo(1, true)"
+								)
+									span(ng-bind="'COMMON.NEXT_BUTTON' | translate")
+									i.profile__danger-lvl__info__navig__item__icon.sl-icon.sl-icon-arrow-right-9
+							.profile__danger-lvl__icon.sl-icon.sl-icon-report-problem-triangle
+							span.hsl /
+							span(ng-bind="model.mainInfoHelpers.dangerLevel.levels[model.mainInfoHelpers.dangerLevel.currLevelIndex].title | translate")
+						.profile__danger-lvl__info__desc(ng-bind-html="model.mainInfoHelpers.dangerLevel.levels[model.mainInfoHelpers.dangerLevel.currLevelIndex].desc | translate")
+
+				.info-list__item
+					.info-list__item__header
+						.info-list__item__title(ng-bind="'PROFILE.MAIN.INFO_LIST.MY_LINKS.TITLE' | translate")
+					.info-list__item__content
+						.profile__languages
+							.profile__language(
+								ng-repeat="(name, url) in model.form.links track by $index"
+								ng-if="url"
+							)
+								b.sl-icon.sl-icon-remove-2.t-cursor_pointer.t-text_error(
+									ng-click="removeLink(name)"
+									ng-disabled="name == model.currUser.social_auth_used_links"
+									n-tooltip="{{ name == model.currUser.social_auth_used_links ? ('PROFILE.MAIN.INFO_LIST.MY_LINKS.DISABLED_LINK_DESC' | translate) : '' }}"
+									n-tooltip-placement="top"
+								)
+								span.hp_5
+								span.profile__language__name(ng-bind="name")
+								a.t-link.profile__language__level(target="_blank", ng-href="{{ url }}", ng-bind="'(' + url + ')'")
+							.vp_10
+							.row_6
+								.col.col_6
+									my-select.selectize_32(
+										options="model.linksSelectOptions"
+										ng-model="model.linksForm.name"
+										placeholder="{{ 'PROFILE.MAIN.INFO_LIST.MY_LINKS.NAME_PLACEHOLDER' | translate }}"
+									)
+								.col.col_6
+									input.input.input_32(
+										type="text"
+										ng-model="model.linksForm.url"
+										placeholder="{{ 'PROFILE.MAIN.INFO_LIST.MY_LINKS.URL_PLACEHOLDER' | translate }}"
+									)
+								.col.col_4
+									.btn.btn_32.btn_green.btn_w100.t-text_center(
+										ng-class="{ 'disabled': !model.linksForm.name || !model.linksForm.url }"
+										ng-click="addLink()"
+										ng-bind="'COMMON.ADD_BUTTON' | translate"
+									)
+
+	.vp_20
+
+	.btns
+		.btn.btn_32.btn_green.t-text_center.t-w100(
+			ng-click="save()"
+			ng-bind="'COMMON.SAVE_BUTTON' | translate"
+		)
+		.btn.btn_32.btn_red(
+			ng-click="cancel()"
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+		)
+
+	.vp_50

@@ -1,0 +1,58 @@
+.messenger__opponent__container(ng-if="model.currChat")
+	.header
+		.profile__sidebar__header__user-name__container
+			.profile__sidebar__header__online-status(
+				ng-class="{ true: 'online', false: 'offline' }[model.currChat.from_profile.is_online]"
+				n-tooltip="{{ (model.currChat.from_profile.is_online ? 'COMMON.ONLINE' : 'COMMON.OFFLINE') | translate }}"
+				n-tooltip-placement="right"
+			)
+			a.profile__sidebar__header__user-name(
+				ng-href="{{ '/profile/' + model.currChat.from_profile.id }}"
+				ng-bind="model.currChat.from_profile.full_name"
+			)
+		.profile__sidebar__header__user-info(ng-bind="model.currChat.from_profile.role.label")
+
+	.content__with-header
+		.profile__sidebar__controlled-by(
+			ng-if="!model.currChat.from_profile.is_admin && model.currChat.from_profile.is_controlled_by_company == true && model.currChat.from_profile.is_controlled_by_expert == false"
+			ng-bind="'PROFILE.SIDEBAR.CONTROLLED_BY_COMPANY' | translate"
+		)
+		.profile__sidebar__shared-profile(
+			ng-if="model.currChat.from_profile.is_profile_shared && model.currChat.from_profile.colleague_status != 'accepted'"
+			ng-bind="'PROFILE.SIDEBAR.SHARED_PRIVATE_INFO' | translate"
+		)
+		a.container__sidebar__photo(ng-href="{{ '/profile/' + model.currChat.from_profile.id }}")
+			avatar(data="model.currChat.from_profile")
+
+		.p_5.t-text_center
+			.btn.btn_26.btn_light-black.vp_5(
+				ng-show="!model.currChat.from_profile.is_ignored"
+				ng-click="addToIgnore()"
+				ng-bind="'COMMON.ADD_TO_IGNORE_BUTTON.IGNORE' | translate"
+			)
+			.btn.btn_26(
+				ng-show="model.currChat.from_profile.is_ignored"
+				ng-init="this.status = 'Ignoring'"
+				ng-class="{ true: 'btn_red', false: 'btn_green' }[this.status == 'Ignoring']"
+				ng-mouseenter="this.status = 'Cancel'"
+				ng-mouseleave="this.status = 'Ignoring'"
+				ng-click="stopIgnoring()"
+				ng-bind="(this.status == 'Ignoring' ? 'COMMON.ADD_TO_IGNORE_BUTTON.IGNORING' : 'COMMON.ADD_TO_IGNORE_BUTTON.CANCEL') | translate"
+			)
+			.vp_5
+			.btn.btn_26.btn_light-black(
+				ng-if="model.currChat.from_profile.colleague_status != 'accepted' && model.user.privacy_level != 'pub'"
+				ng-show="!model.currChat.from_profile.is_my_profile_shared"
+				ng-click="sharePrivateInfo()"
+				ng-bind="'COMMON.SHARE_PRIVATE_INFO_BUTTON.SHARE' | translate"
+			)
+			.btn.btn_26(
+				ng-if="model.currChat.from_profile.colleague_status != 'accepted' && model.user.privacy_level != 'pub'"
+				ng-show="model.currChat.from_profile.is_my_profile_shared"
+				ng-init="this.status = 'Sharing'"
+				ng-class="{ true: 'btn_green', false: 'btn_red' }[this.status == 'Sharing']"
+				ng-mouseenter="this.status = 'Cancel'"
+				ng-mouseleave="this.status = 'Sharing'"
+				ng-click="stopSharingPrivateInfo()"
+				ng-bind="(this.status == 'Sharing' ? 'COMMON.SHARE_PRIVATE_INFO_BUTTON.SHARING' : 'COMMON.SHARE_PRIVATE_INFO_BUTTON.CANCEL') | translate"
+			)

@@ -1,0 +1,241 @@
+$sidebar-bg-color             = #232935 //#242328
+$sidebar-border-color         = #1B2029 //#323136
+$sidebar-text-color           = #C7CFDE
+$sidebar-light-text-color     = #5B6881
+
+
+
+.sidebar__container
+	height: 100%
+	fixed left 0 top 0
+	z-index: 500
+
+.sidebar
+	width: $sidebar-width
+	height: 100%
+	background-color: $sidebar-bg-color
+	overflow: hidden
+	absolute top 0 left 0
+	white-space nowrap
+	no-select()
+	&:before
+		//content ''
+		display: block
+		width: 10px
+		height: 100%
+		absolute top 0 right -10px
+		z-index: 100
+		box-shadow rgba(0,0,0, 0.4) 0 0 10px 2px
+	.baron
+		width: 100% !important
+		padding-right: 100px
+	.sidebar_locked &
+		width: $sidebar-locked-width
+		box-shadow none
+		&:before
+			display: block !important
+		.sidebar__user__arr
+			display: block
+
+/* Header ----------------------------------------------------- */
+
+.sidebar__header
+	width: $sidebar-locked-width - $size - $padding
+	height-lineheight($size)
+	background-color: #14171D
+	padding 0 $padding 0 $size
+	position: relative
+	cursor: default
+	text-align: right
+
+.sidebar__header__logo
+	width: $size
+	height: $size
+	display: block
+	//background-color: #48CFBF
+	absolute top 0 left 0
+	z-index: 10
+	img
+		width: 22px
+		height: 22px
+		opacity: 0.8
+		absolute top 0 left 0 right 0 bottom 0
+		margin auto
+		filter invert(100%)
+		-webkit-filter invert(100%)
+
+.sidebar__header__name
+	text-transform: uppercase
+	font-weight 600
+	font-size: 17px
+	color #DAE3E5
+
+
+
+/* Navigation -------------------------------------------------- */
+
+.sidebar__feedback-btn
+	height-lineheight(50px)
+	width: 204px
+	background-color: $color_blue
+	padding 0 20px 0 70px
+	fixed right (-204px + 36px) top 50%
+	margin-top: -25px
+	z-index: 1000
+	cursor: pointer
+	white-space nowrap
+	font-weight 600
+	font-size: 14px
+	color #fff
+	box-sizing border-box
+	//transition right 0.14s linear
+	no-select()
+	.sl-icon-bubble-chat-text-2
+		width: 36px
+		height: 100%
+		display: block
+		border-right 1px solid darken($color_blue, 20%)
+		absolute top 0 left 0
+		text-align: center
+		font-size: 18px
+	&:hover
+		right 0
+
+.sidebar__navig
+	absolute top $size left 0 right 0 bottom 206px
+
+.sidebar__navig__item
+	height-lineheight($size)
+	display: block
+	padding-left $size
+	border-top 1px solid $sidebar-border-color
+	border-bottom 1px solid $sidebar-border-color
+	margin-top: -1px
+	overflow: hidden
+	position: relative
+	z-index: 10
+	cursor: pointer
+	white-space nowrap
+	font-size: 12px
+	color $sidebar-text-color
+	&.with-notifier
+		&:before
+			content: ''
+			width: $size
+			height: 100%
+			background-color: rgba(#000, 0.5)
+			absolute top 0 left 0
+			z-index: -1
+			border-radius 50%
+			transform scale(0)
+			animation sidebar__navig__item_with-notifier 1.3s infinite
+	&:first-child
+		margin-top: 0
+		border-top: 0
+	&:hover
+		background-color: darken($sidebar-bg-color, 30%)
+		color #fff
+		.sidebar__navig__item__counter
+			color #fff
+	&.active
+		background-color: #000
+		border-color #000
+		z-index: 20
+		color #fff
+		.sidebar__navig__item__counter
+			color #fff
+	&.active
+		&:before
+			display: none
+		&:after
+			content ''
+			display: block
+			width: 2px
+			height: 100%
+			background-color: $color_orange
+			absolute top 0 left 0
+
+@keyframes sidebar__navig__item_with-notifier
+	100%
+		transform scale(2.5)
+		opacity: 0
+
+
+.sidebar__navig__item__icon
+	width: $size
+	height-lineheight($size)
+	display: block
+	absolute top 0 left 0
+	text-align: center
+	font-size: 19px
+	.with-notifier &
+		color $color_ocean
+
+.sidebar__navig__item__title
+	display: none
+	absolute right $padding top 0
+	text-transform: uppercase
+	.sidebar_locked &
+		display: block
+
+
+
+/* Footer ---------------------------------------------- */
+
+.sidebar__footer-navig
+	absolute bottom 40px left 0 right 0
+	.sidebar__navig__item
+		&:first-child
+			border-top: 1px solid $sidebar-border-color
+
+
+
+.sidebar__toggle-btn
+	height-lineheight(40px)
+	padding 0 $padding
+	absolute bottom 0 left 0 right 0
+	cursor: pointer
+	color $sidebar-text-color
+	text-align: center
+	font-size: 12px
+	.sl-icon
+		font-weight 600 !important
+	&:hover
+		background-color: darken($sidebar-bg-color, 30%)
+		color #fff
+	.sidebar_locked &
+		text-align: right
+
+
+
+@media all and (min-height: 485px) and (max-height: 644px)
+	.sidebar__navig
+		bottom 195px
+
+	.sidebar__navig__item
+	.sidebar__navig__item__icon
+	.sidebar__toggle-btn
+		height-lineheight(38px)
+		font-size: 11px
+
+	.sidebar__navig__item__icon
+		font-size: 16px
+
+	.sidebar__footer-navig
+		bottom 38px
+
+@media all and (max-height: 484px)
+	.sidebar__navig
+		bottom 155px
+
+	.sidebar__navig__item
+	.sidebar__navig__item__icon
+	.sidebar__toggle-btn
+		height-lineheight(30px)
+		font-size: 10px
+
+	.sidebar__navig__item__icon
+		font-size: 14px
+
+	.sidebar__footer-navig
+		bottom 30px

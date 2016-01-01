@@ -1,0 +1,64 @@
+arrow($size=8px)
+	width: ($size * 2)
+	height: ($size * 2)
+	position: relative
+	&:before
+	&:after
+		content ''
+		display: block
+		width: 0
+		height: 0
+		border $size solid transparent
+		position: absolute
+	&:before
+		z-index: 20
+	&:after
+		z-index: 10
+
+arrow-top($overflow-color, $size=8px, $arr-color=#636267)
+	arrow($size)
+	&:before
+	&:after
+		top (-1 * $size / 2)
+		left 0
+	&:before
+		border-bottom-color $overflow-color
+		margin-top: 1px
+	&:after
+		border-bottom-color $arr-color
+
+arrow-right($overflow-color, $size=8px, $arr-color=#636267)
+	arrow($size)
+	&:before
+	&:after
+		top 0
+		left ($size / 2)
+	&:before
+		border-left-color $overflow-color
+		margin-left: -1px
+	&:after
+		border-left-color $arr-color
+
+arrow-bottom($overflow-color, $size=8px, $arr-color=#636267)
+	arrow($size)
+	&:before
+	&:after
+		top ($size / 2)
+		left 0
+	&:before
+		border-top-color $overflow-color
+		margin-top: -1px
+	&:after
+		border-top-color $arr-color
+
+arrow-left($overflow-color, $size=8px, $arr-color=#636267)
+	arrow($size)
+	&:before
+	&:after
+		top 0
+		left (-1 * $size / 2)
+	&:before
+		border-right-color $overflow-color
+		margin-left: 1px
+	&:after
+		border-right-color $arr-color

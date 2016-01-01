@@ -1,0 +1,217 @@
+sqrt(x)
+	return math(x, 'sqrt')
+
+height-lineheight($height)
+	height $height
+	//line-height ($height - 1px)
+	line-height ($height)
+
+height-lineheight-2($height)
+	height $height
+	line-height ($height - 2px)
+
+display-inline-block()
+	display: -moz-inline-stack
+	display: inline-block
+	vertical-align: top
+	zoom: 1
+	//*display: inline
+
+reset-tags-in-text()
+	br
+		content ''
+		display: block
+		margin-top 5px
+	a
+		color $color_blue_darken
+	h1, h2, h3, h4, h5, h6
+		margin 0
+	p
+		&:first-child
+			margin-top: 0
+		&:last-child
+			margin-bottom: 0
+
+no-select()
+	user-select: none
+
+input-placeholder()
+	&.placeholder
+		{block}
+	&:-moz-placeholder
+		{block}
+	&::-moz-placeholder
+		{block}
+	&:-ms-input-placeholder
+		{block}
+	&::-webkit-input-placeholder
+		{block}
+
+
+
+/* Inline 3 circles loader */
+@keyframes inline-loading
+	0%
+		box-shadow  #cacaca 	-15px -10px 0 0,
+								#aaa 		  0 -10px 0 0,
+								#aaa 		  15px -10px 0 0
+	20%
+		box-shadow  #fff 		-15px -10px 0 0,
+								#cacaca 	0 -10px 0 0,
+								#aaa 		  15px -10px 0 0
+	40%
+		box-shadow  #cacaca 	-15px -10px 0 0,
+								#fff 		  0 -10px 0 0,
+								#cacaca 	15px -10px 0 0
+	60%
+		box-shadow  #aaa 		-15px -10px 0 0,
+								#cacaca 	0 -10px 0 0,
+								#fff 		  15px -10px 0 0
+	80%
+		box-shadow  #aaa 		-15px -10px 0 0,
+								#aaa 		  0 -10px 0 0,
+								#cacaca 	15px -10px 0 0
+	100%
+		box-shadow  #aaa 		-15px -10px 0 0,
+								#aaa 		  0 -10px 0 0,
+								#aaa 		  15px -10px 0 0
+
+inline-loader()
+	width: 10px
+	height: 10px
+	position: relative
+	border-radius 50%
+	animation(inline-loading 1.2s infinite)
+
+
+
+/* Circle loader */
+@keyframes circle-loading
+	0%
+		box-shadow  rgba(0,0,0, 0.38) 0 -28px 0 0,
+								rgba(0,0,0, 0.02) 16px -22px 0 0,
+								rgba(0,0,0, 0.06) 26px -9px 0 0,
+								rgba(0,0,0, 0.10) 26px 9px 0 0,
+								rgba(0,0,0, 0.14) 16px 22px 0 0,
+								rgba(0,0,0, 0.18) 0 28px 0 0,
+								rgba(0,0,0, 0.22) -16px 22px 0 0,
+								rgba(0,0,0, 0.26) -26px 9px 0 0,
+								rgba(0,0,0, 0.30) -26px -9px 0 0,
+								rgba(0,0,0, 0.34) -16px -22px 0 0
+	10%
+		box-shadow  rgba(0,0,0, 0.34) 0 -28px 0 0,
+								rgba(0,0,0, 0.38) 16px -22px 0 0,
+								rgba(0,0,0, 0.02) 26px -9px 0 0,
+								rgba(0,0,0, 0.06) 26px 9px 0 0,
+								rgba(0,0,0, 0.10) 16px 22px 0 0,
+								rgba(0,0,0, 0.14) 0 28px 0 0,
+								rgba(0,0,0, 0.18) -16px 22px 0 0,
+								rgba(0,0,0, 0.22) -26px 9px 0 0,
+								rgba(0,0,0, 0.26) -26px -9px 0 0,
+								rgba(0,0,0, 0.30) -16px -22px 0 0
+	20%
+		box-shadow  rgba(0,0,0, 0.30) 0 -28px 0 0,
+								rgba(0,0,0, 0.34) 16px -22px 0 0,
+								rgba(0,0,0, 0.38) 26px -9px 0 0,
+								rgba(0,0,0, 0.02) 26px 9px 0 0,
+								rgba(0,0,0, 0.06) 16px 22px 0 0,
+								rgba(0,0,0, 0.10) 0 28px 0 0,
+								rgba(0,0,0, 0.14) -16px 22px 0 0,
+								rgba(0,0,0, 0.18) -26px 9px 0 0,
+								rgba(0,0,0, 0.22) -26px -9px 0 0,
+								rgba(0,0,0, 0.26) -16px -22px 0 0
+	30%
+		box-shadow  rgba(0,0,0, 0.26) 0 -28px 0 0,
+								rgba(0,0,0, 0.30) 16px -22px 0 0,
+								rgba(0,0,0, 0.34) 26px -9px 0 0,
+								rgba(0,0,0, 0.38) 26px 9px 0 0,
+								rgba(0,0,0, 0.02) 16px 22px 0 0,
+								rgba(0,0,0, 0.06) 0 28px 0 0,
+								rgba(0,0,0, 0.10) -16px 22px 0 0,
+								rgba(0,0,0, 0.14) -26px 9px 0 0,
+								rgba(0,0,0, 0.18) -26px -9px 0 0,
+								rgba(0,0,0, 0.22) -16px -22px 0 0
+	40%
+		box-shadow  rgba(0,0,0, 0.22) 0 -28px 0 0,
+								rgba(0,0,0, 0.26) 16px -22px 0 0,
+								rgba(0,0,0, 0.30) 26px -9px 0 0,
+								rgba(0,0,0, 0.34) 26px 9px 0 0,
+								rgba(0,0,0, 0.38) 16px 22px 0 0,
+								rgba(0,0,0, 0.02) 0 28px 0 0,
+								rgba(0,0,0, 0.06) -16px 22px 0 0,
+								rgba(0,0,0, 0.10) -26px 9px 0 0,
+								rgba(0,0,0, 0.14) -26px -9px 0 0,
+								rgba(0,0,0, 0.18) -16px -22px 0 0
+	50%
+		box-shadow  rgba(0,0,0, 0.18) 0 -28px 0 0,
+								rgba(0,0,0, 0.22) 16px -22px 0 0,
+								rgba(0,0,0, 0.26) 26px -9px 0 0,
+								rgba(0,0,0, 0.30) 26px 9px 0 0,
+								rgba(0,0,0, 0.34) 16px 22px 0 0,
+								rgba(0,0,0, 0.38) 0 28px 0 0,
+								rgba(0,0,0, 0.02) -16px 22px 0 0,
+								rgba(0,0,0, 0.06) -26px 9px 0 0,
+								rgba(0,0,0, 0.10) -26px -9px 0 0,
+								rgba(0,0,0, 0.14) -16px -22px 0 0
+	60%
+		box-shadow  rgba(0,0,0, 0.14) 0 -28px 0 0,
+								rgba(0,0,0, 0.18) 16px -22px 0 0,
+								rgba(0,0,0, 0.22) 26px -9px 0 0,
+								rgba(0,0,0, 0.26) 26px 9px 0 0,
+								rgba(0,0,0, 0.30) 16px 22px 0 0,
+								rgba(0,0,0, 0.34) 0 28px 0 0,
+								rgba(0,0,0, 0.38) -16px 22px 0 0,
+								rgba(0,0,0, 0.02) -26px 9px 0 0,
+								rgba(0,0,0, 0.06) -26px -9px 0 0,
+								rgba(0,0,0, 0.10) -16px -22px 0 0
+	70%
+		box-shadow  rgba(0,0,0, 0.10) 0 -28px 0 0,
+								rgba(0,0,0, 0.14) 16px -22px 0 0,
+								rgba(0,0,0, 0.18) 26px -9px 0 0,
+								rgba(0,0,0, 0.22) 26px 9px 0 0,
+								rgba(0,0,0, 0.26) 16px 22px 0 0,
+								rgba(0,0,0, 0.30) 0 28px 0 0,
+								rgba(0,0,0, 0.34) -16px 22px 0 0,
+								rgba(0,0,0, 0.38) -26px 9px 0 0,
+								rgba(0,0,0, 0.02) -26px -9px 0 0,
+								rgba(0,0,0, 0.06) -16px -22px 0 0
+	80%
+		box-shadow  rgba(0,0,0, 0.06) 0 -28px 0 0,
+								rgba(0,0,0, 0.10) 16px -22px 0 0,
+								rgba(0,0,0, 0.14) 26px -9px 0 0,
+								rgba(0,0,0, 0.18) 26px 9px 0 0,
+								rgba(0,0,0, 0.22) 16px 22px 0 0,
+								rgba(0,0,0, 0.26) 0 28px 0 0,
+								rgba(0,0,0, 0.30) -16px 22px 0 0,
+								rgba(0,0,0, 0.34) -26px 9px 0 0,
+								rgba(0,0,0, 0.38) -26px -9px 0 0,
+								rgba(0,0,0, 0.02) -16px -22px 0 0
+	90%
+		box-shadow  rgba(0,0,0, 0.02) 0 -28px 0 0,
+								rgba(0,0,0, 0.06) 16px -22px 0 0,
+								rgba(0,0,0, 0.10) 26px -9px 0 0,
+								rgba(0,0,0, 0.14) 26px 9px 0 0,
+								rgba(0,0,0, 0.18) 16px 22px 0 0,
+								rgba(0,0,0, 0.22) 0 28px 0 0,
+								rgba(0,0,0, 0.26) -16px 22px 0 0,
+								rgba(0,0,0, 0.30) -26px 9px 0 0,
+								rgba(0,0,0, 0.34) -26px -9px 0 0,
+								rgba(0,0,0, 0.38) -16px -22px 0 0
+	100%
+		box-shadow  rgba(0,0,0, 0.38) 0 -28px 0 0,
+								rgba(0,0,0, 0.02) 16px -22px 0 0,
+								rgba(0,0,0, 0.06) 26px -9px 0 0,
+								rgba(0,0,0, 0.10) 26px 9px 0 0,
+								rgba(0,0,0, 0.14) 16px 22px 0 0,
+								rgba(0,0,0, 0.18) 0 28px 0 0,
+								rgba(0,0,0, 0.22) -16px 22px 0 0,
+								rgba(0,0,0, 0.26) -26px 9px 0 0,
+								rgba(0,0,0, 0.30) -26px -9px 0 0,
+								rgba(0,0,0, 0.34) -16px -22px 0 0
+
+circle-loader()
+	width: 10px
+	height: 10px
+	position: relative
+	border-radius 5px
+	animation(circle-loading 1.2s infinite)

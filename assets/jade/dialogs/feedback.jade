@@ -1,0 +1,46 @@
+form(
+	style="width: 600px;"
+	name="FeedbackForm"
+	ng-submit="FeedbackForm.$valid && FeedbackForm.$dirty && submitFeedback()"
+	novalidate
+)
+	.ngdialog__title(ng-bind="'DIALOGS.FEEDBACK.TITLE' | translate")
+
+	.t-text_center
+		a.btn.btn_inline.btn_40.btn_with-l-icon.btn_facebook(href="https://www.facebook.com/HackPackPress", target="_blank")
+			i.btn__l-icon.socicon.socicon-facebook
+			span(ng-bind="'DIALOGS.FEEDBACK.FB_BUTTON' | translate")
+
+	.hr-line
+		.hr-line__text(ng-bind="'COMMON.OR' | translate")
+
+	.select.select_36.t-w100p
+		select(
+			ng-model="model.form.category"
+			ng-options="category.value as (category.label | translate) for category in model.categories"
+			ng-class="{ 'default' : !model.form.category }"
+			required
+		)
+			option(
+				value=""
+				disabled
+				ng-bind="'DIALOGS.FEEDBACK.FORM.CATEGORY_PLACEHOLDER' | translate"
+			)
+	.vp_10
+	textarea.textarea.t-w100p.t-min-h150(
+		type="text"
+		ng-model="model.form.text"
+		placeholder="{{ 'DIALOGS.FEEDBACK.FORM.DESC_PLACEHOLDER' | translate }}"
+		required
+	)
+
+	.vp_20
+
+	.btns.t-text_right
+		label.btn.btn_36.btn_green(ng-class="{ 'disabled' : FeedbackForm.$invalid || !FeedbackForm.$dirty }")
+			span(ng-bind="'COMMON.SEND_BUTTON' | translate")
+			input(type="submit")
+		.btn.btn_36.btn_red.btn_red(
+			ng-click="closeThisDialog()"
+			ng-bind="'COMMON.CANCEL_BUTTON' | translate"
+		)

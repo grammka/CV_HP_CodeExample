@@ -1,0 +1,22 @@
+.messenger__messages__container(ng-style="{ 'bottom': model.newMessageHeight + 30 }")
+	.nano(
+		ng-if="model.messages"
+		nano-scroll
+		methods="model.messagesMethods"
+		lazy-top-loader="loadPrevMessagesPage()"
+	)
+		.nano-content
+			.messenger__messages
+				.messenger__message(
+					ng-repeat="message in model.messages"
+					ng-class="{ 'messenger__message_my': message.author.id == model.currUserId }"
+				)
+					.messenger__message__content
+						//a.messenger__message__author-name.t-black-link(
+						//	ng-href="{{ '/profile/' + message.author.id }}"
+						//	ng-bind="message.author.first_name + ' ' + message.author.last_name"
+						//)
+						//span.hp_10
+						span.messenger__message__posted-date(ng-bind="message.created_at | formatChatTime:'MMMM DD [at] h:mm a'")
+						.messenger__message__text(ng-bind-html="message.text")
+				.vp_10

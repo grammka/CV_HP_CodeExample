@@ -1,0 +1,22 @@
+.title__container
+	.title(ng-bind="'MY_COMPANY.CREATE.COMPANY_WEBSITE.TITLE' | translate")
+	.sub-title(ng-bind="'MY_COMPANY.CREATE.COMPANY_WEBSITE.DESC' | translate")
+
+.p_20
+	my-select-company#searchCompanyByWebsite.selectize_min-36.t-no-arrow.t-max-w400(
+		ng-model="model.company"
+		dynamic-model="model.company"
+		on-change="onSelectCompany(selectedItem)"
+		on-empty-search="onEmptySearch(selectedItem)"
+	)
+	//
+		input#searchCompanyByWebsite.binput.input_40.t-w300.t-validate-highlight(
+			type="text"
+			search-companies-by-website
+			on-search="onCompanySearch(organization)"
+			on-clear-search="onCompanySearchClear()"
+			ng-model="model.form.website"
+			placeholder="{{ 'MY_COMPANY.CREATE.COMPANY_WEBSITE.INPUT_PLACEHOLDER' | translate }}"
+			ng-pattern="regExp.url"
+			required
+		)

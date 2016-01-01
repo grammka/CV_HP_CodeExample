@@ -1,0 +1,76 @@
+.nano(
+	ng-if="model.snaps && model.snaps.length"
+	nano-scroll
+	lazy-loader="loadNextSnapsPage()"
+)
+	.nano-content
+		.t-max-w600
+
+			.snaps
+				.snap(
+					ng-repeat="snap in model.snaps track by $index"
+					ng-class="{ 'snap_not-published': !snap.is_published, 'snap_on-moderation': snap.is_published && !snap.is_approved }"
+				)
+					div(ng-if="snap.snap_type == 'idea'")
+						include _snap-icon
+						include _snap-info
+						a.snap__idea-content(
+							ng-if="snap.is_published"
+							ui-sref="ws.snapFeed.snap({snapId: snap.id})"
+							ng-bind-html="snap.teaser"
+						)
+						a.snap__idea-content(
+							ng-if="!snap.is_published"
+							ui-sref="ws.snapFeed.preview({snapId: snap.id})"
+							ng-bind-html="snap.teaser"
+						)
+
+					div(ng-if="snap.snap_type != 'idea'")
+						.snap__header.clearfix
+							include _snap-icon
+							include _snap-info
+							a.snap__title.t-link(
+								ng-if="snap.title && snap.is_published"
+								ui-sref="ws.snapFeed.snap({snapId: snap.id})"
+								ng-bind="snap.title"
+							)
+							a.snap__title.t-link(
+								ng-if="snap.title && !snap.is_published"
+								ui-sref="ws.snapFeed.preview({snapId: snap.id})"
+								ng-bind="snap.title"
+							)
+						.snap__content
+							.snap__teaser(ng-bind-html="snap.teaser || snap.description")
+
+					.snap__footer
+						span(ng-if="snap.affiliation")
+							span.snap__author-name(ng-bind="snap.affiliation")
+						a.snap__author-name.t-link(
+							ng-if="!snap.affiliation"
+							ui-sref="ws.profile({userId: snap.author.id})"
+							ng-bind="snap.author.full_name"
+						)
+						span.hp_8
+						span.snap__posted-date(am-time-ago="snap.created_at")
+
+						.snap__edit-btns(ng-if="snap.author.id != model.user.id && model.selectedTab.id != 'hidden'")
+							.snap__edit-btn.snap__edit-btn_remove(
+								confirm-click="hideSnap(snap.id, $index)"
+								ng-bind="'COMMON.HIDE_BUTTON' | translate"
+							)
+						.snap__edit-btns(ng-if="snap.author.id == model.user.id")
+							a.snap__edit-btn.snap__edit-btn_edit(
+								ui-sref="ws.snapFeed.preview({snapId: snap.id})"
+								ng-bind="'COMMON.EDIT_BUTTON' | translate"
+							)
+
+					.vp_10
+					.tags.p_0_10
+						.tag(
+							ng-repeat="tag in snap.tags track by $index"
+							ng-click="toggleTag(tag)"
+							ng-class="{ 'active': model.filterForm.tags == tag }"
+							ng-bind="tag"
+						)
+
+			.vp_50

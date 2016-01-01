@@ -1,0 +1,80 @@
+.snap-feed__snap-in
+	position: relative
+
+.snap-feed__snap-in__author-avatar
+	width: $size
+	height-lineheight($size)
+	absolute top 5px left 0
+	font-size: 18px
+
+.snap-feed__snap-in__container
+	margin-left: $size + $padding
+
+.snap-feed__snap-in__header
+	height-lineheight(26px)
+
+.snap-feed__snap-in__category
+	color $light-text-color
+
+.snap-feed__snap-in__deadline
+	height-lineheight(26px)
+	background-color: #d0bd92
+	padding 0 12px
+	position: relative
+	cursor: default
+	font-size: 12px
+	display-inline-block()
+
+.snap-feed__snap-in__content
+	background-color: $text-bg-color
+	padding 10px 14px 0
+	position: relative
+
+.snap-feed__snap-in__description
+	padding-bottom: 10px
+	text-align: justify
+	reset-tags-in-text()
+
+.snap-feed__snap-in__author-info
+	height-lineheight(34px)
+	border-top: 1px solid #E6E7EC
+
+.snap-feed__snap-in__location
+	color $light-text-color
+	
+
+
+.snap-feed__snap__new-mess
+	margin: 32px 0 0 $size + $padding
+	padding 0 110px 0 ($padding + 32px)
+	position: relative
+
+.snap-feed__snap__new-mess__author-avatar
+	width: 32px
+	height: 32px
+	absolute left 0 top 0
+
+.snap-feed__snap__new-mess__textarea__container
+	position: relative
+
+.snap-feed__snap__new-mess__textarea
+	padding: 6px 10px
+	margin-right: -1px
+
+.snap-feed__snap__new-mess__submit-btn
+	width: 110px
+	absolute right 0 top 0
+
+
+
+.snap-feed__snap__messages
+	margin: 30px 0 0 $size + $padding
+
+.snap-feed__snap__author-messages
+	display: block
+
+.snap-feed__snap__user-messages
+	.post_answer
+		margin-left: 30px + $padding
+	.post__footer-navig
+		margin-left: 30px + $padding + 30px + $padding

@@ -1,0 +1,42 @@
+.nano
+	width: 100%
+	height: 100%
+	overflow: hidden
+	position: relative
+
+	& > .nano-content
+		absolute top 0 right 0 bottom 0 left 0
+		//padding-right: 10px
+		overflow: scroll
+		overflow-x: hidden
+		&::-webkit-scrollbar
+			display: none
+
+	& > .nano-pane
+		width: 10px
+		background-color: #ECF0F5
+		overflow: hidden
+		absolute top 0 right 0 bottom 0
+		visibility: hidden\9 /* Target only IE7 and IE8 with this hack */
+		& > .nano-slider
+			background-color: #AEB5BD
+			margin: 0 1px
+			position: relative
+			border-radius 5px
+			box-shadow #fff 0 0 0 2px
+
+	&.scroll-visible > .nano-content
+		padding-right: 10px
+
+	&.nano_wo-track
+		& > .nano-content
+			//right 0 !important
+			padding-right: 0 !important
+		& > .nano-pane
+			display: none !important
+
+	&.has-scrollbar > .nano-content::-webkit-scrollbar
+		display: block
+
+.nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed
+	visibility: visible\9 /* Target only IE7 and IE8 with this hack */

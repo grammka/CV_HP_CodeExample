@@ -1,0 +1,24 @@
+.snap-feed__notifications__days
+	font-size: 0
+	no-select()
+
+.snap-feed__notifications__days__item
+	cursor: pointer
+	font-size: 13px
+	font-weight 600
+	display-inline-block()
+	input[type="checkbox"]
+		display: none
+		& + .snap-feed__notifications__days__item__value
+			height: 36px
+			line-height: 36px
+			background-color: #fff
+			margin-right: 6px
+			padding: 0 8px
+			position: relative
+			color #666
+			display-inline-block()
+		&:checked
+			& + .snap-feed__notifications__days__item__value
+				background-color: $color_ocean
+				color #fff

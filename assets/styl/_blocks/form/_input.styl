@@ -1,0 +1,67 @@
+.input
+.binput
+	width: 100%
+	background-color: #fff
+	font-family: "Open Sans"
+	box-sizing border-box
+	&.t-validate-highlight
+	.t-validate-highlight &
+		&.ng-dirty.ng-valid
+			background-color #CAFFDA
+			border 1px solid #50D077
+			color #000 !important
+	&.t-validate-highlight-errors
+	.t-validate-highlight-errors &
+		&.ng-dirty.ng-invalid
+			background-color: #FFD3D3 !important
+			border 1px solid #EC0000 !important
+			color #000 !important
+	&.t-validate-warning
+		background-color: #FFECD3 !important
+		border-color #EC8F00 !important
+		color: #EC6C00 !important
+	&.t-validate-failed
+	//.t-validate-highlight.ng-submitted &.ng-invalid
+		background-color: #FFD3D3 !important
+		border 1px solid #EC0000 !important
+		color: #EC0000 !important
+		+input-placeholder()
+			color: #EC0000 !important
+	&.disabled,
+	&[disabled]
+		background-color #ddd
+		border-color #ccc
+	+input-placeholder()
+		color $light-text-color
+
+/*.input*/
+	/*border 0*/
+
+.input
+.binput
+	border 1px solid #ccc
+
+
+
+.input_hidden
+	opacity: 0
+	position: fixed
+	left: -999999px
+
+.input_32
+	height: 32px
+	line-height: 20px
+	padding 6px 10px
+	font-size: 13px
+
+.input_36
+	height: 36px
+	line-height: 22px
+	padding 7px 10px
+	font-size: 14px
+
+.input_40
+	height: 40px
+	line-height: 24px
+	padding 8px 10px
+	font-size: 14px

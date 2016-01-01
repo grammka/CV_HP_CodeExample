@@ -1,0 +1,7 @@
+.landing__users-by-roles
+	.landing__users-by-roles__role__wrapper(ng-repeat="item in data")
+		.landing__users-by-roles__role
+			.landing__users-by-roles__role__bar__wrapper
+				.landing__users-by-roles__role__bar(ng-attr-style="{{ 'height: ' + item.percentFromAllUsers + '%' }}")
+			.landing__users-by-roles__role__count(ng-bind="item.users_count")
+			.landing__users-by-roles__role__title(ng-bind="getRole(item.users_count, item.role.name)")

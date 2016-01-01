@@ -1,0 +1,231 @@
+$post-border-color = #D1D7E0
+$post-inside-border-color = $border-color
+
+
+
+.posts
+	display: block
+
+.post
+	background-color: #fff
+	border 1px solid $post-border-color
+	margin-top: 15px
+	position: relative
+	border-radius 2px
+	&:first-child
+		margin-top: 10px
+
+
+// Navigation --------------------------------------------- /
+
+.post__edit-btns
+	absolute top 10px right 10px
+	z-index: 10
+	font-size: 0
+	display-inline-block()
+
+.post__edit-btn
+	height-lineheight(15px)
+	margin-left: 5px
+	padding 0 5px
+	cursor: pointer
+	font-size: 10px
+	font-weight 600
+	text-transform lowercase
+	color #63696F
+	border-radius 1px
+	no-select()
+	display-inline-block()
+	.post_answer &
+		font-size: 9px
+	&:first-child
+		margin-left: 0
+	&:hover
+		color #fff
+
+.post__edit-btn_edit
+	&:hover
+		background-color: $color_orange
+
+.post__edit-btn_remove
+	&:hover
+		background-color: $color_red
+
+
+// Header ------------------------------------------------ /
+
+.post__header
+	height: 42px
+	padding 8px 10px 0 60px
+	position: relative
+
+
+.post__author-avatar
+	width: 40px
+	height-lineheight(40px)
+	absolute top 10px left 10px
+	z-index: 10
+	font-size: 20px
+	.post_answer &
+		width: 28px
+		height-lineheight(28px)
+		font-size: 12px
+
+.post__author-name
+	font-weight 600
+	font-size: 13px
+
+.post__posted-date
+	font-size: 12px
+	color #acb0b7
+
+
+// Content ----------------------------------------------- /
+
+.post__content
+	padding 0 10px 10px
+
+.post__opengraph
+	margin-top: 10px
+
+.post__message
+	margin-top: 10px
+	word-wrap: break-word
+	reset-tags-in-text()
+
+.post__file-previews
+	background-color: #fff
+	border 1px solid #dee2ea
+	margin-top: 10px
+	padding: 2px
+	border-radius 2px
+
+
+// Edit --------------------------------------------------- /
+
+.post__edit
+	margin: 10px -1px -1px
+	padding: 10px
+	background-color: #FFF5DC
+	border: 1px solid #E6DBC0
+	position: relative
+	z-index: 10
+
+.post__edit__message
+	background-color: #fff
+	border: 1px solid #E6DBC0
+	padding 3px 5px
+	.post__comment &
+		font-size: 12px
+
+.post__edit__photos-thumbs
+	margin: 10px -10px 0
+	padding: 5px 5px 10px
+	border-top: 1px dashed #E6DBC0
+	border-bottom: 1px dashed #E6DBC0
+	font-size: 0
+
+.post__edit__photos-thumb
+	width 109px
+	height 109px
+	background-size cover
+	background-position center
+	margin 5px 0 0 5px
+	position: relative
+	overflow hidden
+	display-inline-block()
+	&:hover
+		&:before
+			content ''
+			width: 100%
+			height: 100%
+			display: block
+			background-color: rgba(#000, 0.5)
+			absolute top 0 left 0
+			z-index: 10
+		.post__edit__photos-thumb__remove-btn
+			display: block
+
+.post__edit__photos-thumb__remove-btn
+	display: none
+	width: 40px
+	height-lineheight(40px)
+	background-color: rgba(#000, 0.3)
+	absolute top 50% left 50%
+	margin -20px 0 0 -20px
+	z-index: 20
+	cursor: pointer
+	font-size: 12px
+	font-weight 600
+	text-align: center
+	color #fff
+	border-radius 50%
+	&:hover
+		background-color: rgba(#000, 0.6)
+
+.post__edit__navig
+	margin-top: 10px
+
+
+// Comments ----------------------------------------------- /
+
+.post__comments__wrapper
+	background-color: #FAFBFD
+	border-top 1px solid $post-inside-border-color
+
+.post__toggle-more-comments-btn
+	line-height: 24px
+	background-color: #F3F6F9
+	margin -10px -10px 0
+	cursor: pointer
+	text-align: center
+	font-weight 600
+	font-size: 11px
+	color #737D88
+	no-select()
+	&:hover
+		background-color: #FAFBFD
+		color #57606B
+
+.post__comments
+	padding 10px
+
+.post__comment
+	min-height: 28px
+	padding-left: $post-avatar-container-size + 10px
+	margin-top: 7px
+	position: relative
+	&:first-child
+		margin-top: 0
+
+.post__comment__content
+	padding-left 38px
+	position: relative
+
+.post__comment__edit-btns
+	absolute top 0 right 0
+	z-index: 10
+	font-size: 0
+	display-inline-block()
+
+.post__comment__author-avatar
+	width: 28px
+	height-lineheight(28px)
+	absolute top 4px left 0
+	font-size: 12px
+
+.post__comment__author-name
+	font-weight 600
+	font-size: 12px
+	&:hover
+		text-decoration: underline
+
+.post__comment__posted-date
+	font-size: 11px
+	color #acb0b7
+
+.post__comment__message
+	word-wrap: break-word
+	font-size: 12px
+	a
+		color $color_blue

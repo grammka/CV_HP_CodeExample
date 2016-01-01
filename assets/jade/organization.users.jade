@@ -1,0 +1,56 @@
+.p_10(ng-if="!model.editing && model.organization.permissions.is_admin && model.organization.permissions.invite_administrators")
+	.btn.btn_32.btn_white.btn_inline(
+		ng-bind="'MY_COMPANY.USERS.EDIT_BUTTON' | translate"
+		ng-click="edit()"
+	)
+
+include organization/_add-user
+
+.t-max-w600
+	table.users-table
+		thead
+			th(ng-bind="'MY_COMPANY.USERS.PERMISSIONS.IS_ADMIN' | translate")
+			th
+			th
+			th
+			th
+			th
+		tbody
+			tr(ng-repeat="user in model.users track by $index")
+				td.t-w1p.t-text_center
+					label.checkbox__wrap(ng-if="model.organization.permissions.is_admin && model.organization.permissions.invite_administrators")
+						checkbox(
+							model="user.permissions.is_admin"
+							ng-change="toggleIsAdminStatus(user)"
+						)
+				td.t-w1p
+					a.users-table__item__avatar(ui-sref="ws.profile.principal({userId: user.id})" target="_blank")
+						avatar(data="user")
+				td.t-w1p
+					a.users-table__item__name.t-link(
+						ui-sref="ws.profile.principal({userId: user.id})"
+						target="_blank"
+						ng-bind="user.full_name"
+					)
+					.users-table__item__role(ng-bind="user.role.label")
+				td
+				td.t-w1p
+					.btn.btn_26.btn_dark-blue(
+						ng-if="model.organization.permissions.is_admin && model.organization.permissions.invite_administrators && user.id != model.currUserId"
+						ng-click="editUser(user)"
+					)
+						.sl-icon.sl-icon-pencil-write-2.t-weight_600
+				td.t-w1p
+					.btn.btn_26.btn_red(
+						ng-if="model.organization.permissions.is_admin && model.organization.permissions.invite_administrators && user.id != model.currUserId"
+						confirm-click="removeMember(user.id, $index)"
+					)
+						.sl-icon.sl-icon-close.t-weight_600
+					.btn.btn_26.btn_orange(
+						ng-if="user.id == model.currUserId"
+						tooltips
+						tooltip-title="{{ 'MY_COMPANY.LEAVE_BUTTON' | translate }}"
+						tooltip-side="right"
+						confirm-click="leave()"
+					)
+						.sl-icon.sl-icon-logout-2.t-weight_600

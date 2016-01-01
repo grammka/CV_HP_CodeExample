@@ -1,0 +1,56 @@
+.posts
+	.post(ng-repeat="post in posts track by $index")
+
+		.post__edit-btns(ng-if="post.author.id == model.user.id")
+			div(ng-if="!post.editing")
+				.post__edit-btn.post__edit-btn_edit(
+					ng-click="editPost(post)"
+					ng-bind="'COMMON.EDIT_BUTTON' | translate"
+				)
+				.post__edit-btn.post__edit-btn_remove(
+					ng-if="!post.comments || !post.comments.length"
+					confirm-click="removePost(post, $index)"
+					ng-bind="'COMMON.REMOVE_BUTTON' | translate"
+				)
+
+		.post__header
+			a.post__author-avatar(href="{{ '/profile/' + post.author.id }}")
+				avatar(data="post.author")
+			a.post__author-name.t-link(
+				href="{{ '/profile/' + post.author.id }}"
+				ng-bind="post.author.full_name"
+			)
+			.post__posted-date(am-time-ago="post.created_at")
+
+		.post__content
+			.post__message(ng-bind-html="post.text")
+			opengraph.post__opengraph(
+				ng-if="post.opengraph"
+				data="post.opengraph"
+			)
+			.post__file-previews(ng-if="post.attachments && post.attachments.length")
+				grid-gallery(images="post.attachments")
+
+
+		.post__comments__wrapper(ng-if="model.user.is_confirmed")
+			.post__comments(ng-if="post.comments && post.comments.length")
+				.post__comment(ng-repeat="comment in post.comments track by $index")
+					.post__comment__content
+						a.post__comment__author-avatar(href="{{ '/profile/' + comment.author.id }}")
+							avatar(data="comment.author")
+						a.post__comment__author-name(
+							href="{{ '/profile/' + comment.author.id }}"
+							ng-bind="comment.author.full_name"
+						)
+						span.hp_10
+						span.post__comment__posted-date(am-time-ago="comment.created_at")
+						.post__comment__message(ng-bind-html="comment.text")
+						.post__file-previews(ng-if="comment.attachments && comment.attachments.length")
+							grid-gallery(images="comment.attachments")
+
+			.p_10(ng-if="model.user.is_confirmed")
+				chat-box(
+					placeholder="{{ 'POSTS.WRITE_COMMENT_PLACEHOLDER' | translate }}"
+					text="model.newCommentText"
+					on-submit="submitNewComment(post)"
+				)

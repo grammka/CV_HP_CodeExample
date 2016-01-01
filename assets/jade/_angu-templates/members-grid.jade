@@ -1,0 +1,10 @@
+a.members-grid__member(ng-href="{{ '/profile/' + item.id }}")
+	.members-grid__member__avatar
+		avatar(data="item")
+	.members-grid__member__name {{ item.full_name }}
+	.members-grid__member__role {{ item.role.label }}
+	.members-grid__member__availability(
+		ng-if="!RC('Expert', item.role.name)"
+		ng-class="{ true: 't-text_success', false: 't-text_error' }[item.is_available]"
+		ng-bind="(item.is_available ? 'COMMON.OPEN_TO_GIGS' : 'COMMON.BOOKED') | translate"
+	)

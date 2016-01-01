@@ -1,0 +1,56 @@
+.header
+	.header__content
+		.header__title
+			a.t-white-link(href="/snap-feed/list/")
+				i.sl-icon.sl-icon-arrow-left
+				span.hp_10
+				span(ng-bind="'SNAP_FEED.HEADER.BACK_TO_SNAPS_LIST' | translate")
+
+.content__with-header
+	.nano(nano-scroll)
+		.nano-content
+			.content(ng-if="model.snap")
+				.t-max-w900
+					.snap-feed__snap-in
+						a.snap-feed__snap-in__author-avatar(ui-sref="ws.profile({userId: model.snap.author.id})")
+							avatar(data="model.snap.author")
+						.snap-feed__snap-in__container
+							.snap-feed__snap-in__header
+								.t-float_left
+									span.snap-feed__snap-in__category(ng-bind="model.snap.category")
+									span.hsl /
+									span.snap-feed__snap-in__title(ng-bind="model.snap.title")
+								.btns.t-float_right
+									.snap-feed__snap-in__deadline(ng-if="model.snap.deadline")
+										span(ng-bind="('COMMON.DEADLINE' | translate) + ':'")
+										span.hp_5
+										b(ng-bind="model.snap.deadline | amDateFormat:'MMM D, YYYY'")
+									a.btn.btn_26.btn_gray-blue(
+										ng-if="snap.author.id == model.user.id"
+										ui-sref="ws.snapFeed.edit({snapId: model.snap.id})"
+										ng-bind="'COMMON.EDIT_BUTTON' | translate"
+									)
+							.snap-feed__snap-in__content
+								.snap-feed__snap-in__description(ng-bind-html="model.snap.description || model.snap.teaser")
+								.post__file-previews(ng-if="model.snap.attachments && model.snap.attachments.length")
+									grid-gallery(images="model.snap.attachments")
+								.snap-feed__snap-in__author-info
+									span(ng-if="model.snap.affiliation")
+										span.snap__author-name(ng-bind="model.snap.affiliation")
+										span.hsl /
+									a.snap__author-name.t-link(
+										ui-sref="ws.profile({userId: model.snap.author.id})"
+										ng-bind="model.snap.author.full_name"
+									)
+									span(ng-if="model.snap.country")
+										span.hsl /
+										span.snap-feed__snap-in__location(ng-bind="model.snap.country")
+									span.hp_10
+									span.snap__posted-date(am-time-ago="model.snap.created_at")
+
+					div(ng-if="model.user.id == model.snap.author.id")
+						.snap-feed__snap__messages.snap-feed__snap__author-messages
+							snap-feed-author-posts(posts="model.messages")
+
+					div(ng-if="model.user.id != model.snap.author.id")
+						include snap-feed/_snap-user-chat
